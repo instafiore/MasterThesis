@@ -1,0 +1,80 @@
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+Answer Set Programming (ASP) is a highly utilized framework for knowledge 
+representation and automated reasoning, as highlighted by \textit{Marek and Truszczyński (1999)} ~\cite{MarekT99}
+and \textit{Niemelä (1999)} ~\cite{Niemela99}. 
+In ASP, combinatorial problems are formulated using logical rules that incorporate various
+linguistic constructs, which simplify the representation of complex knowledge.
+In its most basic form, ASP programs consist of normal logic rules, where each rule 
+has a head atom and a body that is a conjunction of literals. 
+Often, normal programs are extended by incorporating aggregates, as discussed by 
+\textit{Bartholomew et al. (2011)} \cite{DBLP:conf/aaaiss/BartholomewLM11}, \textit{Faber et al. (2011b)}
+\cite{DBLP:journals/ai/FaberPL11}, \textit{Ferraris (2011)} \cite{DBLP:journals/tocl/Ferraris11},
+\textit{Gelfond and Zhang (2014)} \cite{DBLP:journals/tplp/GelfondZ14},
+\textit{Liu et al. (2010)} \cite{DBLP:journals/ai/LiuPST10},\textit{ and Simons et al. (2002)}
+\cite{DBLP:journals/ai/LiuPST10}.
+Specifically, \textit{SUM aggregates} are used in rule 
+bodies, where literals are assigned weights, 
+and the sum of the weights of the true literals must satisfy a specified (in)equality.
+When the head of the rule is false the aggregate becomes a constraint aggregate.
+Another kind of constraint is the \textit{At Most One} constraint
+that essentially inhibits truth of pairs of literals in a given set.
+It is very common that these two constraints (SUM and AMO) are linked together.
+State of the art solvers treat this case ignoring the correlation between these two constraints. 
+Our work aims to define a new costruct named \textit{AMO-SUM} to efficiently handle this case.
+This efficiency improvement comes from the fact that we are able to treat the two constraint
+as a whole constraint.
+
+% The solutions to these problems are given in the form of stable models, 
+% as described by \textit{Gelfond and Lifschitz (1990)} ~\cite{GelfondL90}. 
+% In its most basic form, ASP programs consist of normal rules, where each normal rule 
+% has a head atom and a body that is a conjunction of literals. 
+% Intuitively, the head atom must be true whenever the associated body is true, 
+% making stable models classical models of the propositional knowledge base created by
+% translating normal rules into implications (body implies head). 
+% The stability condition also ensures that stable models have additional properties, 
+% such as being supported models (where every true atom is the head of some rule with a true body)
+% as noted by \textit{Fages (1994)} ~\cite{DBLP:journals/mlcs/Fages94}, and unfounded-free models
+% (where the support is acyclic) as described by 
+% \textit{Dung (1992)} ~\cite{DBLP:journals/tcs/Dung92}.
+
+% These properties are leveraged to achieve efficient computation by 
+% integrating a conflict-driven clause learning 
+
+Nowadays current ASP solver implements a (CDCL) algorithm with propagators, 
+as explained by \textit{Gebser et al. (2012)} ~\cite{DBLP:journals/ai/GebserKS12}.
+CDCL (Conflict-Driven Clause Learning) is a contemporary form of non-chronological 
+backtracking that follows the \textit{choose-propagate-learn} pattern, 
+as described by \textit{Marques-Silva et al. (2021)} ~\cite{DBLP:series/faia/0001LM21}, ~\cite{DIMCAS}.
+
+% The \textbf{choose} phase, or decision phase, consists in the process
+% of \textit{choosing} a (branching) literal as the new literal to become true.
+% After a literal has been choosed the so-called \textbf{propagate} phase takes place, whose role 
+% is to extend the current partial assignment: a partial assigment
+% is a non-total function on the atoms of the program that maps each of them to a boolean value.
+% Extending means mapping literals to boolean value that can be deterministically inferred from the
+% program and the current partial assignment. Specifically, process propagate employs a series of propagation functions,
+% often referred as \textit{propagators}, following a priority sequence.
+% The \textbf{learn} phase occurs when a conflict is detected, that is when the partial assignment contains a contradiction.
+% In this stage a new clause has to be learned, to not make the same mistake again.
+% To learn this clause each inferred literal is linked to a reason, which is a clause (a set of literals)
+% that led to derived the literal in the propagation phase.
+% When conflicts arise, these reasons are used to learn new clauses,
+% effectively pruning the search space and enhancing the efficiency of the search process.
+This pattern consists of this three phases: 
+\textbf{choose} phase, or decision phase, consists in picking a branking literal as true; 
+\textbf{propagate} phase derives determinists consequences of the current state;
+\textbf{learn} phase is triggered when a conflict arises and aims at understanding from the conflict 
+to not making the same mistake again.
+In the propagate phase  specific procedures called \textit{propagators} are used to derive such consequences.
+Propagators are required to explain why a consequence has been derived.
+This explanation is called reason, it is a set of literals that led to derive that consequence 
+and it is used in the learning phase.
+When an aggregate is introduced inside the program then a specific propagator is required.
+Our work provides both a novel propagator for handling the new AMO-SUM construct and 
+an algorithm to minimize the reasons of the aggregate-derived consequences.
+To provide a more comprehensive understanding of our work the \todo{DA FINIRE}
+
+
+
+

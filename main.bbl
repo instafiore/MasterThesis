@@ -1,0 +1,566 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{MarekT99}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=d43f9ed01758c28da54d20c54e840ae1}{%
+           family={Marek},
+           familyi={M\bibinitperiod},
+           given={Victor},
+           giveni={V\bibinitperiod}}}%
+        {{hash=f8f5a2d2552898e4fe861c4390a4a007}{%
+           family={Truszczyński},
+           familyi={T\bibinitperiod},
+           given={Miroslaw},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{2ef6b212a65d4adc60084bd608b4d691}
+      \strng{fullhash}{2ef6b212a65d4adc60084bd608b4d691}
+      \strng{bibnamehash}{2ef6b212a65d4adc60084bd608b4d691}
+      \strng{authorbibnamehash}{2ef6b212a65d4adc60084bd608b4d691}
+      \strng{authornamehash}{2ef6b212a65d4adc60084bd608b4d691}
+      \strng{authorfullhash}{2ef6b212a65d4adc60084bd608b4d691}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{The Logic Programming Paradigm: a 25-year Perspective}
+      \field{title}{Stable models and an alternative logic programming paradigm}
+      \field{year}{1999}
+      \field{pages}{375\bibrangedash 398}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.1007/978-3-642-60085-2\_17
+      \endverb
+    \endentry
+    \entry{Niemela99}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e92901947a7da887056e10cf30824296}{%
+           family={Niemelä},
+           familyi={N\bibinitperiod},
+           given={Ilkka},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{e92901947a7da887056e10cf30824296}
+      \strng{fullhash}{e92901947a7da887056e10cf30824296}
+      \strng{bibnamehash}{e92901947a7da887056e10cf30824296}
+      \strng{authorbibnamehash}{e92901947a7da887056e10cf30824296}
+      \strng{authornamehash}{e92901947a7da887056e10cf30824296}
+      \strng{authorfullhash}{e92901947a7da887056e10cf30824296}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of Mathematics and Artificial Intelligence}
+      \field{number}{3,4}
+      \field{title}{Logic programming with stable model semantics as a constraint programming paradigm}
+      \field{volume}{25}
+      \field{year}{1999}
+      \field{pages}{241\bibrangedash 273}
+      \range{pages}{33}
+      \verb{doi}
+      \verb 10.1023/A:1018930122475
+      \endverb
+    \endentry
+    \entry{DBLP:conf/aaaiss/BartholomewLM11}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=b77985c13a4f5da063de198f61ccbbde}{%
+           family={Bartholomew},
+           familyi={B\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=61a8c8f9bc9bd96451ef58478d081e18}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Joohyung},
+           giveni={J\bibinitperiod}}}%
+        {{hash=34c011c6c19065e8a65a0596af0a899c}{%
+           family={Meng},
+           familyi={M\bibinitperiod},
+           given={Yunsong},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {AAAI}%
+      }
+      \strng{namehash}{3a6afa84eb999c4ae6b52be2abe4c2a5}
+      \strng{fullhash}{3a6afa84eb999c4ae6b52be2abe4c2a5}
+      \strng{bibnamehash}{3a6afa84eb999c4ae6b52be2abe4c2a5}
+      \strng{authorbibnamehash}{3a6afa84eb999c4ae6b52be2abe4c2a5}
+      \strng{authornamehash}{3a6afa84eb999c4ae6b52be2abe4c2a5}
+      \strng{authorfullhash}{3a6afa84eb999c4ae6b52be2abe4c2a5}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Logical Formalizations of Commonsense Reasoning, {AAAI} Spring Symposium}
+      \field{title}{First-Order Semantics of Aggregates in Answer Set Programming Via Modified Circumscription}
+      \field{year}{2011}
+      \verb{urlraw}
+      \verb http://www.aaai.org/ocs/index.php/SSS/SSS11/paper/view/2472
+      \endverb
+      \verb{url}
+      \verb http://www.aaai.org/ocs/index.php/SSS/SSS11/paper/view/2472
+      \endverb
+    \endentry
+    \entry{DBLP:journals/ai/FaberPL11}{article}{}
+      \name{author}{3}{}{%
+        {{hash=e1629fff88cdb6d71cc8d8fc6f9b987a}{%
+           family={Faber},
+           familyi={F\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=434954cf0f0445ae077f45ec1ccc8443}{%
+           family={Pfeifer},
+           familyi={P\bibinitperiod},
+           given={Gerald},
+           giveni={G\bibinitperiod}}}%
+        {{hash=77e491ad5f8cdd4f2edef120a74f5a17}{%
+           family={Leone},
+           familyi={L\bibinitperiod},
+           given={Nicola},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{a43a94ceeab504985e66f6bbbad1c2c4}
+      \strng{fullhash}{a43a94ceeab504985e66f6bbbad1c2c4}
+      \strng{bibnamehash}{a43a94ceeab504985e66f6bbbad1c2c4}
+      \strng{authorbibnamehash}{a43a94ceeab504985e66f6bbbad1c2c4}
+      \strng{authornamehash}{a43a94ceeab504985e66f6bbbad1c2c4}
+      \strng{authorfullhash}{a43a94ceeab504985e66f6bbbad1c2c4}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Artif. Intell.}
+      \field{number}{1}
+      \field{title}{Semantics and complexity of recursive aggregates in answer set programming}
+      \field{volume}{175}
+      \field{year}{2011}
+      \field{pages}{278\bibrangedash 298}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1016/j.artint.2010.04.002
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1016/j.artint.2010.04.002
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1016/j.artint.2010.04.002
+      \endverb
+    \endentry
+    \entry{DBLP:journals/tocl/Ferraris11}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b4fdbd544113be5bee98fa5db61cf3cb}{%
+           family={Ferraris},
+           familyi={F\bibinitperiod},
+           given={Paolo},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{b4fdbd544113be5bee98fa5db61cf3cb}
+      \strng{fullhash}{b4fdbd544113be5bee98fa5db61cf3cb}
+      \strng{bibnamehash}{b4fdbd544113be5bee98fa5db61cf3cb}
+      \strng{authorbibnamehash}{b4fdbd544113be5bee98fa5db61cf3cb}
+      \strng{authornamehash}{b4fdbd544113be5bee98fa5db61cf3cb}
+      \strng{authorfullhash}{b4fdbd544113be5bee98fa5db61cf3cb}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{{ACM} Trans. Comput. Log.}
+      \field{number}{4}
+      \field{title}{Logic programs with propositional connectives and aggregates}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{25}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1145/1970398.1970401
+      \endverb
+      \verb{urlraw}
+      \verb http://doi.acm.org/10.1145/1970398.1970401
+      \endverb
+      \verb{url}
+      \verb http://doi.acm.org/10.1145/1970398.1970401
+      \endverb
+    \endentry
+    \entry{DBLP:journals/tplp/GelfondZ14}{article}{}
+      \name{author}{2}{}{%
+        {{hash=9ddf8a4d782a7a6f34c25fbc4ca822b1}{%
+           family={Gelfond},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=033a69a6053b2f2236eee3a7727779e0}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Yuanlin},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{097028662c2b67ea608d915b205276aa}
+      \strng{fullhash}{097028662c2b67ea608d915b205276aa}
+      \strng{bibnamehash}{097028662c2b67ea608d915b205276aa}
+      \strng{authorbibnamehash}{097028662c2b67ea608d915b205276aa}
+      \strng{authornamehash}{097028662c2b67ea608d915b205276aa}
+      \strng{authorfullhash}{097028662c2b67ea608d915b205276aa}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theory and Practice of Logic Programming}
+      \field{number}{4-5}
+      \field{title}{Vicious Circle Principle and Logic Programs with Aggregates}
+      \field{volume}{14}
+      \field{year}{2014}
+      \field{pages}{587\bibrangedash 601}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1017/S1471068414000222
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1017/S1471068414000222
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1017/S1471068414000222
+      \endverb
+    \endentry
+    \entry{DBLP:journals/ai/LiuPST10}{article}{}
+      \name{author}{4}{}{%
+        {{hash=1a8c828989c6d04e4ff03e1eb656b208}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Lengning},
+           giveni={L\bibinitperiod}}}%
+        {{hash=239566b8e57237e742ca2992eb4db085}{%
+           family={Pontelli},
+           familyi={P\bibinitperiod},
+           given={Enrico},
+           giveni={E\bibinitperiod}}}%
+        {{hash=fa9d149ca8966d751c3d8d9a2201aa8e}{%
+           family={Son},
+           familyi={S\bibinitperiod},
+           given={Tran\bibnamedelima Cao},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=e51ba8f5088b7710ab41cb853d82ad5a}{%
+           family={Truszczynski},
+           familyi={T\bibinitperiod},
+           given={Miroslaw},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{797369f950493391485d7c686c3dd026}
+      \strng{fullhash}{f724e22d13de3f482dcb9e504bcbc382}
+      \strng{bibnamehash}{f724e22d13de3f482dcb9e504bcbc382}
+      \strng{authorbibnamehash}{f724e22d13de3f482dcb9e504bcbc382}
+      \strng{authornamehash}{797369f950493391485d7c686c3dd026}
+      \strng{authorfullhash}{f724e22d13de3f482dcb9e504bcbc382}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Artif. Intell.}
+      \field{number}{3-4}
+      \field{title}{Logic programs with abstract constraint atoms: The role of computations}
+      \field{volume}{174}
+      \field{year}{2010}
+      \field{pages}{295\bibrangedash 315}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1016/j.artint.2009.11.016
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1016/j.artint.2009.11.016
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1016/j.artint.2009.11.016
+      \endverb
+    \endentry
+    \entry{DBLP:journals/ai/GebserKS12}{article}{}
+      \name{author}{3}{}{%
+        {{hash=a296fbe902a96f2ceebb7398463f3e13}{%
+           family={Gebser},
+           familyi={G\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3fe0253f0b3212a4109e50143a91fede}{%
+           family={Kaufmann},
+           familyi={K\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=3c55d70c19bd5f5a654a6ad7ae64450c}{%
+           family={Schaub},
+           familyi={S\bibinitperiod},
+           given={Torsten},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{41a9fe6cb3495fb0ea34b62a7c23f9a9}
+      \strng{fullhash}{41a9fe6cb3495fb0ea34b62a7c23f9a9}
+      \strng{bibnamehash}{41a9fe6cb3495fb0ea34b62a7c23f9a9}
+      \strng{authorbibnamehash}{41a9fe6cb3495fb0ea34b62a7c23f9a9}
+      \strng{authornamehash}{41a9fe6cb3495fb0ea34b62a7c23f9a9}
+      \strng{authorfullhash}{41a9fe6cb3495fb0ea34b62a7c23f9a9}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Artif. Intell.}
+      \field{title}{Conflict-driven answer set solving: From theory to practice}
+      \field{volume}{187}
+      \field{year}{2012}
+      \field{pages}{52\bibrangedash 89}
+      \range{pages}{38}
+      \verb{doi}
+      \verb 10.1016/j.artint.2012.04.001
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1016/j.artint.2012.04.001
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1016/j.artint.2012.04.001
+      \endverb
+    \endentry
+    \entry{DBLP:series/faia/0001LM21}{incollection}{}
+      \name{author}{3}{}{%
+        {{hash=f70023f5ae71cc9e0f49c1fe07f3a4ce}{%
+           family={Marques{-}Silva},
+           familyi={M\bibinitperiod},
+           given={João},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9c9daeb31ec4a047b37c62c30a095271}{%
+           family={Lynce},
+           familyi={L\bibinitperiod},
+           given={Inês},
+           giveni={I\bibinitperiod}}}%
+        {{hash=e146ec2b9c0b7fc6062cd4dec46383d4}{%
+           family={Malik},
+           familyi={M\bibinitperiod},
+           given={Sharad},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {{IOS} Press}%
+      }
+      \strng{namehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{fullhash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{bibnamehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{authorbibnamehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{authornamehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{authorfullhash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Handbook of Satisfiability}
+      \field{series}{FAIA}
+      \field{title}{Conflict-Driven Clause Learning {SAT} Solvers}
+      \field{volume}{336}
+      \field{year}{2021}
+      \field{pages}{133\bibrangedash 182}
+      \range{pages}{50}
+    \endentry
+    \entry{DIMCAS}{article}{}
+      \name{author}{1}{}{%
+        {{hash=9045cc6c0f232e55e74311cc72d099f3}{%
+           family={Carmine},
+           familyi={C\bibinitperiod},
+           given={Dodaro},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{9045cc6c0f232e55e74311cc72d099f3}
+      \strng{fullhash}{9045cc6c0f232e55e74311cc72d099f3}
+      \strng{bibnamehash}{9045cc6c0f232e55e74311cc72d099f3}
+      \strng{authorbibnamehash}{9045cc6c0f232e55e74311cc72d099f3}
+      \strng{authornamehash}{9045cc6c0f232e55e74311cc72d099f3}
+      \strng{authorfullhash}{9045cc6c0f232e55e74311cc72d099f3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Design and Implementation of Modern CDCL ASP Solvers}
+      \field{year}{2014}
+    \endentry
+    \entry{DBLP:journals/tplp/CalimeriFGIKKLM20}{article}{}
+      \name{author}{10}{}{%
+        {{hash=e9fed945f8bf084a0ec7bf1512943829}{%
+           family={Calimeri},
+           familyi={C\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=e1629fff88cdb6d71cc8d8fc6f9b987a}{%
+           family={Faber},
+           familyi={F\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=a296fbe902a96f2ceebb7398463f3e13}{%
+           family={Gebser},
+           familyi={G\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b2685c3a4bfe04504965af8f9931bc38}{%
+           family={Ianni},
+           familyi={I\bibinitperiod},
+           given={Giovambattista},
+           giveni={G\bibinitperiod}}}%
+        {{hash=75758236531a52ffc97ef10f8b482f05}{%
+           family={Kaminski},
+           familyi={K\bibinitperiod},
+           given={Roland},
+           giveni={R\bibinitperiod}}}%
+        {{hash=a2dcd09387a6a4dcce9091a37aa63477}{%
+           family={Krennwallner},
+           familyi={K\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=77e491ad5f8cdd4f2edef120a74f5a17}{%
+           family={Leone},
+           familyi={L\bibinitperiod},
+           given={Nicola},
+           giveni={N\bibinitperiod}}}%
+        {{hash=a65827edc12272b7d5310245c1a17588}{%
+           family={Maratea},
+           familyi={M\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d50b8c03eb60f0c7de0df2462c97c37c}{%
+           family={Ricca},
+           familyi={R\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=3c55d70c19bd5f5a654a6ad7ae64450c}{%
+           family={Schaub},
+           familyi={S\bibinitperiod},
+           given={Torsten},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{d6f09f4d6f5abb0fecdc4ac10e22a1df}
+      \strng{fullhash}{87ac8a48fc48eb99ed666e9982d9c226}
+      \strng{bibnamehash}{d6f09f4d6f5abb0fecdc4ac10e22a1df}
+      \strng{authorbibnamehash}{d6f09f4d6f5abb0fecdc4ac10e22a1df}
+      \strng{authornamehash}{d6f09f4d6f5abb0fecdc4ac10e22a1df}
+      \strng{authorfullhash}{87ac8a48fc48eb99ed666e9982d9c226}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theory Pract. Log. Program.}
+      \field{number}{2}
+      \field{title}{ASP-Core-2 Input Language Format}
+      \field{volume}{20}
+      \field{year}{2020}
+      \field{pages}{294\bibrangedash 309}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1017/S1471068419000450
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1017/S1471068419000450
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1017/S1471068419000450
+      \endverb
+    \endentry
+    \entry{DBLP:conf/iclp/GebserKKS09}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=a296fbe902a96f2ceebb7398463f3e13}{%
+           family={Gebser},
+           familyi={G\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=75758236531a52ffc97ef10f8b482f05}{%
+           family={Kaminski},
+           familyi={K\bibinitperiod},
+           given={Roland},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3fe0253f0b3212a4109e50143a91fede}{%
+           family={Kaufmann},
+           familyi={K\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=3c55d70c19bd5f5a654a6ad7ae64450c}{%
+           family={Schaub},
+           familyi={S\bibinitperiod},
+           given={Torsten},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{77eef0114e7d390785721504ab46b449}
+      \strng{fullhash}{6ff2ecbb0dace9a796d510f578f069a3}
+      \strng{bibnamehash}{6ff2ecbb0dace9a796d510f578f069a3}
+      \strng{authorbibnamehash}{6ff2ecbb0dace9a796d510f578f069a3}
+      \strng{authornamehash}{77eef0114e7d390785721504ab46b449}
+      \strng{authorfullhash}{6ff2ecbb0dace9a796d510f578f069a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{ICLP}}
+      \field{series}{LNCS}
+      \field{title}{On the Implementation of Weight Constraint Rules in Conflict-Driven {ASP} Solvers}
+      \field{volume}{5649}
+      \field{year}{2009}
+      \field{pages}{250\bibrangedash 264}
+      \range{pages}{15}
+    \endentry
+    \entry{DBLP:journals/fuin/FaberLMR11}{article}{}
+      \name{author}{4}{}{%
+        {{hash=e1629fff88cdb6d71cc8d8fc6f9b987a}{%
+           family={Faber},
+           familyi={F\bibinitperiod},
+           given={Wolfgang},
+           giveni={W\bibinitperiod}}}%
+        {{hash=77e491ad5f8cdd4f2edef120a74f5a17}{%
+           family={Leone},
+           familyi={L\bibinitperiod},
+           given={Nicola},
+           giveni={N\bibinitperiod}}}%
+        {{hash=a65827edc12272b7d5310245c1a17588}{%
+           family={Maratea},
+           familyi={M\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d50b8c03eb60f0c7de0df2462c97c37c}{%
+           family={Ricca},
+           familyi={R\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{928a7a33a81f65edf6e642871becaec6}
+      \strng{fullhash}{658bee0221b3547cd75d7d5ee0f2a972}
+      \strng{bibnamehash}{658bee0221b3547cd75d7d5ee0f2a972}
+      \strng{authorbibnamehash}{658bee0221b3547cd75d7d5ee0f2a972}
+      \strng{authornamehash}{928a7a33a81f65edf6e642871becaec6}
+      \strng{authorfullhash}{658bee0221b3547cd75d7d5ee0f2a972}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Fundam. Informaticae}
+      \field{number}{4}
+      \field{title}{Look-back Techniques for {ASP} Programs with Aggregates}
+      \field{volume}{107}
+      \field{year}{2011}
+      \field{pages}{379\bibrangedash 413}
+      \range{pages}{35}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

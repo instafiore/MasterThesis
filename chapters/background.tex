@@ -1,0 +1,399 @@
+\chapter{Background}
+
+This chapter defines all the background needed to explain our work,
+trying to guide the reading through a clear and intuitive idea.
+Initially will be showed the syntax and semantics of normal
+program (section $\ref{sec:bg-syntax_semantics}$),
+primarly focusing on notions relevant for this thesis, for instance on some
+extension such as the SUM constraints.
+Then some specific cases of SUM constraints, the so-called ALO and AMO constraints, 
+will be explained in section ($\ref{sec:bg-clauses_AMO}$).
+Afterwards, the current State-of-Art ASP solver algorithm to find a stable model 
+will be discussed (section $\ref{sec:bg-SM}$), focusing on the concept of \textit{propagator}.
+
+\section{Syntax and Sematincs}
+\label{sec:bg-syntax_semantics}
+
+This section will proceed in a bottom-up fashion, introducing the 
+most basic element to the concept of \textit{program}
+and \textit{stable model}.
+
+The first element is the set of \textit{atoms}, let $\mathcal{A}$ be such set.
+$\neg$ is a symbol representing the common negation in logic.
+A $\emph{literal}$ is an atom with possibly the negation symbol in front of it.
+For instance $a \in \mathcal{A}$ is a literal (and an atom) and $\neg b$ with $b \in \mathcal{A}$
+is a literal (but not an atom); \textit{a} is said to be a \textit{positive literal} instead
+$b$ is a negative literal. In a more formal way: given a literal $\ell \in L$, $\ell$ is 
+positive if $\ell \in \mathcal{A}$ otherwise it is negative. Let $L$ be a set of literals.
+Given $\ell \in L$ then $\overline{\ell}$ denotes its complement, if $\ell$ is a positive
+literal, i.e. $\ell = a \in \mathcal{A}$, then $\overline{\ell} = \neg a$ else 
+when $\ell = \neg a$ (negative literal) with $a \in \mathcal{A}$ then $\overline{\ell} = a$.
+A set of literal $L$ can be negated, written $\overline{L}$;
+$\overline{L}$ is equivalent to the set of literals of $L$ where each literal is negated,
+that is, $\overline{L} = \{ \overline{\ell} \mid \ell \in L \}$.
+
+Each atom can be mapped to a truth value (boolean value) by an \textit{intepretation}.
+An \textit{intepretation} (or \textit{assignment}) \textit{I} is a set of 
+literals where $I \cap \overline{I} = \emptyset$.
+If $\mathcal{A} \subseteq (I \cup \overline{I})$ then $I$ is called \textit{total-intepretation},
+otherwise it is a \textit{partial-intepretation}.
+On one hand if $\ell \in I$ then $\ell$ is \textit{true} under $I$, on the other hand 
+if $\ell \in \overline{I}$ then it is \textit{false} under $I$.
+Abusing of notation, If $\ell \in I$ let $I(\ell) := 1$, 0 otherwise;
+if $\ell \not\in I$ let $I^\uparrow(\ell) := 1$, 0 otherwise.
+If either $\ell \not\in I$ and $\ell \not\in \overline{I}$ then $\ell$ is said to be \textit{undefined}. 
+
+Now the first main brick can be presented: the rule.
+A rule is a classic implication in propositional logic.
+\begin{align}\label{eq:rule}
+    r: \quad p \leftarrow \ell_1, \ldots, \ell_n
+\end{align}
+where \textit{p} is an atom and $\ell_1, \ldots, \ell_n$ with $n \ge 0$ are literals.
+The rule r  $\ref{eq:rule}$ is equivalent to $\ell_1 \land\, \ldots \, \land  \ell_n \rightarrow p$.
+As in propositional logic $p$ and $\ell_1, \ldots, \ell_n$ are named respectively \textit{head}
+and \textit{body} of the rule.
+The head of \textit{r} is defined by the symbol $\mathit{H}(r) := p$
+and the body by the set
+$\mathit{B}(r) := \{\ell_1, \ldots, \ell_n \}$.
+Each rule has a \textit{positive} and \textit{negative} part, and it is stricly 
+linked with the concept of positive and negative literal.
+On one hand, the positive body of the rule \textit{r}, named $\mathit{B}^+(r)$, is the set
+of positive literals of \textit{r}, that is, 
+$\mathit{B}^+(r) = \{ \ell \mid \{\ell\} \cap \mathcal{A} \ne \emptyset \}$.
+On the other hand, the negative body of the rule \textit{r}, named $\mathit{B}^-(r)$, is the set
+of negative literals of \textit{r}, namely, 
+$\mathit{B}^-(r) = \{ \ell \mid \{\ell\} \cap \mathcal{A} = \emptyset \}$
+
+Now the relation $\models$ (satisfies, or is model of) will be inductly 
+defined: let $I$ be an intepretation, if $\ell \in I$ then $I \models \ell$;
+if $\ell \in \overline{I}$ then $I \models \overline{\ell}$;
+if $I \models \ell_+$ for every $\ell_+ \in B^+(r)$ and 
+$I \models \ell_-$ for every $\ell_-\in B^-(r)$, then $I \models B(r)$;
+if whenever $I \models B(r)$ also $I \models H(r)$ then $I \models r$.
+A (normal) program $\Pi$ is a set of rules.
+
+Let's now shift to another concept that will allow us to 
+transition from a normal program to an extension of it: the concept of \textit{SUM constraint}.
+A SUM constraint (or simply constraint) has the following form
+\begin{align}\label{eq:sum}
+    \textsc{sum}\{w_1 : \ell_1;\ \cdots;\ w_n : \ell_n\} \geq b
+\end{align}
+where $n \ge 0$, $\{\ell_1, \hdots, \ell_n\}$ is a set of literals such that 
+$\ell_i \ne \ell_j$ for all $i,j \in \{1, \hdots, n\}$ such that $i \ne j$
+and $\{b, w_1, \hdots, w_n \}$ is a set of naturals numbers.
+Let $\sigma$  be a constraint of the form $\ref{eq:sum}$ then $\mathit{bnd}_{\sigma}$
+represents the \textit{bound} of the constraint $sigma$; $w_1, \hdots, w_n$
+are the weights of each literal in $\sigma$; $lits_{\sigma}$ is the set of literals of $\sigma$.
+Let's specify the relation $\in$ as $(w_i, \ell_i) \in \sigma$ to be read  
+as $(w_i : \ell_i)$ is an element in (the aggregation set of) $\sigma$.
+The function $\mathit{wh_{\sigma}}(\ell_i) = w_i$, namely, this is a function that 
+maps every literal of $\sigma$ to its weight.
+Intuitively, the constraint is satisfied w.r.t. an interpretation $I$ 
+if summing the weight of the true literals under $I$ the value is greater
+or each to the bound.
+More formally, extending the relation $\models$, $\sigma$ is satisfied if 
+$\sum_{i=1}^{n} \mathit{wh}_{\sigma}(l_i) \times I(l_i) \ge \mathit{bnd}_{\sigma}$,
+written $I \models \sigma$.
+Note that $\sigma$ may be omitted from the above notation if its meaning is clear from context.\\
+Just as a side note: in ASP-Core-2 standard
+~\cite{DBLP:journals/tplp/CalimeriFGIKKLM20} 
+the constraint  $\ref{eq:sum}$ is written as the headless rule
+$|:- \quad \#sum\{w_1,\ell_1 : \ell_1; ...; w_n,\ell_n : \ell_n\} < b.|$ \todo{fare più carino}
+Now a more formal definition of program can be given:
+a program $\Pi$ is a set of rules and constraint, referred as $\mathit{rules}(\Pi)$ 
+and $\mathit{constraints}(\Pi)$ respectively.
+The set of rules and constraints define the set of atoms of the program and they are named $\mathit{atoms}(\Pi)$.
+Finally, $I$ satisfies $\Pi$, written $I \models \Pi$, if $I \models r$ for all $r \in \mathit{rules}(\Pi)$
+and $I \models \sigma$ for all $\sigma \in \mathit{constraints}(\Pi)$.
+
+To make the discussion made so far more understandable, we will introduce the following example:
+\begin{example}[Running example]
+    \label{ex:running}
+    Let $\Pi_{\mathit{run}}$ be the following:
+    \begin{align*}
+        \begin{array}{rll}
+            r_{\alpha\phantom{'}}: & \alpha\phantom{'} \leftarrow \neg \alpha' & \alpha \in \{x,y,z\}\\
+            r_{\alpha'}: & \alpha' \leftarrow \neg \alpha & \alpha \in \{x,y,z\}\\ 
+            \sigma_{1}: & \textsc{sum}\{
+                1 : \overline{x};\ 1 : \overline{y}\phantom{;\ 2 : z}
+            \} \geq 1 \\
+            \sigma_{2}: & \textsc{sum}\{
+                1 : x;\ 2 : y;\ 2 : z
+            \} \geq 3
+        \end{array}
+    \end{align*}
+Note that there are six atoms ($x,y,z,x',y',z'$), six rules and two constraints.
+$\mathit{wh}_{\sigma_1}(\overline{x}) = 1, \mathit{wh}_{\sigma_1}(\overline{y}) = 1,
+\mathit{wh}_{\sigma_2}(x) = 1,\mathit{wh}_{\sigma_2}(y) = 2,
+\mathit{wh}_{\sigma_2}(z) = 2, \mathit{bnd}_{\sigma_1}=1,\mathit{bnd}_{\sigma_2}=3$.
+\end{example}
+A possible (total) interpretation $I$ satisfying $\Pi_{\mathit{run}}$ is:
+$I_1 = \{ x, z, \overline{y}, x', y', z' \}$.
+Since, $\sum_{i=1}^{2} \mathit{wh}_{\sigma_1}(l_i) \times I_1(l_i) = 
+\sum 1 \times I_1(\overline{x}) + 1 \times I_1(\overline{y}) = 1 \ge \mathit{bnd}_{\sigma_1}$
+and $\sum 1 \times I_1(x) + 2 \times I_1(y) + 2 \times I_1(z) = 3 \ge \mathit{bnd}_{\sigma_2}$.
+Given a program $\Pi$ and an intepretation $I$, its \textit{reduct} is
+defined as follows: $\Pi^{I} = \{ H(r) \leftarrow B^+(r) \mid r \in \mathit{rules}, I \models B(r)\}$,
+please note that $\mathit{constraints}(\Pi^{I}) = \emptyset$.
+One interpretation may differ from another due to its stability.
+An interpretation $I$ is a stable model of a program $\Pi$ if $I \models \Pi$ and there is 
+no $J \subset I$ such that $J \models \Pi^I$ .
+Let $\mathit{SM}(\Pi)$ denote the set of stable models of $\Pi$.
+Taking in consideration example $\ref{ex:running}$ we can notice that 
+$I_1$ is not a stable model, that is, $I_1 \not\in \mathit{SM}(\Pi_{\mathit{run}})$.
+This is because taking the partial assignment $J_1 = \{y'\}$
+then $ J_1  \models \Pi_{\mathit{run}}^{I_1}$ since $\Pi_{\mathit{run}}^{I_1} = \{ y' \leftarrow  \}$
+and $J_1 \subset I_1$.
+Instead $I_2 = \{ x, z, \overline{y}, \overline{x'}, y', \overline{z'} \} \in \mathit{SM}(\Pi_{\mathit{run}})$.
+
+Continuing talking about the above example, a last consideration that will let us to move towards the next 
+chapter has to be addressed.
+The constraint $\sigma_1$ is a special one, it says: at least 1 of the 2 literals
+has to be satisfied. Notice that all the literals are flipped, 
+so referring to the literals without being flipped it is 
+actually saying 'at least 1 of the 2 have to be falsified' , and since $2 = 1 - 1$ it can be 
+reformulated as 'at most 1 of them can be satisfied'.
+Thus, with an \textit{At least One (ALO)} sum constraint is possible to define an \textit{At Most One (AMO)}
+constraint.
+
+\section{ALO (clauses) and AMO as a Special Cases}
+\label{sec:bg-clauses_AMO}
+
+Given a set $\{\ell_1, \hdots, \ell_n\}$, with $n \ge 1$, an \textit{At Least One (ALO)} 
+constraint over this set will enforce to have at least one literal true.
+As in the example $\ref{ex:running}$ it can be expressed as:
+\begin{align}\label{eq:ALO}
+    \textsc{sum}\{1 : \ell_1;\ \cdots;\ 1 : \ell_n\} \geq 1
+\end{align}
+When it is not ambiguous this constraint can be written as $\{\ell_1, \hdots, \ell_n\}$,
+usually this constraint is named also \textit{clause} (following the \textit{CNF} notation 
+of the propositional logic).
+Modern ASP solvers enrich the input program with clauses enforcing $I$ to be a 
+model of rules of the form \eqref{eq:rule} (i.e., $\{p, \overline{\ell_1}, \ldots, \overline{\ell_n}\}$).
+If over this set instead is enforced an \textit{At Most Constraint}, i.e., at most 
+one literal is true, the following constraint is introduced:
+\begin{align}\label{eq:amo}
+    \textsc{sum}\{1 : \overline{\ell_1};\ \cdots;\ 1 : \overline{\ell_n}\} \geq n - 1
+\end{align}
+As I attempted to introduce in the precedent chapter, to enforce that at most
+one literal is true of a given set it is enough to enforce that 
+at least $n-1$ literals are falsified.
+Since, intuitively, if two different literals are satisfied then $n-2$ literals are not falsified.
+More formally given an interpretation $I$, $I$ satisfies at most 1 literal if 
+$\sum_{i = 1}^{n}{I(\overline{\ell_i})} \geq n - 1$, or equivalently
+$\sum_{i = 1}^{n}{I(\ell_i)} \leq 1$.
+The AMO constraint \eqref{eq:amo} is compactly written $\textsc{amo}\{\ell_1,\ldots,\ell_n\}$.
+\begin{example}[Continuing Example~\ref{ex:running}]
+    Note that $\sigma_1$ is the clause $\{\overline{x}, \overline{y}\}$, or also the AMO constraint $\textsc{amo}\{x, y\}$.
+\end{example}
+\section{Stable Model Search, Propagators and Learning}
+\label{sec:bg-SM}
+
+Currently ASP solvers employ a \textit{conflict-driven clause learning} (CDCL) algorithm
+\cite{DBLP:journals/ai/GebserKS12} to search a stable model.
+This is an algorithm also used in a lot of SAT solvers and it has been revealed to be a 
+very effective one.
+The CDCL follows a pattern called \textit{choose-propagate-learn}, where: 
+the \textit{choose} phase consists in deciding a branching literal to become true;
+\textit{propagate} phase involves to deterministically derive new consequences from the current
+state (interpretation); \textit{learn} phase, when a conflict arises, understands
+some new \textit{clause} (constraint) that was not explicity defined in the program.
+To dive into each of these phases, understanding the CDCL, some previous concepts have
+to be mentioned.
+
+A \textit{conflict} occurr when two literals $\ell, \overline{\ell}$ are together in the interpretation.
+Given two clauses $C,D$ (as described in $\ref{sec:bg-clauses_AMO}$) and a literal 
+$\ell$ such that $\ell \in C$ and $\overline{\ell} \in D$ then the \textit{resolution}
+step of $C$ and $D$ upon $\ell$, written $C \otimes_{\ell} D$, is equal to 
+$(C \setminus \{\ell\}) \cup (D \setminus \{\overline{\ell}\})$.
+Intuitively, if a program $\Pi$ has such clauses (constraints) $C$ and $D$
+then since an intepretation cannot be simultaneously
+satisfies $\ell$ and $\overline{\ell}$ then $C \setminus \{\ell\}$ or 
+$D \setminus \{ \overline{\ell}\}$ have to be satisfied, thus the following clause 
+$(C \setminus \{\ell\}) \cup (D \setminus \overline{\ell})$ has to be satisfied.
+Please note that if an intepretation $I \models \Pi$ then $I \models C \otimes_{\ell} D$.
+So $C \otimes_{\ell} D$ is implied by the program, ad it is said to be \textit{redundant}.
+
+
+In the \textit{choose} phase a branching (undefined) literal is selected.
+Every branching (or decision) literal is paired with a \textit{decision level}.
+To understand the decision level is enougth to 
+now that at each choose phase the corresponding literal is added into a 'list' and
+the decision level is the index into the list (index starting from 1). 
+The term \textit{backjumping} to a certain level $l$ refers to the process of 'forgetting' 
+every decision made after decision level $l$, 
+including the respective propagated literals, and then 
+resuming the decision-making process starting from level $l$.
+
+
+In the \textit{propagate} phase at the instant when a literal $\ell$ is derivated 
+(or propagated) then a \textit{reason}, written $\mathit{reason}(\ell)$, 
+is specified. This reason defines \textit{why} $\ell$ has been propagated.
+More in detail, the reason is a clause or this form 
+$\{ \ell \} \cup \{\overline{\ell_1},\hdots, \overline{\ell_n}\}$. It represents the implication 
+rule $\ell_1 \land \hdots \land \ell_n \rightarrow \ell$ and it specifies 
+that when all the literals $\ell_1 \land \hdots \land \ell_n$ are true then also 
+$\ell$ must be true.
+Can happen that inferring a literal $\ell$ creates a conflic (i.e., $\overline{\ell} \in I$),
+in that case $\ell$ is a \textit{conflict literal}.
+Moreover $\ell$ is also paired with a decision literal 
+that it is inherited from the current decision level of the search.
+\textit{Unit Propagation} is a specific kind of propagation, it is applied when given a clause 
+$C$ all its literals are falses except for a literal $\ell$, that is, $C \setminus \overline{I} = \{\ell\}$.
+In this case the only way to satisfy $C$ is setting $\ell$ to true, thus $\ell$
+is propagate to true; the reason is exactly because the other literals are falses, so 
+$reason(\ell) = C$.
+Please not the $reason(\ell)$ respresents $\overline{\ell_1} \land \hdots \land \overline{\ell_n} \rightarrow \ell$, where 
+$\{\ell_1 \land \hdots \land \ell_n\} = C \cap \overline{I}$.
+
+The whole algorithm, initially starts with an empty assignment (all literals undefined)
+and a the decision level (\textit{dl}) to 0  ,
+then the \textit{propagate} phases takes place, inferring all the consequences.
+If a conflict is detected it means that the program is not satisfiable, since 
+without any choice we got a conflict.
+Else if no conflict is deteceted then the \textit{choose} phase decides the new branching literal.
+An important note is that just the branching literals are without a reason, since they 
+do not follows from any logic reasoning.
+Then, again the propagate phase is executed.
+If a conflict is detected then a process named \textit{conflict analysis} starts.
+Starting from the reason of the conflict literal a (\textit{backward}) resolution upon a literal of the last
+decision level is perfomed. This step is iteratively done until the new obtained (redundant) clause 
+contains just one literal of the current decision level, this clause in called
+\textit{Unique Implication Point (UIP)}.
+Given the UIP then a \textit{backjump} is perfomed to the second highest decision level
+(\textit{assertion level}). The assertion level is special in the sense that it is the deepest level
+at which adding the conﬂict-driven clause (UIP) would allow unit resolution to derive
+a new implication using that clause. Since the literal with highest dl after backjumping 
+is the only undefined literal inside UIP then the unit propagation will inferr that literal,
+that is, will flip the previous value.
+When the highest literal in the UIP has 0 as dl then the assertion level is -1 by default.
+Please note that the starting reason cannot cannot but have at least one literal of the last decision 
+level, otherwise the unit propagation cannot be perfomed.
+After this a new choice is made until either all atoms are defined or the
+assertion level is -1.
+The above described algorithm is defined below.
+\begin{algorithm}[h]\small
+    \caption{Typical CDCL algorithm}
+        \label{alg:cdcl}
+        \SetKwInOut{Input}{Input}
+        \Input{An ASP program $\Pi$}
+        \SetKwBlock{Loop}{Loop}{end}
+        \Begin{
+            $I \gets [\,]$\\
+            $dl \gets 0$\\
+            \If {(\textsc{Propagate}$(\Pi, I) == \text{CONFLICT}$)}{
+                \Return{Unsat}
+            }
+            \While{\textsc{not} \textsc{AllVariablesAssigned}$(\Pi, I)$}{
+                $\ell = \textsc{PickBranchingLiteral}(\Pi, I)$ \\
+                $dl \gets dl + 1$ \\
+                $\mathit{store}(I,\ell,dl)$\\
+                \If {(\textsc{UnitPropagation}$(\Pi, I) == \text{CONFLICT}$)}{
+                    $\beta = \textsc{ConflictAnalysis}(\Pi, I)$\\         
+                    \If {($\beta < 0$)}{
+                        \Return{Unsat}
+                    }
+                    \Else{
+                        \textsc{Backjump}$(\Pi, I, \beta)$\\
+                        $dl \gets \beta$ \\
+                    }
+                }
+            }
+        \Return{I}
+        }
+        
+\end{algorithm}
+
+Let's assume for now that the \textit{Propagate} function is exactly equal to \textit{Unit propagation},
+this is usefull for the next example.
+
+\begin{example}\label{ex:unit-propagation}
+    Let $\Pi$ have, among others, the rules
+    \begin{align*}
+        \begin{array}{ccc}
+            x \leftarrow \neg z \qquad &
+            y \leftarrow \neg z \qquad &
+            w \leftarrow x, y
+        \end{array}
+    \end{align*}
+    Hence, a modern ASP solver materializes the clauses
+    \begin{align*}
+        \begin{array}{ccc}
+            \{x,z\} \qquad &
+            \{y,z\} \qquad &
+            \{w,\overline{x},\overline{y}\}
+        \end{array}
+    \end{align*}
+    For readability at each literal is associated the relative decision level 
+    as superscript.
+    Let's assume that the current interpretation is 
+    $I = [\overline{w}^1]$ and the decision level is $dl= 1$.
+    Since no propagation is performed the algorithm goes 
+    directly to the propagate phase, let's assume that 
+    $\overline{z}$ is selected.
+    Then, by unit propagation, $x$ and $y$ are inferred,
+    thanks to the first two clauses.
+    The correspective reasons are: $reason(x) = \{ x, z \}$,
+    $reason(y) = \{ y, z \}$.
+    Now, the current intepretation $I$ is equal to
+    $[\overline{w}^1,\overline{z}^2, y^2, x^2]$.
+    The last clause $\{w,\overline{x},\overline{y}\}$
+    is not satisfied by $I$ so a conflict $k$ is detected and the 
+    $reason(k) = \{w,\overline{x},\overline{y}\}$.
+    Since there are more than 1 literal of the decision level 2 (the last one)
+    a backward resolution step is perfomed.
+    Let's take arbitrarily $\overline{x}$:
+    $\{w,\overline{x},\overline{y}\} \otimes_{\overline{x}} \{y,z\} = \{w, \overline{y}, z\}$.
+    Since both $\overline{y}, z$ are with decision level 2 then let's take arbitrarily $\overline{y}$:
+    $\{w, \overline{y}, z\} \otimes_{\overline{y}} \{y,z\} = \{w, \overline{y}, z, z\} = 
+    \{w, \overline{y}, z\}$.\\
+    $\{w, \overline{y}, z\}$ is \textit{UIP} so let's backtrack to the assertion level 1.
+    This will unit propagate $z$ with $reason(z) = \{w, \overline{y}, z\}$.
+    So the intepretation will look like: $I = [\overline{w}^1, z^1]$
+\end{example}
+
+
+
+The main difference between a SAT solver and a ASP solver can be summarized focusing on 
+the function $\mathit{Propagate}(\Pi,I)$.
+SAT solvers employ mainly unit propagation inside the \textit{Propagate} function,
+instead ASP solvers use, in addition on unit propagation, other two fundamental  
+propagation functions: \textit{Unfounded-free propagation} and \textit{AggregatesPropagation}.
+The first one (\textit{Unfounded-free propagation}) asses that the intepretation is a stable model, but its details
+are out of the scope of this work.
+The second one (\textit{AggregatesPropagation}) is used to derive new consequences from 
+the aggregates present in the program. 
+For a SUM constraint $\sigma$ of the form \eqref{eq:sum},
+solvers typically employ a 
+specific \textit{aggregate propagator}
+~\cite{DBLP:conf/iclp/GebserKKS09,DBLP:journals/fuin/FaberLMR11},
+%, reported here as Algorithm~\ref{alg:sumpropagation}.
+which essentially adds to $I$ the literal $\ell_i$ ($i \in [1..n]$) if $\ell_i$ is required to (possibly) reach the bound $b$, i.e., if
+\begin{align}\label{eq:sum:propagation}
+    \sum_{j \in [1..n], j \neq i}{w_j \cdot I^\uparrow(\ell_j)} < b
+\end{align}
+In this case \textit{reason}$(\ell_i) = \{\ell_i\} \cup lits_{\sigma} \cap \overline{I}$.
+Intuitively, the falses literals are the only justification why the bound $\mathit{bnd}_{\sigma}$
+could be not reached if $\ell_i$ was not added to $I$.
+In the special case of \eqref{eq:amo}, that is, if $\sigma$ is $\textsc{amo}\{\ell_1, \ldots, \ell_n\}$, the literal $\overline{\ell_i}$ ($i \in [1..n]$) is added to $I$ if there is $\ell_j$, with $j \neq i$, such that $\ell_j \in I$.
+In this case, $\mathit{reason}(\overline{\ell_i})$ is $\{\overline{\ell_i}, \overline{\ell_j}\}$.
+
+\begin{example}[Continuing Example~\ref{ex:running}] \label{ex:sumpropagator}
+    If $I$ is empty, no literal can be inferred from $\sigma_1$ and $\sigma_2$.
+    If $I$ is $[\overline{z}]$, then the application of \eqref{eq:sum:propagation} to the literals of $\sigma_2$ gives
+    \begin{align*}
+        2 \cdot [\overline{z}]^\uparrow(y) + 2 \cdot [\overline{z}]^\uparrow(z) = 2 \cdot 1 + 2 \cdot 0 = 2 < 3\\
+        1 \cdot [\overline{z}]^\uparrow(x) + 2 \cdot [\overline{z}]^\uparrow(z) = 1\cdot 1 + 2 \cdot 0 = 1 < 3\\
+        1 \cdot [\overline{z}]^\uparrow(x) + 2 \cdot [\overline{z}]^\uparrow(y) = 1 \cdot 1 + 2 \cdot 1 = 3 \not< 3
+    \end{align*}
+    Hence, $x$ and $y$ are inferred with
+    $\mathit{reason}(x) = \{x,z\}$ and
+    $\mathit{reason}(y) = \{y,z\}$.
+    Note that, once $I = [\overline{z},x,y]$, the application of \eqref{eq:sum:propagation} to $\sigma_1$ gives
+    \begin{align*}
+        1 \cdot [\overline{z},x,y]^\uparrow(\overline{y}) = 1 \cdot 0 = 0 < 1\\
+        1 \cdot [\overline{z},x,y]^\uparrow(\overline{x}) = 1 \cdot 0 = 0 < 1
+    \end{align*}
+    Therefore, a conflict $k$ is raised, say because $\overline{y}$ (or similarly $\overline{x}$) 
+    is added to $I$ with $\mathit{reason}(k) = \{\overline{x}, \overline{y}\}$.
+\end{example}
