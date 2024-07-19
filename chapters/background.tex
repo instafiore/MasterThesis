@@ -39,9 +39,9 @@ If $\mathcal{A} \subseteq (I \cup \overline{I})$ then $I$ is called \textit{tota
 otherwise it is a \textit{partial-intepretation}.
 On one hand if $\ell \in I$ then $\ell$ is \textit{true} under $I$, on the other hand 
 if $\ell \in \overline{I}$ then it is \textit{false} under $I$.
-Abusing of notation, If $\ell \in I$ let $I(\ell) := 1$, 0 otherwise;
-if $\ell \not\in I$ let $I^\uparrow(\ell) := 1$, 0 otherwise.
 If either $\ell \not\in I$ and $\ell \not\in \overline{I}$ then $\ell$ is said to be \textit{undefined}. 
+Abusing of notation, If $\ell \in I$ let $I(\ell) := 1$, 0 otherwise;
+if $\ell \not\in \overline{I}$ let $I^\uparrow(\ell) := 1$, 0 otherwise.
 
 Now the first main brick can be presented: the rule.
 A rule is a classic implication in propositional logic.
@@ -82,7 +82,7 @@ where $n \ge 0$, $\{\ell_1, \hdots, \ell_n\}$ is a set of literals such that
 $\ell_i \ne \ell_j$ for all $i,j \in \{1, \hdots, n\}$ such that $i \ne j$
 and $\{b, w_1, \hdots, w_n \}$ is a set of naturals numbers.
 Let $\sigma$  be a constraint of the form $\ref{eq:sum}$ then $\mathit{bnd}_{\sigma}$
-represents the \textit{bound} of the constraint $sigma$; $w_1, \hdots, w_n$
+represents the \textit{bound} of the constraint $\sigma$; $w_1, \hdots, w_n$
 are the weights of each literal in $\sigma$; $lits_{\sigma}$ is the set of literals of $\sigma$.
 Let's specify the relation $\in$ as $(w_i, \ell_i) \in \sigma$ to be read  
 as $(w_i : \ell_i)$ is an element in (the aggregation set of) $\sigma$.
@@ -92,7 +92,7 @@ Intuitively, the constraint is satisfied w.r.t. an interpretation $I$
 if summing the weight of the true literals under $I$ the value is greater
 or each to the bound.
 More formally, extending the relation $\models$, $\sigma$ is satisfied if 
-$\sum_{i=1}^{n} \mathit{wh}_{\sigma}(l_i) \times I(l_i) \ge \mathit{bnd}_{\sigma}$,
+$\sum_{i=1}^{n} \mathit{wh}_{\sigma}(l_i) \cdot I(l_i) \ge \mathit{bnd}_{\sigma}$,
 written $I \models \sigma$.
 Note that $\sigma$ may be omitted from the above notation if its meaning is clear from context.\\
 Just as a side note: in ASP-Core-2 standard
@@ -129,9 +129,9 @@ $\mathit{wh}_{\sigma_1}(\overline{x}) = 1, \mathit{wh}_{\sigma_1}(\overline{y}) 
 \end{example}
 A possible (total) interpretation $I$ satisfying $\Pi_{\mathit{run}}$ is:
 $I_1 = \{ x, z, \overline{y}, x', y', z' \}$.
-Since, $\sum_{i=1}^{2} \mathit{wh}_{\sigma_1}(l_i) \times I_1(l_i) = 
-\sum 1 \times I_1(\overline{x}) + 1 \times I_1(\overline{y}) = 1 \ge \mathit{bnd}_{\sigma_1}$
-and $\sum 1 \times I_1(x) + 2 \times I_1(y) + 2 \times I_1(z) = 3 \ge \mathit{bnd}_{\sigma_2}$.
+Since, $\sum_{i=1}^{2} \mathit{wh}_{\sigma_1}(l_i) \cdot I_1(l_i) = 
+\sum 1 \cdot I_1(\overline{x}) + 1 \cdot I_1(\overline{y}) = 1 \ge \mathit{bnd}_{\sigma_1}$
+and $\sum 1 \cdot I_1(x) + 2 \cdot I_1(y) + 2 \cdot I_1(z) = 3 \ge \mathit{bnd}_{\sigma_2}$.
 Given a program $\Pi$ and an intepretation $I$, its \textit{reduct} is
 defined as follows: $\Pi^{I} = \{ H(r) \leftarrow B^+(r) \mid r \in \mathit{rules}, I \models B(r)\}$,
 please note that $\mathit{constraints}(\Pi^{I}) = \emptyset$.
@@ -175,7 +175,7 @@ one literal is true, the following constraint is introduced:
 \begin{align}\label{eq:amo}
     \textsc{sum}\{1 : \overline{\ell_1};\ \cdots;\ 1 : \overline{\ell_n}\} \geq n - 1
 \end{align}
-As I attempted to introduce in the precedent chapter, to enforce that at most
+To enforce that at most
 one literal is true of a given set it is enough to enforce that 
 at least $n-1$ literals are falsified.
 Since, intuitively, if two different literals are satisfied then $n-2$ literals are not falsified.
@@ -207,8 +207,8 @@ $\ell$ such that $\ell \in C$ and $\overline{\ell} \in D$ then the \textit{resol
 step of $C$ and $D$ upon $\ell$, written $C \otimes_{\ell} D$, is equal to 
 $(C \setminus \{\ell\}) \cup (D \setminus \{\overline{\ell}\})$.
 Intuitively, if a program $\Pi$ has such clauses (constraints) $C$ and $D$
-then since an intepretation cannot be simultaneously
-satisfies $\ell$ and $\overline{\ell}$ then $C \setminus \{\ell\}$ or 
+then since an intepretation cannot simultaneously
+satisfying $\ell$ and $\overline{\ell}$ then $C \setminus \{\ell\}$ or 
 $D \setminus \{ \overline{\ell}\}$ have to be satisfied, thus the following clause 
 $(C \setminus \{\ell\}) \cup (D \setminus \overline{\ell})$ has to be satisfied.
 Please note that if an intepretation $I \models \Pi$ then $I \models C \otimes_{\ell} D$.
@@ -220,7 +220,7 @@ Every branching (or decision) literal is paired with a \textit{decision level}.
 To understand the decision level is enougth to 
 now that at each choose phase the corresponding literal is added into a 'list' and
 the decision level is the index into the list (index starting from 1). 
-The term \textit{backjumping} to a certain level $l$ refers to the process of 'forgetting' 
+The term `\textit{backjumping} to a certain level $l$' refers to the process of `forgetting' 
 every decision made after decision level $l$, 
 including the respective propagated literals, and then 
 resuming the decision-making process starting from level $l$.
@@ -239,9 +239,9 @@ in that case $\ell$ is a \textit{conflict literal}.
 Moreover $\ell$ is also paired with a decision literal 
 that it is inherited from the current decision level of the search.
 \textit{Unit Propagation} is a specific kind of propagation, it is applied when given a clause 
-$C$ all its literals are falses except for a literal $\ell$, that is, $C \setminus \overline{I} = \{\ell\}$.
+$C$ and a literal $\ell \in C $, $(C \setminus \{\ell\}) \cap \overline{I} = C \setminus \{\ell\}$.
 In this case the only way to satisfy $C$ is setting $\ell$ to true, thus $\ell$
-is propagate to true; the reason is exactly because the other literals are falses, so 
+is propagated to true; the reason is exactly because the other literals are falses, so 
 $reason(\ell) = C$.
 Please not the $reason(\ell)$ respresents $\overline{\ell_1} \land \hdots \land \overline{\ell_n} \rightarrow \ell$, where 
 $\{\ell_1 \land \hdots \land \ell_n\} = C \cap \overline{I}$.
@@ -262,13 +262,15 @@ contains just one literal of the current decision level, this clause in called
 \textit{Unique Implication Point (UIP)}.
 Given the UIP then a \textit{backjump} is perfomed to the second highest decision level
 (\textit{assertion level}). The assertion level is special in the sense that it is the deepest level
-at which adding the conﬂict-driven clause (UIP) would allow unit resolution to derive
+at which adding the conﬂict-driven clause (UIP) would allow unit propagation to derive
 a new implication using that clause. Since the literal with highest dl after backjumping 
-is the only undefined literal inside UIP then the unit propagation will inferr that literal,
+is the only undefined literal inside UIP then the unit propagation will infer that literal,
 that is, will flip the previous value.
 When the highest literal in the UIP has 0 as dl then the assertion level is -1 by default.
-Please note that the starting reason cannot cannot but have at least one literal of the last decision 
-level, otherwise the unit propagation cannot be perfomed.
+Some \textbf{important} final notes: The reason for the conflict literal must include 
+at least one literal from the last decision level; otherwise, unit propagation 
+cannot be performed; the smaller the cardinality of the conflict literal's reason, 
+the higher the potential jump in the search space.
 After this a new choice is made until either all atoms are defined or the
 assertion level is -1.
 The above described algorithm is defined below.
@@ -288,7 +290,7 @@ The above described algorithm is defined below.
                 $\ell = \textsc{PickBranchingLiteral}(\Pi, I)$ \\
                 $dl \gets dl + 1$ \\
                 $\mathit{store}(I,\ell,dl)$\\
-                \If {(\textsc{UnitPropagation}$(\Pi, I) == \text{CONFLICT}$)}{
+                \If {(\textsc{Propagate}$(\Pi, I) == \text{CONFLICT}$)}{
                     $\beta = \textsc{ConflictAnalysis}(\Pi, I)$\\         
                     \If {($\beta < 0$)}{
                         \Return{Unsat}
@@ -304,7 +306,10 @@ The above described algorithm is defined below.
         
 \end{algorithm}
 
-Let's assume for now that the \textit{Propagate} function is exactly equal to \textit{Unit propagation},
+The \textit{Propagate} function is implemented using multiple \textit{propagators},
+calling them sequentially according to a priority list.
+Let's assume for now that the Propagate function is exactly equal to the propagator
+implementing \textit{Unit propagation},
 this is usefull for the next example.
 
 \begin{example}\label{ex:unit-propagation}
@@ -333,22 +338,22 @@ this is usefull for the next example.
     $\overline{z}$ is selected.
     Then, by unit propagation, $x$ and $y$ are inferred,
     thanks to the first two clauses.
+    Unit propagation infers $x, y$ from the first two clauses, and then $y$ 
+    (a conflict literal) from the third clause.
     The correspective reasons are: $reason(x) = \{ x, z \}$,
-    $reason(y) = \{ y, z \}$.
-    Now, the current intepretation $I$ is equal to
+    $reason(y) = \{ y, z \}$ and $reason(\overline{y}) = \{w,\overline{x},\overline{y}\}$.
+    The current intepretation $I$ is equal to
     $[\overline{w}^1,\overline{z}^2, y^2, x^2]$.
-    The last clause $\{w,\overline{x},\overline{y}\}$
-    is not satisfied by $I$ so a conflict $k$ is detected and the 
-    $reason(k) = \{w,\overline{x},\overline{y}\}$.
-    Since there are more than 1 literal of the decision level 2 (the last one)
+    Since there are more than 1 literal of the decision level 2 (the last one) in the conflict clause
+    ($\{w,\overline{x},\overline{y}\}$)
     a backward resolution step is perfomed.
     Let's take arbitrarily $\overline{x}$:
-    $\{w,\overline{x},\overline{y}\} \otimes_{\overline{x}} \{y,z\} = \{w, \overline{y}, z\}$.
+    $\{w,\overline{x},\overline{y}\} \otimes_{\overline{x}} \{ x, z \}= \{w, \overline{y}, z\}$.
     Since both $\overline{y}, z$ are with decision level 2 then let's take arbitrarily $\overline{y}$:
-    $\{w, \overline{y}, z\} \otimes_{\overline{y}} \{y,z\} = \{w, \overline{y}, z, z\} = 
-    \{w, \overline{y}, z\}$.\\
-    $\{w, \overline{y}, z\}$ is \textit{UIP} so let's backtrack to the assertion level 1.
-    This will unit propagate $z$ with $reason(z) = \{w, \overline{y}, z\}$.
+    $\{w, \overline{y}, z\} \otimes_{\overline{y}} \{y,z\} = \{w, z, z\} = 
+    \{w, z\}$.\\
+    $\{w, z\}$ is \textit{UIP} so let's backtrack to the assertion level 1.
+    This will unit propagate $z$ with $reason(z) = \{w, z\}$.
     So the intepretation will look like: $I = [\overline{w}^1, z^1]$
 \end{example}
 
@@ -359,7 +364,7 @@ the function $\mathit{Propagate}(\Pi,I)$.
 SAT solvers employ mainly unit propagation inside the \textit{Propagate} function,
 instead ASP solvers use, in addition on unit propagation, other two fundamental  
 propagation functions: \textit{Unfounded-free propagation} and \textit{AggregatesPropagation}.
-The first one (\textit{Unfounded-free propagation}) asses that the intepretation is a stable model, but its details
+The first one (\textit{Unfounded-free propagation}) assesses that the intepretation is a stable model, but its details
 are out of the scope of this work.
 The second one (\textit{AggregatesPropagation}) is used to derive new consequences from 
 the aggregates present in the program. 
@@ -372,7 +377,8 @@ which essentially adds to $I$ the literal $\ell_i$ ($i \in [1..n]$) if $\ell_i$ 
 \begin{align}\label{eq:sum:propagation}
     \sum_{j \in [1..n], j \neq i}{w_j \cdot I^\uparrow(\ell_j)} < b
 \end{align}
-In this case \textit{reason}$(\ell_i) = \{\ell_i\} \cup lits_{\sigma} \cap \overline{I}$.
+In this case \textit{reason}$(\ell_i) = \{\ell_i\} \cup lits_{\sigma} \cap \overline{J}$,
+where $J$ is the first prefix of I meeting the above condition.
 Intuitively, the falses literals are the only justification why the bound $\mathit{bnd}_{\sigma}$
 could be not reached if $\ell_i$ was not added to $I$.
 In the special case of \eqref{eq:amo}, that is, if $\sigma$ is $\textsc{amo}\{\ell_1, \ldots, \ell_n\}$, the literal $\overline{\ell_i}$ ($i \in [1..n]$) is added to $I$ if there is $\ell_j$, with $j \neq i$, such that $\ell_j \in I$.
@@ -394,6 +400,6 @@ In this case, $\mathit{reason}(\overline{\ell_i})$ is $\{\overline{\ell_i}, \ove
         1 \cdot [\overline{z},x,y]^\uparrow(\overline{y}) = 1 \cdot 0 = 0 < 1\\
         1 \cdot [\overline{z},x,y]^\uparrow(\overline{x}) = 1 \cdot 0 = 0 < 1
     \end{align*}
-    Therefore, a conflict $k$ is raised, say because $\overline{y}$ (or similarly $\overline{x}$) 
-    is added to $I$ with $\mathit{reason}(k) = \{\overline{x}, \overline{y}\}$.
+    Therefore, a conflict is raised, say because $\overline{y}$ (or similarly $\overline{x}$) 
+    is added to $I$ with $\mathit{reason}(\overline{y}) = \{\overline{x}, \overline{y}\}$.
 \end{example}
