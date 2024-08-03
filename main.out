@@ -5,7 +5,7 @@
 \BOOKMARK [1][-]{section.2.2}{ALO\040\(clauses\)\040and\040AMO\040as\040a\040Special\040Cases}{chapter.2}% 5
 \BOOKMARK [1][-]{section.2.3}{Stable\040Model\040Search,\040Propagators\040and\040Learning}{chapter.2}% 6
 \BOOKMARK [0][-]{chapter.3}{AMOSUM}{}% 7
-\BOOKMARK [1][-]{section.3.1}{Syntex\040and\040Semantics}{chapter.3}% 8
+\BOOKMARK [1][-]{section.3.1}{Syntax\040and\040Semantics}{chapter.3}% 8
 \BOOKMARK [1][-]{section.3.2}{Inference\040rules}{chapter.3}% 9
 \BOOKMARK [1][-]{section.3.3}{Propagate}{chapter.3}% 10
 \BOOKMARK [1][-]{section.3.4}{Unroll}{chapter.3}% 11
@@ -18,4 +18,10 @@
 \BOOKMARK [2][-]{subsection.4.3.3}{Algorithm}{section.4.3}% 18
 \BOOKMARK [1][-]{section.4.4}{Minimality}{chapter.4}% 19
 \BOOKMARK [2][-]{subsection.4.4.1}{Minimal\040reason}{section.4.4}% 20
-\BOOKMARK [2][-]{subsection.4.4.2}{Cardinality\040minimal\040reason}{section.4.4}% 21
+\BOOKMARK [2][-]{subsection.4.4.2}{Cardinality\040Minimal\040Reason}{section.4.4}% 21
+\BOOKMARK [1][-]{section.4.5}{Complexity}{chapter.4}% 22
+\BOOKMARK [2][-]{subsection.4.5.1}{Minimal\040Reason}{section.4.5}% 23
+\BOOKMARK [3][-]{section*.15}{Polynomial}{subsection.4.5.1}% 24
+\BOOKMARK [2][-]{subsection.4.5.2}{Cardinality\040Minimal\040Reason}{section.4.5}% 25
+\BOOKMARK [3][-]{section*.16}{Pseudo-Polynomial}{subsection.4.5.2}% 26
+\BOOKMARK [3][-]{section*.17}{NP-Hardness}{subsection.4.5.2}% 27

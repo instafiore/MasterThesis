@@ -8,7 +8,7 @@ Then the related rules for propagating are described in section ~\ref{sec:amo:in
 Finally the \textit{Propagate} and the \textit{Unroll} functions are defined 
 in the last two sections
 
-\section{Syntex and Semantics}
+\section{Syntax and Semantics}
 \label{sec:amo:syntax_semantics}
 An \textit{AMOSUM} constraint is defined as follows:
 \begin{align}\label{eq:amosum}
@@ -173,15 +173,13 @@ $\mathit{reason}(z) = \{z\}$.
 In this section on the details about the \textit{Propagate} function implemented in the AMOSUM 
 propagator.
 The Propagate function is divided in two phases: \textit{update\_phase} and \textit{propagate\_phase};
-the first one updates the internal states of the propagator and understands if the propagation phase is 
+the first one updates the internal states (more precisely the global variable $\mps$ (\textit{Max Possible Sum}))
+of the propagator and understands if the propagation phase is 
 required; the second one is the `actual' propagator, it implements the inference rules and 
 correlated reasons, as described in section ~\ref{sec:amo:inference_rules}.
 The Propagate function is defined with the algorithm ~\ref{alg:Propagate}.
-
-
-
-
-\begin{algorithm}[!t]\small
+Let assume to have in input to the function propagate function the literal $\ell$.
+\begin{algorithm}[H]\small
     \caption{Propagate}
     \label{alg:Propagate}
     \SetKwInOut{Input}{Input}
@@ -205,7 +203,36 @@ The update phase, is described in algorithm ~\ref{alg:update_phase}.
 Abusing of notation the relation $\in$ defined in section ~\ref{sec:amo:syntax_semantics}
 is extended, defining $\ell \in \sigma$ true if $(w : \ell [g]) \in \sigma$ for some 
 weight $w \in \mathbb{N}$ and group $g \in \mathbb{G}_{\sigma}$.  
-\begin{algorithm}[!t]\small
+If $\ell \in \sigma$ it means that it means that $\ell$ is true and it is in the 
+aggregate set of $\sigma$. 
+If $\ell$ becomes true, it will contribute to the $\mps$;
+On one hand, if it was already contribuiting to the $\mps$ (it was the max undefined)
+then the $mps$ will not change, i.e., will not be inferred any 
+literal, so the next phase will not start.
+On the other hand the \textit{mps} will change so.
+To update the $\mps$ when a literal becomes true then 
+it is necessary to remove the contribution of the previous 
+literal and add the contribution of $\ell$, that is,
+$\mathit{mps}_\sigma \gets \mathit{mps}_\sigma -\mwh_\sigma(I,g) + \wh_\sigma(\ell)$\;
+In this case $\mps$ has changed so the next phase is required.
+If, instead, $\overline{\ell} \in \sigma$, it means that $\overline{\ell}$ is false
+and (maybe) will not contribute anymore on $\mps$.
+To check this, it is sufficient to check that it 
+was contributing and there was no true literal in its group;
+more precisely: $\wh_\sigma(\overline{\ell}) = \mwh_\sigma(I \setminus \{\ell\},g)$
+and $\lits_\sigma|_{\group(\ell)} \cap I = \emptyset$.
+In this case, the contribution of $\ell$ has to be removed, since it is false,
+and the new contribution ($\mwh_\sigma(I,g)$) has to be added to $\mps$.
+In this case $\mps$ has changed so the next phase is required.
+When $\wh_\sigma(\overline{\ell}) = \mwh_\sigma(I \setminus \{\ell\},g)$
+is false can happen that: there is no true literal in $\lits|_g$ and
+there is just one undefined literal in $\lits|_g$;
+in this case, thanks to ~\eqref{eq:amosum:propagation:2},
+some literal could be inferred, so whatever is the $\mps$
+the next phase is required.
+In all the other cases the next phases is not required.
+
+\begin{algorithm}[H]\small
     \caption{update\_phase}
     \label{alg:update_phase}
     \SetKwInOut{Input}{Input}
@@ -214,18 +241,20 @@ weight $w \in \mathbb{N}$ and group $g \in \mathbb{G}_{\sigma}$.
     \Output{Boolean to move to the next phase}
     \Begin{
         \If{$\ell \in \sigma$}{
-            $g \gets \mathit{group}(\ell)$\;
-            \If{$\mwh(g) = \wh(\ell)$} {
+            $g \gets \mathit{group}_\sigma(\ell)$\;
+            \If{$\mwh_\sigma(I,g) = \wh_\sigma(\ell)$} {
                 \Return{$\bot$}
             }
-            $\mathit{mps} \gets \mathit{mps} -\mwh(I,g) + \wh(\ell)$\;
+            $\mathit{mps}_\sigma \gets \mathit{mps}_\sigma -\mwh_\sigma(I,g) + \wh_\sigma(\ell)$\;
         }
         \ElseIf{$\overline{\ell} \in \sigma$} {
-            $g \gets \mathit{group}(\overline{\ell})$\;
-            \If{$\wh(\overline{\ell}) = \mwh(I \setminus \{\ell\},g)$ and $\lits|_{\group(\ell)} \cap I = \emptyset$ }    {  
-            $\mathit{mps} \gets \mathit{mps} + \mwh(I,g) - \wh(\ell)$\;        
+            $g \gets \mathit{group}_\sigma(\overline{\ell})$\;
+            \If{$\wh_\sigma(\overline{\ell}) = \mwh_\sigma(I \setminus \{\ell\},g)$
+            and $\lits_\sigma|_{\group(\ell)} \cap I = \emptyset$ }    {  
+            $\mathit{mps}_\sigma \gets \mathit{mps}_\sigma + \mwh_\sigma(I,g) - \wh_\sigma(\ell)$\;        
             }
-            \ElseIf{$|\lits|_{\group(\ell)} \setminus (I \cup \overline{I})| = 1$}
+            \ElseIf{$|\lits_\sigma|_{\group_\sigma(\ell)} \setminus (I \cup \overline{I})| = 1$ and 
+            $\lits_\sigma|_{\group(\ell)} \cap I = \emptyset$}
             {
                 \Return{$\top$}
             }\Else{\Return{$\bot$}}    
@@ -237,7 +266,9 @@ weight $w \in \mathbb{N}$ and group $g \in \mathbb{G}_{\sigma}$.
     }
 \end{algorithm}
 
-\begin{algorithm}[!t]\small
+Now let's move to the actual \textit{propagation} phase.
+
+\begin{algorithm}[H]\small
     \caption{propagate\_phase}
     \label{alg:propagate_phase}
     \SetKwInOut{Input}{Input}
@@ -250,15 +281,16 @@ weight $w \in \mathbb{N}$ and group $g \in \mathbb{G}_{\sigma}$.
         \For{$g \in \mathbb{G}$}{
 
             \tcp{AMO inference rule}
-            \If{$\lits|_g \cap I = \{\ell\}$}{
-                $S \gets S \cup {(\overline{\ell_i},\{\overline{\ell_i},\overline{\ell})\}} \quad \forall \ell_i \in \lits|_{g} \setminus (\{\ell\} \cup I \cup \overline{I})$
+            \If{$\lits_\sigma|_g \cap I = \{\ell\}$}{
+                $S \gets S \cup {(\overline{\ell_i},\{\overline{\ell_i},\overline{\ell})\}} 
+                \quad \forall \ell_i \in \lits_\sigma|_{g} \setminus (\{\ell\} \cup I \cup \overline{I})$
             }
 
             \tcp{Enforced falsity rule}
-            \For{$l \in \lits|_g$}{
+            \For{$\ell \in \lits_\sigma|_g$}{
                 \If{$\ell \not\in I \cup \overline{I}$}{
-                    \If{$mps - \mwh(I,g) + \wh(\ell) < lb$}{
-                        $\mathit{rns}_\ell = \mathit{lits}_\sigma|_g \cup 
+                    \If{$mps_\sigma - \mwh_\sigma(I,g) + \wh_\sigma(\ell) < lb$}{
+                        $\mathit{rns}_\ell = \lits_\sigma|_g \cup 
                         \bigcup_{x \in \mathbb{G}_\sigma \setminus \{g\}}{
                             \mathit{just}_\sigma(I,x)
                         }$\\
@@ -269,8 +301,8 @@ weight $w \in \mathbb{N}$ and group $g \in \mathbb{G}_{\sigma}$.
             }
             
             \tcp{SUM inference rule}
-            \If{$\lits|_g \setminus (I \cup \mathit{falses}) = \{\ell\}$ and $\lits|_g \cap I = \emptyset$}{
-                \If{$mps - \wh(\ell) < lb$}{
+            \If{$\lits_\sigma|_g \setminus (I \cup \mathit{falses}) = \{\ell\}$ and $\lits_\sigma|_g \cap I = \emptyset$}{
+                \If{$mps_\sigma - \wh_\sigma(\ell) < lb$}{
                     $S \gets S \cup (\ell,\{\overline{\ell}\} \cup \bigcup_{x \in \mathbb{G}_\sigma \setminus \{g\}}{
                         \mathit{just}_\sigma(I,x)
                     }) $
@@ -289,7 +321,7 @@ Actually, in addition to the \textit{Propagate} function, called when a literal 
 also a \textit{Unroll} function has to be defined, to update the internal state of the propagator when a literal 
 becomes undefined (due to some backjump in the search process).
 
-\begin{algorithm}[!t]\small
+\begin{algorithm}[H]\small
     \caption{Unroll}
     \label{alg:Unroll}
     \SetKwInOut{Input}{Input}
@@ -306,16 +338,14 @@ becomes undefined (due to some backjump in the search process).
             $g \gets \group(\ell)$\\
             \If{$v = \top$}{
                 \tcp{$\ell$ was true}
-                \If{$\mwh(I,g) > weight[\ell]$}{
-                    $mps \gets mps - weight[\ell] + weight[mw(G)]$\;
+                \If{$\mwh(I,g) > \wh(\ell)$}{
+                    $mps \gets mps - \wh(\ell) +\mwh(I,g)$\;
                 }
             }
-            \Else{
-                \tcp{$\ell$ was false}            
-                \If{$G$ has not true literal}{
-                    $mps \gets mps - max\_w + weight[mw(G)]$\;
+            \ElseIf{$\wh(\ell) > \mwh(I \cup \{\overline{\ell}\},g)$ and $\lits|_g \cap I = \emptyset$}{
+                \tcp{$\ell$ was false}           
+                    $mps \gets mps - \mwh(I \cup \{\overline{\ell}\},g) + \wh(\ell)$\;
                 }
             }
-        }
     }
 \end{algorithm}
