@@ -1,8 +1,6 @@
-\chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction}
-Answer Set Programming (ASP) is a highly utilized framework for knowledge 
-representation and automated reasoning, as highlighted by \textit{Marek and Truszczyński (1999)} ~\cite{MarekT99}
-and \textit{Niemelä (1999)} ~\cite{Niemela99}. 
+\chapter{Introduction}
+Answer Set Programming (ASP) is a highly used framework for knowledge 
+representation and automated reasoning~\cite{MarekT99,Niemela99,DBLP:journals/cacm/BrewkaET11,GelfondL90}. 
 In ASP, combinatorial problems are formulated using logical rules that incorporate various
 linguistic constructs, which simplify the representation of complex knowledge.
 In its most basic form, ASP programs consist of normal logic rules, where each rule 
@@ -74,8 +72,13 @@ When an aggregate is introduced inside the program then a specific propagator is
 Our work provides both a novel propagator for handling the new AMO-SUM construct and 
 an algorithm to minimize the reasons of the aggregate-derived consequences.
 To provide a more comprehensive understanding of our work the \todo{DA FINIRE}
-A portion of this research has been previously presented in \cite{master_thesis}.
 
 
 
-
+In summary, the contributions of this thesis are the following:
+\begin{enumerate}
+    \item We defined a novel propagator for handling AMOSUM constraints (Chapter~\ref{sec:amo:propagator})
+    \item We defined a novel strategy for improving the reasons of the AMOSUM propagator
+    \item We implemented the novel propagator on the top of the ASP solver WASP
+    \item We performed an experimental analysis on several benchmarks, showing that ...
+\end{enumerate}

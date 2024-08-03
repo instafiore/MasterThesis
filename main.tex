@@ -1,18 +1,50 @@
 \documentclass[a4paper,12pt,oneside]{book}
+\usepackage[a-1b]{pdfx} % Creiamo un PDF/A per la consegna della tesi.
 \linespread{1.5}
 \usepackage{geometry}
-\geometry{top=2cm,bottom=2.5cm,left=4cm,right=3.5cm} % Impostiamo il valore dei margini.
+\geometry{top=3cm,bottom=3cm,left=3.5cm,right=3.5cm} % Impostiamo il valore dei margini.
 \usepackage[utf8]{inputenc}
 \usepackage{tikz,pgf}
+\usepackage{indentfirst}
 \usepackage{amsfonts}
 \usepackage[english]{babel} %% Abbiamo istruito LaTeX ad usare la lingua italiana.
 \usepackage{todonotes}
 \usepackage{subfig}
 \usepackage{fancyhdr}
-\usepackage{amsthm}
+\setlength{\parindent}{1cm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{numprint}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{tocbibind}
+\usepackage{tabto}
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 \usepackage[ruled,linesnumbered,vlined]{algorithm2e}
-\theoremstyle{definition}
+\usepackage{amsthm}
+\newtheorem{definition}{Definition}
+\newtheorem{claim}{Claim}
 \newtheorem{example}{Example}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\group}{\mathit{group}}
+\newcommand{\lits}{\mathit{lits}}
+\newcommand{\mwh}{\mathit{mwh}}
+\newcommand{\wh}{\mathit{wh}}
+\newcommand{\ml}{\mathit{ml}}
+\newcommand{\inc}{\mathit{inc}}
+\newcommand{\mps}{\mathit{mps}}
+\newcommand{\blw}{\mathit{blw}}
+\newcommand{\ext}{\xrightarrow{\text{ext}}}
+\newcommand{\G}{\mathbb{G}}
 \setlength{\parindent}{1cm}
 \usepackage{graphicx}
 \usepackage{float}
@@ -25,8 +57,8 @@
 \usepackage{listings}
 \setcounter{tocdepth}{3}
 \usepackage{hyperref}
-\usepackage{algorithm}
-\usepackage{algorithmic}
+% \usepackage{algorithm}
+% \usepackage{algorithmic}
 \usepackage[
 backend=biber,
 style=ieee,
@@ -40,6 +72,8 @@ sorting=none
 \fancyhf{}
 \fancyhead[L]{}
 \fancyfoot[C]{\thepage}
+\def\amosum{\ensuremath{\textsc{amosum}}\xspace}
+
 
 \graphicspath{{imgs/}} %% cartella dalla quale ricavare le immagini %%
 
@@ -57,52 +91,78 @@ sorting=none
    \vspace{\stretch{3}} % space at bottom is three times that at the top
    \clearpage           % finish off the page
   }
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+\usepackage{url}
+\def\UrlFont{\rmfamily}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage[ruled,linesnumbered,vlined]{algorithm2e}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{comment}
+
+
+\setlength {\marginparwidth }{2cm} 
+\pgfplotsset{compat=1.16}
   
 \begin{document}
 %% Frontespizio %%
 \begin{titlepage}
-    \begin{center}
-    \vspace*{0.2cm}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{imgs/logo.png}
-    \end{figure}
-        \vspace{5mm}
-%% Dipartimento %%
-    	\uppercase{\normalsize Department of Mathematics \& Computer Science}\\
-    \end{center}
-    \begin{center}
-%% Corso di Laurea %%
-    	\large{ Master's degree in Artificial Intelligence \& Computer Science}\\
-        \vspace{3mm}
-        \large{\bf Master's Thesis}\\
-    	\vspace{10mm}
-%% Titolo della Tesi %%
-    {\LARGE{\bf Implementation of a novel propagator for aggregates}}\\	
-     \vspace{7mm}
-    \end{center}
-    
-    \vspace{25mm}
-    \noindent
-    \begin{minipage}[t]{0.47\textwidth}
-%% Relatore %%
-    	{\large{ Supervisors:\vspace*{0.22cm}\\\bf Prof. Carmine Dodaro \\ 
-        \bf Prof. Dr. Thomas Eiter\\}}
-    	{\large{ Co-supervisor:\vspace*{0.22cm}\\\bf Dott. Tobias Geibinger }}
-    	\vspace{12mm}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.4\textwidth}\raggedleft
-%% Candidato %%
-    	{\large{Candidate: \\ \bf Salvatore Fiorentino\\ Mat. 242706}}
-    \end{minipage}
-    
-    \vspace{30mm}
-    
-%% Anno Accademico %%
-    \centering{\large \uppercase{ Academic year 2023/2024}}
+\begin{center}
+\textbf{\LARGE Universit\`a della Calabria}\\
+\textbf{Dipartimento di Matematica e Informatica}\\
+\vskip 6pt
+\hrule
+\vskip 8pt
+\includegraphics{logo.png}
+\vskip 8pt
+\textbf{Corso di Laurea Magistrale in\\ Artificial Intelligence \& Computer Science}
+\vskip 32pt
+Tesi di Laurea
 
+\vskip 70pt
+{ \huge \bfseries Design and Implementation of an AMO-SUM aggregate for ASP}\\[0.4cm]
+\vskip 120pt
+
+\begin{tabular}{p{8cm}p{8cm}}
+Relatori: & Candidato:\\
+Prof. Carmine Dodaro & Salvatore Fiorentino\\
+Prof. Thomas Eiter & Matricola 242706\\
+Dr. Tobias Geibinger & 
+\end{tabular}
+
+\vskip 60pt
+\hrule
+\vskip 6pt
+Anno Accademico 2023/2024
+\vfill
+\end{center}
 \end{titlepage}
+
+% \usepackage{algorithm}
+% \usepackage{algorithmicx}
+% \usepackage{algpseudocode}
 
 \begin{dedication}
 Inserire dedica e ringraziamenti...
@@ -115,9 +175,12 @@ Inserire dedica e ringraziamenti...
 
 
 \tableofcontents
+
+
 \input{chapters/introduction.tex}
 \input{chapters/background.tex}
-\input{chapters/AMOSUM_propagator.tex}
+\input{chapters/amosum.tex}
+\input{chapters/minimizing.tex}
 
 \newpage
 \printbibliography

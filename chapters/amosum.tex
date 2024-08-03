@@ -1,0 +1,321 @@
+\chapter{AMOSUM}
+\label{cp:AMOSUM}
+In this chapter we propose a new constraint with 
+relative syntax and semantics (section ~\ref{sec:amo:syntax_semantics}).
+This constraint combines a SUM constraint of the form  \eqref{eq:sum} 
+with a collection of AMO constraints of the form \eqref{eq:amo}.
+Then the related rules for propagating are described in section ~\ref{sec:amo:inference_rules}.
+Finally the \textit{Propagate} and the \textit{Unroll} functions are defined 
+in the last two sections
+
+\section{Syntex and Semantics}
+\label{sec:amo:syntax_semantics}
+An \textit{AMOSUM} constraint is defined as follows:
+\begin{align}\label{eq:amosum}
+    \amosum\{w_1 : \ell_1\ [g_1];\ \cdots;\ w_n : \ell_n\ [g_n]\} \geq b
+\end{align} 
+where $n \geq 0$, $\ell_1,\ldots,\ell_n$ are distinct literals such that $\ell_i \neq \overline{\ell_j}$ (for all $1 \leq i < j \leq n$),
+and $b,w_1,\ldots,w_n,g_1,\ldots,g_n$ are naturals numbers. 
+As in \eqref{eq:sum}: $\{w_1,\ldots,w_n\}$ is the set of weights and $\mathit{wh}_{\sigma}(l_i) = w_i$;
+$\mathit{bnd}_{\sigma} = b$ is the \textit{bound} of the constraint $\sigma$.
+The new term is $g_i$, it represents the \textit{group id} of the literal; every literal with the same 
+group id is inside an \textit{AMO} constraint.
+Relation ${}\in{}$ is now defined as $(w_i : \ell_i\ [g_i]) \in \sigma$ for all $i \in [1..n]$.
+$\mathbb{G}_{\sigma}$ is the set of possible group id, it means that $g_i \in \mathbb{G}_{\sigma}$ for all $1 \leq i \leq n$.
+Given a literal $\ell_i$ in the aggregate,  $\mathit{group}_{\sigma}$ is function that maps $\ell_i$ to its group id, that is, $\mathit{group}(\ell_i) = g_i$.
+Given a group id $g \in \mathbb{G}_ {\sigma}$ then all the literals in the same group are 
+defined $\mathit{lits}_{\sigma}|_g = \{ \ell \mid (w : \ell [g]) \in \sigma, w \in \mathbb{N}\}$.
+The relation $\models$ for a constraint $\sigma$ of the form \eqref{eq:amosum}, defined in ~\ref{sec:bg-syntax_semantics}, is
+extended as follows: given an interpretation $I$, $I \models \sigma$ if $\sum_{i = 1}^{n}{w_i \cdot I^{\top}(\ell_i)} \geq \mathit{bnd}_\sigma$,
+and $\sum_{\ell \in \mathit{lits}_{\sigma}{|_g}}{I^{\top}(\ell)} \leq 1$ for all $g \in \mathbb{G}_\sigma$.
+If the subscript $\sigma$ is clear from context, it will be omitted.
+
+The corresponding set of constraints defining an AMOSUM \eqref{eq:amosum} using just SUM constraints of the form \eqref{eq:sum}
+is the following:
+\begin{align*}
+    & \textsc{sum}\{w_1 : \ell_1;\ \cdots;\ w_n : \ell_n\} \geq b\\
+    & \textsc{sum}\{1 : \overline{\ell_{1}^g};\ \cdots;\ 1 : \overline{\ell_{m_{g}}^g}\} \geq m_{g} - 1 \quad g \in G
+\end{align*}
+where $l_{i}^g$ is the \textit{i-th} literal in the group $g$ and $m_{g}$ is the number of literals in the group $g$.
+
+To provide a more concrete illustration,
+a concrete example is given.
+\begin{example}[Continuing Example~\ref{ex:running}]\label{ex:running-revised}
+    $\Pi_{\mathit{run}}$ is rewritten by replacing $\sigma_1$ and $\sigma_2$ with
+    \begin{align*}
+    \begin{array}{rl}
+        \sigma_{3}: & \amosum\{
+            1 : x\ [1];\ 2 : y\ [1];\ 2 : z\ [2]
+        \} \geq 3
+    \end{array}
+    \end{align*}
+    Note that $\mathit{G}_{\sigma_3}=\{1, 2\}$, 
+    $\mathit{group}_{\sigma_{3}}(x) = \mathit{group}_{\sigma_{3}}(y) = 1$, 
+    $\mathit{group}_{\sigma_{3}}(z) = 2$, 
+    $\mathit{lits}_{\sigma_{3}}|_1 = \{x, y\}$, and
+    $\mathit{lits}_{\sigma_{3}}|_2 = \{z\}$.
+\end{example}
+\section{Inference rules}
+\label{sec:amo:inference_rules}
+The propagator for constraint ~\ref{eq:amosum} has 3 inference rules,
+the first 2 have a counterpart in the classical setting, instead the last
+one is a totally new one.
+
+\paragraph{AMO inference rule} 
+The first inference rule is the one ensuring the at most one constraint 
+(~\ref{eq:amo}): given a literal 
+$\ell$ such that $(w : \ell [g]) \in \sigma$ for some $w \in \mathbb{N}$ and $g \in \mathbb{G}$,
+then $\ell$ is inferred as false, i.e., $\overline{\ell} \in I$, if there exists 
+$\ell' \in \mathit{lits}|_g$ such that $\ell' \in I$. In this case
+$\mathit{reason}(\ell')=\{\overline{\ell},\overline{\ell'}\}$
+
+\paragraph{SUM inference rule} 
+This inference rule has a corresponding couterpart in the SUM constraint, that is,
+a literal is inferred as true if it is required to reach the bound.
+As it is done in \eqref{eq:sum:propagation} the concept of \textit{max possible sum} is used, a literal  $\ell$ is required to be true if all the literals 
+in $\mathit{lits}|_{group(\ell)} \setminus \{ \ell \}$ are 
+falses (i.e., it is the only not false literal in its group) and 
+the \textit{maximum possible sum} (considering $\ell$ as false) would be less than $\mathit{bnd}$.
+In this case the max possible sum is different, since not all the literals are free to contribute to the overall 
+sum; just one literal per group can be true (i.e., contribute to the sum).
+To get the the maximum possible sum it is enough to pick the maximum not false literal from each group;
+more formally: $\mathit{mps\_amo}_{\sigma}(I,\ell) = \sum_{g \in \mathbb{G}_\sigma \setminus
+\{\mathit{group}_\sigma(\ell)\}}{\mathit{mwh}_\sigma(I,g)}$ 
+where $\mathit{mwh}_\sigma(I,g) := \max\{w \cdot I^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{0\}$ 
+is the maximum weight that group $g$ can contribute to the overall sum. 
+Finally, the literal $\ell$ is added to $I$ if the following condition holds 
+\begin{align}\label{eq:amosum:propagation:2}
+    \mathit{mps\_amo}_{\sigma}(I,\ell) < \mathit{bnd}_\sigma
+\end{align}
+Furthermore,$\mathit{mwh}_{\sigma}(g) = 
+\max\{ w \mid (w : x [g]) \in \sigma \} \cup \{0\} $\\
+and $\ml_{\sigma}(g) =  
+\arg \max_{e \in S} \wh(e)$ 
+where $S = \{x \mid (w : x [g]) \in \sigma, w \in \mathbb{N}\}$ 
+
+Henceforth, unless otherwise specified, \textit{mps} will be used in place of \textit{mps\_amo}.
+In this case, $\mathit{reason}(\ell)$ is
+\begin{align}\label{eq:amosum:reason:2}
+\mathit{lits}_\sigma|_{\mathit{group}_\sigma(\ell)} \cup 
+\bigcup_{g \in \mathbb{G}_\sigma \setminus \{\mathit{group}_\sigma(\ell)\}}{
+    \mathit{just}_\sigma(I,g)
+},
+\end{align}
+where 
+$\mathit{just}_\sigma(I,g) := \{\overline{\ell'}\}$ if $\ell' \in \mathit{lits}_\sigma|_g \cap I$ 
+(i.e., there exists a true literal in the group $g$), and
+$\{\ell' \in \mathit{lits}_\sigma|_g \mid \mathit{wh}_\sigma(\ell') > \mathit{mwh}_\sigma(s)\}$ 
+otherwise (i.e., the false literals in the group $g$ that could had increased the overall sum).
+
+\paragraph{Enforced falsity rule}
+The third inference rule has not counterpart in AMO or SUM constraints.
+This rule enfore falsity of a literal that it is guaranteed to lead the max possible 
+sum under the bound if that literal was true.
+Given a literal $\overline{\ell}$ it is added to $I$ if the following condition holds:
+\begin{align}\label{eq:amosum:propagation:3}
+    \mathit{mps}_{\sigma}(I,\ell) + \mathit{wh}_\sigma(\ell) < \mathit{bnd}_\sigma
+\end{align}
+The rational behind this inference rules is the following: if $\ell$ was true it would 
+contribute to the \textit{mps}, if with this hypothesis the mps would be less than the bound then 
+it means that $\ell$ must be false.
+In this case, $\mathit{reason}(\overline{\ell})$ is
+\begin{align}\label{eq:amosum:reason:3}
+\{\overline{\ell}\} \cup \bigcup_{g \in \mathbb{G}_\sigma \setminus \{\mathit{group}_\sigma(\ell)\}}{
+    \mathit{just}_\sigma(I,g)
+}.
+\end{align}
+
+\begin{example}[Continuing Example~\ref{ex:running-revised}]\label{ex:amosum:propagation:2}
+    Already when $I$ is empty, $\sigma_3$ infers $z$.
+    In fact, $z$ is the last undefined literal in part 2, and \eqref{eq:amosum:propagation:2} gives
+    \begin{align*}
+         \max\{1 \cdot [\,]^{\neg\bot}(x), 2 \cdot [\,]^{{\neg\bot}}(y)\} = \max\{1 \cdot 1, 2 \cdot 1\} = 2 < 3
+    \end{align*}
+From \eqref{eq:amosum:reason:2},
+$\mathit{reason}(z) = \{z\}$.
+\end{example}
+
+\begin{example}\label{ex:amosum:propagation:more-2}
+    Let us consider the following constraint:
+    \begin{align*}
+    \begin{array}{rl}
+        \sigma_{4}: & \amosum\{
+            1 : x\ [1]; 2 : y\ [1]; 2 : z\ [2]; 3 : w\ [2]
+        \} \geq 3
+    \end{array}
+    \end{align*}
+    If $I = [\overline{w}]$, the second inference rule associated with $\sigma_4$ infers $z$ with $\mathit{reason}(z) = \{z, w\}$.
+    %
+    The same holds if $I = [\overline{x}, \overline{w}]$, with the addition of $y$ with $\mathit{reason}(y) = \{y, x, w\}$;
+    note that $w$ is included in $\mathit{reason}(y)$ because it could increase the overall sum.
+    %
+    On the other hand, if $I = [\overline{y}, \overline{w}]$, then $x$ and $z$ are inferred with 
+    $\mathit{reason}(x) = \{x, y, w\}$ and
+    $\mathit{reason}(z) = \{z, w, y\}$;
+    note that $y$ is included in $r_1 = \mathit{reason}(z)$ because it could increase the overall sum. 
+    It is easy to see that if $I = [\overline{w}]$
+    from \eqref{eq:amosum:propagation:2} $z$ is inferred with $r_2 = \mathit{reason}(z) = \{z, w\}$;
+    note $r_2 \subset r_1$. This case arises from the fact that if $y$ was undefined then 
+    $z$ would be inferred anyway, more technically: the \textit{increment} to the possible 
+    sum, given from removing $y$ from the reason, is not enough to increase the mps up to the bound, thus 
+    the reason without $y$ is a valid reason.
+    As discussed in section ~\ref{sec:bg-SM}, a smaller reason in size is preferred.
+    In chapter ~\ref{cp:minimizing_reason} an algorithm to compute the \textit{minimal} and 
+    \textit{cardinality minimal} reason is proposed.
+    Finally, if $I = [x, \overline{y}, \overline{w}]$, then $z$ is inferred with $\mathit{reason}(z) = \{z, w, \overline{x}\}$;
+    again, in this specific case $x$ could be ignored.
+    \end{example}
+    
+
+\section{Propagate}
+\label{sec:amo:propagator}
+
+In this section on the details about the \textit{Propagate} function implemented in the AMOSUM 
+propagator.
+The Propagate function is divided in two phases: \textit{update\_phase} and \textit{propagate\_phase};
+the first one updates the internal states of the propagator and understands if the propagation phase is 
+required; the second one is the `actual' propagator, it implements the inference rules and 
+correlated reasons, as described in section ~\ref{sec:amo:inference_rules}.
+The Propagate function is defined with the algorithm ~\ref{alg:Propagate}.
+
+
+
+
+\begin{algorithm}[!t]\small
+    \caption{Propagate}
+    \label{alg:Propagate}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{A constraint $\sigma$,  an interpretation $I$, a literal $\ell \in I$}
+    \Output{A list of propagated literals}
+    \Begin{
+
+        $next\_phase \gets update\_phase(\sigma,I,\ell)$\;
+        
+        $propagated\_lits \gets \emptyset$\;
+        \If{$next\_phase = \top$}{
+            $propagated\_lits \gets propagate\_phase(\sigma,I)$\;
+        }
+        
+        \Return $propagated\_lits$\;
+    }
+\end{algorithm}
+
+The update phase, is described in algorithm ~\ref{alg:update_phase}.
+Abusing of notation the relation $\in$ defined in section ~\ref{sec:amo:syntax_semantics}
+is extended, defining $\ell \in \sigma$ true if $(w : \ell [g]) \in \sigma$ for some 
+weight $w \in \mathbb{N}$ and group $g \in \mathbb{G}_{\sigma}$.  
+\begin{algorithm}[!t]\small
+    \caption{update\_phase}
+    \label{alg:update_phase}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{An aggregate $\sigma$, an interpretation $I$, a literal $\ell \in I$.}
+    \Output{Boolean to move to the next phase}
+    \Begin{
+        \If{$\ell \in \sigma$}{
+            $g \gets \mathit{group}(\ell)$\;
+            \If{$\mwh(g) = \wh(\ell)$} {
+                \Return{$\bot$}
+            }
+            $\mathit{mps} \gets \mathit{mps} -\mwh(I,g) + \wh(\ell)$\;
+        }
+        \ElseIf{$\overline{\ell} \in \sigma$} {
+            $g \gets \mathit{group}(\overline{\ell})$\;
+            \If{$\wh(\overline{\ell}) = \mwh(I \setminus \{\ell\},g)$ and $\lits|_{\group(\ell)} \cap I = \emptyset$ }    {  
+            $\mathit{mps} \gets \mathit{mps} + \mwh(I,g) - \wh(\ell)$\;        
+            }
+            \ElseIf{$|\lits|_{\group(\ell)} \setminus (I \cup \overline{I})| = 1$}
+            {
+                \Return{$\top$}
+            }\Else{\Return{$\bot$}}    
+        }
+        \Else{
+            \Return{$\bot$}
+        }
+        \Return{$\top$}
+    }
+\end{algorithm}
+
+\begin{algorithm}[!t]\small
+    \caption{propagate\_phase}
+    \label{alg:propagate_phase}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{A constraint $\sigma$,  an interpretation $I$}
+    \Output{A set $S$ of pairs \textit{(literal,reason)},}
+    \Begin{
+        $S \gets \emptyset$\\
+        $\mathit{falses} \gets \emptyset$\\
+        \For{$g \in \mathbb{G}$}{
+
+            \tcp{AMO inference rule}
+            \If{$\lits|_g \cap I = \{\ell\}$}{
+                $S \gets S \cup {(\overline{\ell_i},\{\overline{\ell_i},\overline{\ell})\}} \quad \forall \ell_i \in \lits|_{g} \setminus (\{\ell\} \cup I \cup \overline{I})$
+            }
+
+            \tcp{Enforced falsity rule}
+            \For{$l \in \lits|_g$}{
+                \If{$\ell \not\in I \cup \overline{I}$}{
+                    \If{$mps - \mwh(I,g) + \wh(\ell) < lb$}{
+                        $\mathit{rns}_\ell = \mathit{lits}_\sigma|_g \cup 
+                        \bigcup_{x \in \mathbb{G}_\sigma \setminus \{g\}}{
+                            \mathit{just}_\sigma(I,x)
+                        }$\\
+                        $S \gets (\overline{\ell},\mathit{reason}(\ell))$\\
+                        $\mathit{falses} \gets \mathit{falses} \cup \{\ell\}$
+                    }
+                }
+            }
+            
+            \tcp{SUM inference rule}
+            \If{$\lits|_g \setminus (I \cup \mathit{falses}) = \{\ell\}$ and $\lits|_g \cap I = \emptyset$}{
+                \If{$mps - \wh(\ell) < lb$}{
+                    $S \gets S \cup (\ell,\{\overline{\ell}\} \cup \bigcup_{x \in \mathbb{G}_\sigma \setminus \{g\}}{
+                        \mathit{just}_\sigma(I,x)
+                    }) $
+                }
+            }
+        }
+    
+        \Return $S$\;
+    }
+\end{algorithm}
+
+
+\newpage
+\section{Unroll}
+Actually, in addition to the \textit{Propagate} function, called when a literal has been chosen as a branching literal,
+also a \textit{Unroll} function has to be defined, to update the internal state of the propagator when a literal 
+becomes undefined (due to some backjump in the search process).
+
+\begin{algorithm}[!t]\small
+    \caption{Unroll}
+    \label{alg:Unroll}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{A constraint $\sigma$, an interpretation $I$, a literal $\ell \not\in (I \cup \overline{I})$, previous value $v$}
+    \Output{Updated mps}
+    \Begin{
+        \If{$\ell \in \sigma$ or $\overline{\ell} \in \sigma $}{
+            \If{$\overline{\ell} \in \sigma $}{
+                $\ell \gets \overline{\ell}$\\
+                $v \gets \neg v$\\
+                
+            }
+            $g \gets \group(\ell)$\\
+            \If{$v = \top$}{
+                \tcp{$\ell$ was true}
+                \If{$\mwh(I,g) > weight[\ell]$}{
+                    $mps \gets mps - weight[\ell] + weight[mw(G)]$\;
+                }
+            }
+            \Else{
+                \tcp{$\ell$ was false}            
+                \If{$G$ has not true literal}{
+                    $mps \gets mps - max\_w + weight[mw(G)]$\;
+                }
+            }
+        }
+    }
+\end{algorithm}

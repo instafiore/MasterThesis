@@ -1,0 +1,499 @@
+\chapter{Minimizing reason}
+\label{cp:minimizing_reason}
+In this section, we address the problem of minimizing a reason for an AMOSUM 
+constraint of the \(\ge\) type. In Section~\ref{sec:properties_reason},
+we  discuss some important properties of the reason. Subsequently,
+we introduce the concept of a \textit{redundant literal}
+and explain the notion of \textit{increment},in section ~\ref{sec:redundant_literal} and ~\ref{sec:increment} respectively.
+Utilizing these concepts,
+we define two algorithms in the final sections: one for obtaining 
+the minimal reason and the other for obtaining the cardinality minimal reason.
+
+All the discussion applies on the inference rule ~\eqref{eq:amosum:propagation:2} for a constraint $\sigma$ of the from ~\eqref{eq:amosum}, thus, when it is possible, the subscript 
+${\sigma}$ is omitted .
+
+
+\section{Properties of a reason}
+\label{sec:properties_reason}
+An important property of a reason $R$ is that $\Pi \models R$, i.e., 
+it is redundant.
+Let $R_1,R_2$ be two reason of $z$ of the form:
+\begin{align}
+    \label{eq:reasons_1}
+    &R_1 = \{z\} \cup \{\ell_1, \hdots, \ell_n, y\} \\ 
+    \label{eq:reasons_2}
+    &R_2 = \{z\} \cup \{\ell_1, \hdots, \ell_n, \overline{y}\}, 
+\end{align}
+where $n \ge 0$.
+In this case $R_1 \setminus \{y\} = R_2 \setminus \{\overline{y}\}$ and $z,y \in R_1$ and 
+$z,\overline{y} \in R_2$.
+Let $\Pi$ be a program such that $\Pi \models R_1$ and $\Pi \models R_2$.
+Let $I \models \Pi$ then $I \models R_1$ and $I \models R_2$, hence $I \models R_1 \land R_2$.
+We have seen in ~\ref{sec:bg-SM} that 
+$R_1 \land R_2 \rightarrow R_1 \otimes_{y} R_2$, thus $I \models  R_1 \otimes_{\ell} R_2$,
+hence $\Pi \models R_1 \otimes_{y} R_2 = \{z\} \cup \{\ell_1, \hdots, \ell_n\} = R$.
+Since $z \in R$ and $\Pi \models R$ then $R$ is a reason of $z$ in $\Pi$.
+\begin{example} continuing example ~\ref{ex:amosum:propagation:more-2}\\
+    When $I = [\overline{y}, \overline{w}]$ then $z$ is inferred,
+    thanks to \eqref{eq:amosum:propagation:2},with $\mathit{reason}(z) = \{z,y,w\} = R_1$.
+    If $I = [y, \overline{w}]$ then $mps(I,z) = \mathit{wh}(y) = 2 < 3$ and 
+    $lits\mid_{group(z)} \setminus \overline{I} = \{z\}$ so $z$ is inferred 
+    with $\mathit{reason}(z) = \{z,\overline{y},w\} = R_2$.
+    Since $R_1 = \{z\} \cup \{w,y\}$,
+    $R_2 = \{z\} \cup \{w,\overline{y}\}$
+    are two reason of the form ~\ref{eq:reasons} then 
+    $\Pi \models R_1 \otimes_{y} R_2 = \{z,w\} = R$ and $R$ is a reason of $z$.
+\end{example}
+We can see in the above example that $y$ can be removed from the reason, getting $R$,
+and $R$ continues to be a reason, so it is \textit{redundant}.
+
+\section{Redundant literal}
+\label{sec:redundant_literal}
+Let $L$ be set such that $\ell \in L$,
+then $L_{\overline{\ell}} = (L \setminus \{\ell\}) \cup \{\overline{\ell}\}$.
+A literal $\ell$ is \textit{redundant} in a reason $R$ of the literal $z$, under intepretation $I$, 
+if $R_{\overline{\ell}}$ is a reason of $z$ under $I_{\ell}$.
+If $\ell \in R$ then  $R,R_{\overline{\ell}}$ are of the form ~\ref{eq:reasons_1} and 
+~\ref{eq:reasons_2} respectively,
+and $R \otimes_{\ell} R_{\overline{\ell}} = R \setminus \{\ell\} = R'$ is a reason of $z$.
+Note that $R'$ is a reason under  $I' = \overline{R' \setminus \{z\}}$; 
+thus, given that $I' \subseteq I$, then $R'$ is a reason under $I$.
+It is easy to see that every redundat literal of a reason $R$ can be removed from it.
+\begin{example}{Continuing example ~\ref{ex:amosum:propagation:more-2}}\\
+    \label{ex:redundant_lit}
+    When $I = [\overline{y}, \overline{w}]$ then $z$ is inferred,
+    thanks to \eqref{eq:amosum:propagation:2},with $\mathit{reason}(z) = \{z,y,w\} = R$;
+    $R$ is a reason of $z$ under $I$.\\
+    Let's check if $y$ is redundant.
+    $R_{\overline{y}} = (R \setminus \{y\}) \cup \{\overline{y}\} = \{z,\overline{y},w\}$ and $I_{y} = [y,\overline{w}]$.
+    With $J_{R_{\overline{y}}} = [y,\overline{w}]$ the propagator, thanks to \eqref{eq:amosum:propagation:2}, 
+    would infer $z$.
+    So, $R_{\overline{y}}$ is a reason for $z$
+    and $y$ is redundant in $R$.
+    Now, let's take the case where $I = [x, \overline{y}, \overline{w}]$, 
+    and $z$ is inferred with $\mathit{reason}(z) = \{z, w, \overline{x}\} = R$, that is, 
+    $\overline{w} \land  x \rightarrow z$.
+    Let's check if $\overline{x}$ is redundant.\\
+    $R_{x} = \{z, w, x\}$ and it is a reason of $z$ under $I_{\overline{x}}[\overline{w}, \overline{y},\overline{x}]$, 
+    since $J_{R_x} = \overline{\{w, x\}} = [\overline{w},\overline{x}] \subseteq I_{\overline{x}}$
+    infers $z$. Hence, $x$ is redundant in $R$.
+\end{example}
+Continuing the discussion about the example ~\ref{ex:redundant_lit}.
+Let's examine the first case more in detail: $\mathit{reason}(z) = \{z, w, y\}$ is a 
+reason of $z$ under $I = [\overline{y}, \overline{z}]$. This is true because,
+given $J_R = \overline{\{z, w, y\} \setminus \{z\}} = \{w,y\} $,
+$mps(J_R,z) = \mathit{wh}(x) = 1 < 3$ and $lits\mid_{group(z)} \setminus \overline{I} = \{z\}$.
+Since $R_{\overline{y}} = \{z, w, \overline{y}\}$ then $J_{R_{\overline{y}}} = [\overline{w},y]$ and 
+$mps(J_{R_{\overline{y}}},z) = \mathit{wh}(y) = 2 < 3$ and
+$lits\mid_{group(z)} \setminus \overline{I_y} = \{z\}$, thus $z$ would be added in $I_y$.
+More in concrete, $y$ is redundant because $mps(J_R,z) + \mathit{inc}(y) = 1 + 1 < \mathit{bnd} = 3$ and
+$y \not\in group(z)$, where the $\mathit{inc}(y) = mps(J_{R_{\overline{y}}},z) - mps(J_R,z) = 2 - 1$.
+Now, let's take the other case, where $I = [x, \overline{y}, \overline{w}]$, 
+and $z$ is inferred with $\mathit{reason}(z) = \{z, w, \overline{x}\}$, that is, 
+$\overline{w} \land  x \rightarrow z$.
+As already seen $J_{R_{x}}=[\overline{x}, \overline{w}]$.\\
+$mps(J_{R_{x}},z) = \mathit{wh}(y) = 2 < 3$ and
+$lits\mid_{group(z)} \setminus \overline{I_{\overline{x}}} = \{z\}$, 
+so $\mathit{reason}(z)=\{z, x, w\}$
+and $\overline{x}$ is redundant.
+
+\section{Increment}
+\label{sec:increment}
+As mentioned before, increment of $\ell$, written $\mathit{inc}(\ell)$, defines 
+how much the $mps$ increases when that literal is flipped in the reason (to possibly
+be removed).
+
+\subsection{False literal}
+Let $\ell$ be a \textit{false} literal that is,
+$\overline{\ell} \in I$. 
+A reason $R$ of a literal $z$ under $I$ can contain $\ell$, let's assume $R$ to be 
+such reason.
+Let $J_R = \overline{R \setminus \{z\}}$, 
+$J_{R_{\overline{\ell}}} = \overline{R_{\overline{\ell}} \setminus \{z\}}$, thus
+$\ell \in J_{R_{\overline{\ell}}}$.\\
+Note that $mps(J_R,z) = \sum_{g \in \mathbb{G} \setminus
+\{\mathit{group}(z)\}}{\mathit{mwh}(J_R,g)}$ and \\
+$mps(J_{R_{\overline{\ell}}},z) = \sum_{g \in \mathbb{G} \setminus
+\{\mathit{group}(z)\}}
+{\mathit{mwh}(J_{R_{\overline{\ell}}},g)}$.
+Since $J_R \setminus \lits|_{\group(\ell)} = J_{R_{\overline{\ell}}} \setminus \lits|_{\group(\ell)}$,
+that is, all the literals outside $\group(\ell)$ remain with the same value;
+then just the maximum weight of $\lits|_{\group(\ell)}$ can change.
+Hence,
+$$ \inc(\ell) = \mathit{mps}(J_{R_{\overline{\ell}}},z)-\mathit{mps}(J_r,z) = 
+\mathit{mwh}(J_{R_{\overline{\ell}}},\mathit{group}(\ell)) - \mathit{mwh}(J_r,\mathit{group}(\ell))$$
+Hence, when a literal has to be checked to be redundant and it is false then 
+$\inc(\ell)$ has to be considered has the increment of the $\mps$.
+
+\subsection{True literal}
+Let $\ell$ be a \textit{true} literal that is,
+$\ell \in I$. 
+A reason $R$ of a literal $z$ under $I$ can contain $\overline{\ell}$, let's assume $R$ to be 
+such reason.
+Then  $J_R = \overline{R \setminus \{z\}}$ and $J_{R_{\ell}} = \overline{R_{\ell} \setminus \{z\}}$, thus
+$\overline{\ell} \in J_{R_{\ell}}$.\\ 
+Since $\ell \in I$ then $R$, by construction, does not containt any literal of $group(\ell)$ 
+except $\ell$, then $R_{\ell}$ will do the same.
+Since $J_{R_{\ell}} = \overline{R_{\ell} \setminus \{z\}}$ then also $J_{R_{\ell}}$ 
+has no literal of group of $\ell$
+except $\overline{\ell}$ (since it is false, it does not contribute to the $\mps$).
+That is, $\mathit{mwh}(J_{R_{\ell}},group(\ell))= \max\{ \mathit{mwh}(x) \mid \mathit{group}(x) = group(\ell) \} 
+= \mathit{mwh}(group(\ell))$.
+It is easy to see that
+$$\inc(\ell) = \mathit{mps}(J_{R_{\ell}},z)-\mathit{mps}(J_r,z) = \mathit{mwh}(group(\ell)) - \mathit{wh}(\ell)$$
+Hence, when a literal has to be checked to be redundant and it is true then 
+$\inc(\ell)$ has to be considered has the increment of the $\mps$.
+
+\subsection{Algorithm}
+In this section is proposed the algorithm computing the increment and its lower bound 0 is proved.
+The increment is always non-negative since removing a literal from a reason 
+in the worst case does not affect the mps.
+
+\begin{theorem}
+    \label{theorem:inc}
+    Given a reason $R$ and a literal $\ell \in R$ then $\inc(\ell) \ge 0$.
+\end{theorem}
+
+\begin{proof}
+    Case when $I \models \ell \in R$.
+    Then $\inc(\ell) = \mwh(\group(\ell))-\mathit{wh}(\ell)$. Since $\mwh(\group(\ell))$ is the  
+    maximum weight in $\lits \mid_{\group(\ell)}$ and $\ell \in \lits \mid_{\group(\ell)}$ then 
+    $\mwh(\group(\ell)) \ge \mathit{wh}(\ell)$ and $\inc(\ell) \ge 0$.
+
+    Case when $I \models \overline{\ell} \in R$.
+    For readability let define $g = \group(\ell)$.\\
+    Then $\inc(\ell) = \mathit{mwh}(J_{R_{\overline{\ell}}},g) - \mathit{mwh}(J_R,g).$\\
+    Since $J_{R_{\overline{\ell}}} = (J_R \setminus \{\overline{\ell}\}) \cup \{\ell\}$ then 
+    $$\mathit{mwh}(J_{R_{\overline{\ell}}},g) = 
+    \max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\}$$
+    It is trivial to see that 
+    $$\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\}
+    \ge \max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\}$$
+    Since $\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} = \mwh(J_R,g)$
+    then $$\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\}
+    \ge \mwh(J_R, g).$$
+    Given that  $\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\} = 
+    \mathit{mwh}(J_{R_{\overline{\ell}}},g)$, finally, 
+    $$\mathit{mwh}(J_{R_{\overline{\ell}}},g) \ge \mwh(J_R, g)$$
+
+    In both cases $\inc(\ell) \ge 0$.\\ Hence, $\inc(\ell) \ge 0$ for all $\ell \in R$
+\end{proof}
+
+The following algorithm computes the increment as previously described.
+\begin{algorithm}[h]\small
+    \caption{inc}
+        \label{alg:cdcl}
+        \SetKwInOut{Input}{Input}
+        \Input{literal $\ell \in R$, interpretation $I$, reason $R$}.
+        \SetKwBlock{Loop}{Loop}{end}
+        \Begin{
+            \If {$I \models \ell$}{
+                \Return{ $\mwh(\group(\ell))-\mathit{wh}(\ell)$}
+            }\Else{
+                $J_R = \overline{R \setminus \{z\}}$ \\
+                $J_{R_{\overline{\ell}}} = \overline{R_{\overline{\ell}} \setminus \{z\}}$\\
+                \Return{$\mathit{mwh}(J_{R_{\overline{\ell}}},\mathit{group}(\ell)) - \mathit{mwh}(J_R,\mathit{group}(\ell))$}
+            }
+        }
+\end{algorithm}
+
+Given a reason $R$, intepretation $I$ and a set $S \subseteq S$
+the \textit{total increment of S} denoted $\inc(S,I,R) = \sum_{\ell \in S} \inc(\ell, I, R \setminus S \cup \{\ell\})$ 
+
+\section{Minimality}
+In this section we  propose two algorithms to minimize the reason 
+generated by the propagator. The first algorithm  (~\ref{subsec:minimal_reason}) is an algorithm
+to get the minimal reason and it has linear complexity in the size of the reason.
+In subsection ~\ref{subsec:cardinality_minimal_reason}), instead,
+a new algorithm to compute the cardinality minimal reason is proposed,
+with \textit{pseudo-polynomial} complexity.
+For both algorithms a proof of correcntess is provided 
+and for the second one \textit{NP-Hardness} is proved.
+
+\subsection{Minimal reason}
+\label{subsec:minimal_reason}
+
+Given a reason $R$ of a literal $\ell$ then it is minimal if there  not exists 
+a literal $\ell' \in R$ such that $R \setminus \{\ell'\}$ is a reason of 
+$\ell$. In other words, $R$ is minimal if it does not containts redundant literals.
+As seen before with each literal $\ell$ in a reason $R$ has an \textit{increment}.
+That is, the increment to the mps when  $\ell$ is removed from the reason.
+
+At this point, an important parallel must be drawn: 
+minimizing a reason \(R\) equates to maximizing the
+number of literals removed from \(R\). 
+This first algorithm identifies the \textit{maximal} 
+set of literals to be removed from \(R\).
+
+\paragraph{Maximal Subset Sum}
+As mentioned before finding the minimal reason is 
+equal to find the maximal set of literal to remove from the reason.
+Let $R$ be a reason of a literal $z$ under interpretation $I$ and
+$S \subseteq R'$ be a set of literals where $R' = R\setminus\lits|_{\group(z)}$.
+$S$ can be removed from $R$ if 
+$$\sum_{e \in S}\inc(e,I,(R'\setminus S) \cup \{e\}) \le s $$
+where $s = \mathit{bnd} - \mps(I,z) - 1$.
+To comprehend the reasoning behind $s$, it is crucial to observe that, 
+given $J = B(R'\setminus S)$ 
+then $$\mps(J,z) = \mps(I,z) + \sum_{e \in S}\inc(e,I,(R'\setminus S) \cup \{e\})$$
+For $R'\setminus S$ to remain a reason
+the condition $\mps(R'\setminus S,z) \le \mathit{bnd} - 1$
+must continue to hold.
+Since $\mps(I,z) \le \mathit{bnd} - 1 $ (otherwise $R$ would not be a reason)
+and $\sum_{e \in S}\inc(e,I,(R'\setminus S) \cup \{e\}) \le \mathit{bnd} - \mps(I,z) - 1$
+then $$\mps(I,z) + 
+\sum_{e \in S}\inc(e,I,(R'\setminus S) \cup \{e\}) \le \mps(I,z) + 
+\mathit{bnd} - \mps(I,z) - 1 = \mathit{bnd} - 1$$.
+Now, the entire algorithm can be defined. 
+It begins with an empty set $S$ and a current increment $ci$
+equal to 0. For each literal $\ell$ that is not in the group 
+of $z$ it verifies if $\ell$ is \textit{redundant}.
+If it is, it is added to the set $S$ and the $ci$
+increase of $\inc(\ell)$. 
+\begin{algorithm}[h]\small
+    \caption{Maximal Subset sum (mss)}
+    \label{alg:maximal_subset}
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Parameters}{Paramenters}
+    \SetKwInOut{Output}{Output}
+    \Input{intepretation $I$, reason $R$ of $z$, intepretation $I$, threshold $s$}
+    \Parameters{\textit{inc} function}
+    \Output{subset maximal}
+    \Begin{
+        $\mathit{S} \gets [\,]$ \\
+        $\mathit{ci} \gets 0$ \\
+        \For{$\ell \in R \setminus \lits|_{\group(z)}$}{
+            \If{$\mathit{ci} + \inc(\ell,I,R \setminus \mathit{S}) \leq s$}{
+                $\mathit{ci} \gets$ $ci + \inc(\ell,I,R\setminus \mathit{S})$ \\
+                $\mathit{S} \gets \mathit{S} \cup \{\ell\} $\\
+            }
+        }
+        \Return{\textit{S}}
+    }
+\end{algorithm}
+
+\subparagraph{Proof Correctness}
+
+Before proving the theorem about the correcntess of algorithm ~\ref{alg:maximal_subset}
+the following lemma has to be proved.
+
+\begin{lemma}
+    \label{lemma:maximal_subset}
+    Given a reason $R$, a set $S \subseteq R$, a literal $\ell \in R \setminus S$
+    and $\mathit{ci},s \in \mathbb{N}$.
+    If $\mathit{ci} +  \inc(\ell,I,R \setminus \mathit{S}) > s$
+    then every superset  $S' \supseteq S \cup \{\ell\}$ yields to 
+    an increment greater of $s$
+\end{lemma}
+
+\begin{proof}
+    The total increment of $S' = \inc(S',I,R) = \inc(S,I,R) + \inc(\ell,I,R \setminus \mathit{S}) + 
+    \sum_{\ell \in S'} \inc(x, I, R \setminus S' \cup \{x\})$.
+    Since $\inc(S,I,R) + \inc(\ell,I,R \setminus \mathit{S}) > s$ by assumption and 
+    ,thanks to theorem ~\ref{theorem:inc}, $\inc(x, I, R \setminus S' \cup \{x\}) \ge 0$ then 
+    $\inc(S',I,R) > s$.
+    Hence, $S'$ is not a subset of $R$ giving as sum a value less than $s$.
+
+\end{proof}
+
+\begin{theorem}
+    The Maximal Subset Sum algorithm returns the maximal subset $S$ where its sum 
+    of increments of $S$ is less than $\mathit{bnd} - 1$
+\end{theorem}
+
+\begin{proof}
+    Let $S_m$ the final subset returned by \textit{mss}.
+    Arguing by contradiction, if it is not maximal 
+    it means that there is a literal $\ell \in R \setminus S_m$ that could be
+    added to $S_m$.
+    But since $\mathit{ci} +  \inc(\ell,I,R \setminus \mathit{S}) \ge s$
+    for some $S$.
+    Since $S \subseteq S_m$, then $S \cup \{\ell\} \subseteq S_m \cup \{\ell\}$,;
+    thanks to theorem ~\ref{lemma:maximal_subset} $S_m \cup \{\ell\}$
+    is not a subset giving as sum a value less then $s$, that is, $\ell$ cannot be 
+    added to $S_m$.
+    Hence, $S_m$ is maximal,
+\end{proof}
+
+
+\subsection{Cardinality minimal reason}
+\label{subsec:cardinality_minimal_reason}
+
+This section, as previously mentioned, we propose a new algorithm to minimize the reason,
+the main difference is that with algorithm ~\ref{alg:maximal_subset} the final reason 
+is not guaranteed to be cardinality-minimal.
+This new approach can find a cardinality-minimal reason, at the price of 
+having a \textit{pseuso-polynomial} algorithm.
+Before introducing the algorithm some preliminars have to be done.
+
+\paragraph*{Preliminars} All the previous notation continue to hold.
+Let $I$ an interpretation, $R$ be a reason of $z$ generated under $I$ 
+and $S \subseteq R$ a set of redundant literals of $R$.\\
+Function $\mathit{\ml_\inc} : \mathcal{P}(R) \times \mathit{G} \mapsto R$ 
+returns the \textit{maximum increment literal in S of group g};
+that is, 
+$\ml_\inc(S,g)= \arg\max_{k \in S \cap \lits|_{{\group(g)}}} \inc(k)$.\\   
+Given a set , a literal $\ell$ is active in $S$ if $\ml_\inc(S,\group(\ell)) = \ell$;
+the set of active literal of $S$ is equal to $A_S = \{\ell \in S \mid \ell \text{ is active in S}\}$.
+Given a literal $l \in R$ then $blw: R \mapsto \mathcal{P}(R)$ is a function 
+that returns all the literals \textit{below} $\ell$, 
+that is, $\blw(\ell) = \{ k \in \lits|_{\group(\ell)} \mid \inc(k,I,R) \le \inc(l,I,R) \}$.
+Function $\mathit{sum}(S) = \sum_{\ell \in A_S} \inc(\ell,I,R)$ is the sum of all increments  
+of active literals of $S$.\\
+A extension of a set $S$ with a literal $\ell \in R \setminus S$, written as $S' = S \ext \ell$,
+is equal to $S' = S \cup blw(\ell)$.\\
+A sufficient condition for a literal $\ell$ 
+to be active in $S' = S \ext \ell$ is that 
+$S \cap \group(\ell) = \emptyset$.
+Let $(\lits\_\mathit{ord}_g, \preceq)$ be an ordered set where $\lits\_\mathit{ord}_g = \lits|_g$
+and $\preceq = \{(l,l') \in \lits|_g \times \lits|_g \,:\, \inc(l,I,R) \ge \inc(l',I,R)\}$.\\
+Let $L = \{l^1_1,\hdots,l^1_{m_1},\hdots,l^g_1,\hdots,l^g_{m_g},\hdots,l^k_1,\hdots,l^k_{m_k} \}$
+where $k = |\G|$, $m_g$ is the size of $lits\_\mathit{ord}|_g$ , $l^g_j$ is the j-th literal in $\lits\_\mathit{ord}_{g}$.
+The set $L_j$ represent the first $j$ elements of $L$ and $n = |L|$.
+Abusing of notation, given a literal $\ell_j \in L$, \{$\ell_j\} = L_j \setminus L_{j-1}$, i.e., $\ell_j$
+is the \textit{j-th} literal in $L$.
+% Let $M$ be a matrix where each cell is a subset of $L$ or it is equal to $\Box$.
+% $M_{i,j} \subseteq L$  is named \textit{correct} 
+% if it is the cardinality-maximal set with $sum(M_{i,j}) = i$ and $M_{i,j} \subseteq L_j$.
+% If $M_{i,j} = \Box$ then it means that there are no subset of $L$ such that the total increment 
+% is less or equal to $s$.
+
+\paragraph{Cardinality-Maximal Set}
+As done in section ~\ref{subsec:minimal_reason} to find a minimal reason $R'$ starting 
+from $R$ we compute a maximal subset $S$ of $R$ of redudant literals to remove from $R$.
+In the first approach, the cardinal-minimality property is not ensured, instead 
+in this case $S$ is \textit{cardinality-maximal}.
+Differently from the ~\ref{alg:maximal_subset}, here the increment is \textbf{always}
+with respect the \textit{`initial'} increment, that is, with respect to the initial reason $R$;
+instead in the first algorithm the increment dependes from the \textit{current} reason.
+  
+
+The algorithm ~\ref{alg:cmss} computes the cardinality-maximal subset $S$ of $L$ such that 
+the total increment $\inc(S,I,R) \le s$, using a \textit{dynamic} approach.
+It creates a matrix $M$ where each cell $M_{i,j}$ has domain $\mathcal{P}(L) \cup \{\Box\}$.
+$M_{i,j}$ represents the cardinality-maximal set with $sum(M_{i,j}) = i$ and $M_{i,j} \subseteq L_j$,
+if $M_{i,j} = \Box$ it means that such subset does not exists.
+When $M_{i,j} = \Box$ then, abusing of notation, $|M_{i,j}| = -1$.
+The matrix is initialized with function \textit{Init} ~\ref{alg:init}.
+This function will initialize just the first row and column.
+It is trivial to see that $M_{0,j}$ will contain all the literals of $L_j$ 
+with increment equal to 0, since the sum $i = 0$.
+Thus, the first row will be 
+$M_{0,j} = \{ \ell \mid \ell \in L_j \land inc(\ell,I,R) = 0\} \quad \forall j \in \{1, \hdots , n\}$.
+When the sum $ i > 0$ then with $L_0 = \emptyset$ is impossible to reach $i$, 
+that's why $M_{i,0} = \Box \quad \forall i \in \{1, \hdots , s\}$.
+After initilization the algorithm ~\ref{alg:cmss} constructs each cell $M_{i,j}$
+, with $ 1 \ge i \ge s$ and $1 \ge j \ge n$, starting from $M_{i,j-1}$ and $M_{i-w,j-1}$,
+where $w = \inc(\ell_j,I,R)$.
+Let $S_{\overline{\ell}}$ and $S_{\ell}$ 
+represent the cardinality maximum sets, considering literals in $L_j$ and having 
+a total increment equal to $i$, with \(\ell_j\) 
+non-active and \(\ell_j\) active, respectively. 
+By selecting the larger set between these two, 
+we obtain the maximum subset considering literals in $L_j$.
+$S_{\overline{\ell}} = M_{i,j-1}$, since is the largest set giving as sum $i$
+and $\ell$ is not active given that $M_{i,j-1}$ considers just the first $j-1$ literals;
+note, this does not mean that $M_{i,j-1} \cap \{\ell\} = \emptyset$, since can happen 
+that for some $d < j$ $M_{i,d} = M_{l,k} \ext \ell_d$ and $\group(\ell_d) = \group(\ell_j)$.
+Instead finding $S_{\ell}$ is not so trivial, we cannot just take $M_{i-w,j-1}$,
+since $M_{i-w,j-1}$ could containt a literal $\ell_d$ such that $d < j$,
+$\group(\ell_d) = \group(\ell_j)$ and in that case 
+$\mathit{sum}(M_{i-w,j-1}) = \mathit{sum}(M_{i-w,j-1} \ext \ell_j)$;
+it is due to the fact that $\ell_j$ would not be active.
+Since $L$ is ordered, and within each group there is a descending order, and since each 
+cell $M_{i,j}$ is computed from left to right
+then $M_{i-w,j-1} \cap \lits_{\group(\ell)} = \emptyset$ is also a \textit{necessary}
+condition to have $\ell$
+active in $M_{i-w,j-1} \ext \ell$
+(so it becomes necessary and sufficient).
+Since, by construction, $M_{i-w,j-1}$ can contain just literals \textit{`greater'} (in terms of 
+increment) of $\ell_j$, and if this happens also $\ell_j$ is inside $M_{i-w,j-1}$ then 
+it is sufficient to check that $M_{i-w,j-1} \cap \{\ell_j\} = \emptyset$.
+Taking $M_{i-w,k} \ext \ell_j$ with $k = \arg \max_{k \in \{1,\hdots,j-1\}} \ell_j \not\in M_{i-w,k}$ 
+yields the cardinality maximum subset with a sum of \( i \), and \(\ell_j\) active.
+Hence, $S_{\ell} = M_{i-w,k}$.
+Subsequently, after the for loop is completed all cells of the matrix are correct 
+and it is enough to take the largest set in the last column, that is, the 
+largest set giving as sum a value less or equal to $s$ considering all literals in $L$.
+\begin{algorithm}[h]\small
+\caption{Cardinality Maximum Subset Sum (cmss)}
+    \label{alg:cmss}
+    \SetKwInOut{Input}{Input} 
+    \SetKwInOut{Parameters}{Parameters}
+    \SetKwInOut{Output}{Output}
+    \SetKwBlock{Loop}{Loop}{end}
+    \Input{L, $I : \text{interpretation}$, $s \in \mathbb{N}$}
+    \Parameters{\(group : \text{Group Function}\), \(inc : \text{Increment Function}\)}
+    \Output{$S$: Set of literals representing the maximum subset}
+    \Begin{
+        $n \gets |L|$\\
+        $M \gets \mathit{Init}(I,R,L,s)$\\
+        \For{\(i \in  \{ 1, \hdots, s\}\) }{
+            \For{\(j \in  \{ 1, \hdots, s\}\) }{
+                \(\ell \leftarrow L[j - 1]\)\\
+                \(w \leftarrow inc(\ell)\)\\
+                \(M_{i,j} \leftarrow M_{i,j-1}\)\\
+                \If{\(i \geq w\)}{
+                    \If{$(\Box \not\in M_{i,j}) \lor (\Box \not\in M_{i - w,j - 1})$}{
+                        \For{$k \gets j-1$ \KwTo $0$}{
+                            \If{\(\ell \notin M_{i - w,k}\) $\lor$ $\Box \in M{i - w,k}$}{
+                                \textbf{break}
+                            }
+                        }
+                    $\mathit{bool} \gets \Box \not\in M_{i - w,k} \land \ell \notin M_{i - w,k}$ \\
+                    $wls \leftarrow M_{i - w,k} \ext \ell \quad \textbf{if } \mathit{bool}  \textbf{  Else  } \Box$\\
+                    $M_{i,j} \leftarrow \arg \max \{|wls|, |M_{i,j - 1}| \}$
+                }
+            }
+            }
+        }
+        $S = \arg\max_{i \in \{0, \hdots, s\}} |M_{i,n}|$ \\
+        \Return{$S$}
+    }
+\end{algorithm}
+
+\begin{algorithm}[h]\small
+    \caption{Init}
+        \label{alg:init}
+        \SetKwInOut{Input}{Input}
+        \Input{interpretation $I$, reason $R$, $L$, threshold $s \in \mathbb{N}$}.
+        \SetKwBlock{Loop}{Loop}{end}
+        \Begin{
+            $M_{0,j} = \{ \ell \mid \ell \in L_j \land inc(\ell,I,R) = 0\} \quad \forall j \in \{1, \hdots , |L|\}$\\
+            $M_{i,0} = \Box \quad \forall i \in \{1, \hdots , s\}$\\
+        }
+\end{algorithm}
+
+\subparagraph{Proof Correcntess}
+To formally prove that algorithm ~\ref{alg:cmss} is correct a lemma 
+has to be proved.
+\begin{lemma}
+    Given a set of literals $L$, a literal $\ell \in L$ and a set $S_{\bar{\ell}} \subseteq  L$
+    and $S_{\ell} \subseteq L$ and a sum $s$.
+    Let $S_{\bar{\ell}}$ is the maximum cardinality subset giving $s$ as sum with $\ell$ being an \textit{non-active} literal
+    and $S_{\ell}$ is the maximum cardinality subset with $\ell$ being an \textit{active literal} giving $s$  as sum.\\
+    Let $ S = \arg\max_{X \in \{S_{\ell}, S_{\bar{\ell}}\}} |X| $. \\ 
+    Then $S \subseteq L$ is a maximum cardinality subset that gives as sum $s$.
+    \label{lemma1}
+\end{lemma}
+
+\begin{proof}
+    Let's assume by contradiction that $S$ is not the maximum cardinality subset that gives as sum $s$.
+    So there exists a set $S' \subseteq L$ such that $|S'| > |S|$.
+    If $\ell \not\in A_{S'}$ then $|S'| > |S_{\bar{\ell}}|$, that is $S_{\bar{\ell}}$ 
+    is not the maximum cardinality set 
+    with $\ell$ being a \textit{non-active literal} giving as sum $s$, but this is a contradiction.
+    So $\ell \in A_{S'}$ then $|S'| > |S_{\ell}|$, that is $S_{\ell}$ is not the maximum cardinality set 
+    with $\ell$ being a \textit{active literal} giving as sum $s$, but this is a contradiction.
+    So $\ell \in A_{S'}$ and $ \ell \not\in A_{S'}$ and this is a contradiction.
+\end{proof}
+
+\begin{theorem}
+    The Cardinality Maximal Subset Sum algorithm returns the cardinality maximal subset $S$ where its sum 
+    of increments of $S$ is less than $\mathit{bnd} - 1$
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
+

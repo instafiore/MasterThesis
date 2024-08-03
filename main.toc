@@ -1,8 +1,29 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{Contents}{2}{chapter*.2}%
-\contentsline {chapter}{Introduction}{3}{chapter*.3}%
-\contentsline {chapter}{\numberline {1}Background}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Syntax and Sematincs}{5}{section.1.1}%
-\contentsline {section}{\numberline {1.2}ALO (clauses) and AMO as a Special Cases}{8}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Stable Model Search, Propagators and Learning}{9}{section.1.3}%
-\contentsline {chapter}{\numberline {2}AMOSUM constraint}{14}{chapter.2}%
+\contentsline {chapter}{Contents}{2}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Background}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Syntax and Semantics}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}ALO (clauses) and AMO as a Special Cases}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Stable Model Search, Propagators and Learning}{9}{section.2.3}%
+\contentsline {chapter}{\numberline {3}AMOSUM}{15}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Syntex and Semantics}{15}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Inference rules}{16}{section.3.2}%
+\contentsline {paragraph}{AMO inference rule}{16}{section*.5}%
+\contentsline {paragraph}{SUM inference rule}{16}{section*.6}%
+\contentsline {paragraph}{Enforced falsity rule}{17}{section*.7}%
+\contentsline {section}{\numberline {3.3}Propagate}{18}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Unroll}{20}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Minimizing reason}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Properties of a reason}{23}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Redundant literal}{24}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Increment}{25}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}False literal}{25}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}True literal}{26}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Algorithm}{26}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Minimality}{27}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Minimal reason}{28}{subsection.4.4.1}%
+\contentsline {paragraph}{Maximal Subset Sum}{28}{section*.13}%
+\contentsline {subparagraph}{Proof Correctness}{29}{section*.15}%
+\contentsline {subsection}{\numberline {4.4.2}Cardinality minimal reason}{30}{subsection.4.4.2}%
+\contentsline {paragraph}{Cardinality-Maximal Set}{31}{section*.17}%
+\contentsline {subparagraph}{Proof Correcntess}{32}{section*.20}%

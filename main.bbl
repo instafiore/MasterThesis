@@ -65,8 +65,8 @@
       \strng{authorbibnamehash}{e92901947a7da887056e10cf30824296}
       \strng{authornamehash}{e92901947a7da887056e10cf30824296}
       \strng{authorfullhash}{e92901947a7da887056e10cf30824296}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Annals of Mathematics and Artificial Intelligence}
@@ -79,6 +79,80 @@
       \verb{doi}
       \verb 10.1023/A:1018930122475
       \endverb
+    \endentry
+    \entry{DBLP:journals/cacm/BrewkaET11}{article}{}
+      \name{author}{3}{}{%
+        {{hash=cc13d7b1adc149ede39626958ab7ef36}{%
+           family={Brewka},
+           familyi={B\bibinitperiod},
+           given={Gerhard},
+           giveni={G\bibinitperiod}}}%
+        {{hash=afcea6fea5dffb083d7000f489d2a314}{%
+           family={Eiter},
+           familyi={E\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=e51ba8f5088b7710ab41cb853d82ad5a}{%
+           family={Truszczynski},
+           familyi={T\bibinitperiod},
+           given={Miroslaw},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{880d8be913a67ecda2ccee6156f2a8e8}
+      \strng{fullhash}{880d8be913a67ecda2ccee6156f2a8e8}
+      \strng{bibnamehash}{880d8be913a67ecda2ccee6156f2a8e8}
+      \strng{authorbibnamehash}{880d8be913a67ecda2ccee6156f2a8e8}
+      \strng{authornamehash}{880d8be913a67ecda2ccee6156f2a8e8}
+      \strng{authorfullhash}{880d8be913a67ecda2ccee6156f2a8e8}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Commun. {ACM}}
+      \field{number}{12}
+      \field{title}{Answer set programming at a glance}
+      \field{volume}{54}
+      \field{year}{2011}
+      \field{pages}{92\bibrangedash 103}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/2043174.2043195
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/2043174.2043195
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/2043174.2043195
+      \endverb
+    \endentry
+    \entry{GelfondL90}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=9ddf8a4d782a7a6f34c25fbc4ca822b1}{%
+           family={Gelfond},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3f9f7c9937297077325233d345cf9c91}{%
+           family={Lifschitz},
+           familyi={L\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{701aac313c79e95b5099346df9bba24a}
+      \strng{fullhash}{701aac313c79e95b5099346df9bba24a}
+      \strng{bibnamehash}{701aac313c79e95b5099346df9bba24a}
+      \strng{authorbibnamehash}{701aac313c79e95b5099346df9bba24a}
+      \strng{authornamehash}{701aac313c79e95b5099346df9bba24a}
+      \strng{authorfullhash}{701aac313c79e95b5099346df9bba24a}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Logic Programming: Proc.~of the Seventh International Conference}
+      \field{title}{Logic programs with classical negation}
+      \field{year}{1990}
+      \field{pages}{579\bibrangedash 597}
+      \range{pages}{19}
     \endentry
     \entry{DBLP:conf/aaaiss/BartholomewLM11}{inproceedings}{}
       \name{author}{3}{}{%
@@ -107,8 +181,8 @@
       \strng{authorbibnamehash}{3a6afa84eb999c4ae6b52be2abe4c2a5}
       \strng{authornamehash}{3a6afa84eb999c4ae6b52be2abe4c2a5}
       \strng{authorfullhash}{3a6afa84eb999c4ae6b52be2abe4c2a5}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Logical Formalizations of Commonsense Reasoning, {AAAI} Spring Symposium}
@@ -145,8 +219,8 @@
       \strng{authorbibnamehash}{a43a94ceeab504985e66f6bbbad1c2c4}
       \strng{authornamehash}{a43a94ceeab504985e66f6bbbad1c2c4}
       \strng{authorfullhash}{a43a94ceeab504985e66f6bbbad1c2c4}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Artif. Intell.}
@@ -180,8 +254,8 @@
       \strng{authorbibnamehash}{b4fdbd544113be5bee98fa5db61cf3cb}
       \strng{authornamehash}{b4fdbd544113be5bee98fa5db61cf3cb}
       \strng{authorfullhash}{b4fdbd544113be5bee98fa5db61cf3cb}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{{ACM} Trans. Comput. Log.}
@@ -220,8 +294,8 @@
       \strng{authorbibnamehash}{097028662c2b67ea608d915b205276aa}
       \strng{authornamehash}{097028662c2b67ea608d915b205276aa}
       \strng{authorfullhash}{097028662c2b67ea608d915b205276aa}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Theory and Practice of Logic Programming}
@@ -270,8 +344,8 @@
       \strng{authorbibnamehash}{f724e22d13de3f482dcb9e504bcbc382}
       \strng{authornamehash}{797369f950493391485d7c686c3dd026}
       \strng{authorfullhash}{f724e22d13de3f482dcb9e504bcbc382}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Artif. Intell.}
@@ -315,8 +389,8 @@
       \strng{authorbibnamehash}{41a9fe6cb3495fb0ea34b62a7c23f9a9}
       \strng{authornamehash}{41a9fe6cb3495fb0ea34b62a7c23f9a9}
       \strng{authorfullhash}{41a9fe6cb3495fb0ea34b62a7c23f9a9}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Artif. Intell.}
@@ -362,8 +436,9 @@
       \strng{authorbibnamehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
       \strng{authornamehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
       \strng{authorfullhash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{extraname}{1}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Handbook of Satisfiability}
@@ -473,6 +548,148 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1017/S1471068419000450
+      \endverb
+    \endentry
+    \entry{davis1960computing}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3030b497304f96b07639c080bd40073a}{%
+           family={Davis},
+           familyi={D\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=38ee782b607fde17380ec448bf0084ef}{%
+           family={Putnam},
+           familyi={P\bibinitperiod},
+           given={Hilary},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM New York, NY, USA}%
+      }
+      \strng{namehash}{20be031355523c8e3949b29c47fe930f}
+      \strng{fullhash}{20be031355523c8e3949b29c47fe930f}
+      \strng{bibnamehash}{20be031355523c8e3949b29c47fe930f}
+      \strng{authorbibnamehash}{20be031355523c8e3949b29c47fe930f}
+      \strng{authornamehash}{20be031355523c8e3949b29c47fe930f}
+      \strng{authorfullhash}{20be031355523c8e3949b29c47fe930f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the ACM (JACM)}
+      \field{number}{3}
+      \field{title}{A computing procedure for quantification theory}
+      \field{volume}{7}
+      \field{year}{1960}
+      \field{pages}{201\bibrangedash 215}
+      \range{pages}{15}
+    \endentry
+    \entry{robinson1965machine}{article}{}
+      \name{author}{1}{}{%
+        {{hash=43fffc00dff32adf8586a8a056cedf2d}{%
+           family={Robinson},
+           familyi={R\bibinitperiod},
+           given={J.A.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{43fffc00dff32adf8586a8a056cedf2d}
+      \strng{fullhash}{43fffc00dff32adf8586a8a056cedf2d}
+      \strng{bibnamehash}{43fffc00dff32adf8586a8a056cedf2d}
+      \strng{authorbibnamehash}{43fffc00dff32adf8586a8a056cedf2d}
+      \strng{authornamehash}{43fffc00dff32adf8586a8a056cedf2d}
+      \strng{authorfullhash}{43fffc00dff32adf8586a8a056cedf2d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the ACM (JACM)}
+      \field{number}{1}
+      \field{title}{A machine-oriented logic based on the resolution principle}
+      \field{volume}{12}
+      \field{year}{1965}
+      \field{pages}{23\bibrangedash 41}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1145/321250.321253
+      \endverb
+    \endentry
+    \entry{DBLP:series/faia/SilvaLM09}{incollection}{}
+      \name{author}{3}{}{%
+        {{hash=f70023f5ae71cc9e0f49c1fe07f3a4ce}{%
+           family={Marques{-}Silva},
+           familyi={M\bibinitperiod},
+           given={João},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9c9daeb31ec4a047b37c62c30a095271}{%
+           family={Lynce},
+           familyi={L\bibinitperiod},
+           given={Inês},
+           giveni={I\bibinitperiod}}}%
+        {{hash=e146ec2b9c0b7fc6062cd4dec46383d4}{%
+           family={Malik},
+           familyi={M\bibinitperiod},
+           given={Sharad},
+           giveni={S\bibinitperiod}}}%
+      }
+      \name{editor}{4}{}{%
+        {{hash=22081d00e30965a89f413e528510617e}{%
+           family={Biere},
+           familyi={B\bibinitperiod},
+           given={Armin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=adbf24c301850e2a04b396044f205f4d}{%
+           family={Heule},
+           familyi={H\bibinitperiod},
+           given={Marijn},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9110f8aed04ba11abf11338d3fa9e672}{%
+           family={Maaren},
+           familyi={M\bibinitperiod},
+           given={Hans},
+           giveni={H\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=0083caa546c0b2a86576a95dbef046a9}{%
+           family={Walsh},
+           familyi={W\bibinitperiod},
+           given={Toby},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {{IOS} Press}%
+      }
+      \strng{namehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{fullhash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{bibnamehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{authorbibnamehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{authornamehash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{authorfullhash}{15dc8fe422a5e07e3e2f5ceb9f29f6af}
+      \strng{editorbibnamehash}{60fef90d3c5cb633c07f7a5f833c667a}
+      \strng{editornamehash}{ec6bc0b602e5797c3d668ee153b1a4ab}
+      \strng{editorfullhash}{60fef90d3c5cb633c07f7a5f833c667a}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Handbook of Satisfiability}
+      \field{series}{Frontiers in Artificial Intelligence and Applications}
+      \field{title}{Conflict-Driven Clause Learning {SAT} Solvers}
+      \field{volume}{185}
+      \field{year}{2009}
+      \field{pages}{131\bibrangedash 153}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.3233/978-1-58603-929-5-131
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.3233/978-1-58603-929-5-131
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3233/978-1-58603-929-5-131
       \endverb
     \endentry
     \entry{DBLP:conf/iclp/GebserKKS09}{inproceedings}{}
