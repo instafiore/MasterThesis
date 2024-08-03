@@ -12,7 +12,7 @@
 \contentsline {paragraph}{SUM inference rule}{17}{section*.6}%
 \contentsline {paragraph}{Enforced falsity rule}{18}{section*.7}%
 \contentsline {section}{\numberline {3.3}Propagate}{19}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Unroll}{23}{section.3.4}%
+\contentsline {section}{\numberline {3.4}Unroll}{22}{section.3.4}%
 \contentsline {chapter}{\numberline {4}Minimizing reason}{24}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Properties of a reason}{24}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Redundant literal}{25}{section.4.2}%

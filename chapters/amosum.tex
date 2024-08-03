@@ -266,7 +266,18 @@ In all the other cases the next phases is not required.
     }
 \end{algorithm}
 
-Now let's move to the actual \textit{propagation} phase.
+Now, let's proceed to the \textit{propagation} phase.
+To infer a literal, we only need to consider its group and the current $\mps$.
+Thus, Algorithm~\ref{alg:propagate_phase} iterates through all groups to derive literals.
+The first two blocks implement the two inference rules: \textit{AMO inference rule}
+and \textit{Enforced falsity rule}.
+The inference rule \textit{SUM inference rule} has to start after the first two, 
+since some new literal can be inferred, changing the number 
+of literals undefined for that group. 
+To check track of those falses literals it is necessary a set named
+\textit{falses}.
+After computing this set the third block 
+can compute the \textit{SUM inference rule}.
 
 \begin{algorithm}[H]\small
     \caption{propagate\_phase}
@@ -289,7 +300,7 @@ Now let's move to the actual \textit{propagation} phase.
             \tcp{Enforced falsity rule}
             \For{$\ell \in \lits_\sigma|_g$}{
                 \If{$\ell \not\in I \cup \overline{I}$}{
-                    \If{$mps_\sigma - \mwh_\sigma(I,g) + \wh_\sigma(\ell) < lb$}{
+                    \If{$mps_\sigma - \mwh_\sigma(I,g) + \wh_\sigma(\ell) < \mathit{bnd}_\sigma$}{
                         $\mathit{rns}_\ell = \lits_\sigma|_g \cup 
                         \bigcup_{x \in \mathbb{G}_\sigma \setminus \{g\}}{
                             \mathit{just}_\sigma(I,x)
@@ -302,7 +313,7 @@ Now let's move to the actual \textit{propagation} phase.
             
             \tcp{SUM inference rule}
             \If{$\lits_\sigma|_g \setminus (I \cup \mathit{falses}) = \{\ell\}$ and $\lits_\sigma|_g \cap I = \emptyset$}{
-                \If{$mps_\sigma - \wh_\sigma(\ell) < lb$}{
+                \If{$mps_\sigma - \wh_\sigma(\ell) < \mathit{bnd}_\sigma$}{
                     $S \gets S \cup (\ell,\{\overline{\ell}\} \cup \bigcup_{x \in \mathbb{G}_\sigma \setminus \{g\}}{
                         \mathit{just}_\sigma(I,x)
                     }) $
@@ -314,12 +325,25 @@ Now let's move to the actual \textit{propagation} phase.
     }
 \end{algorithm}
 
-
-\newpage
 \section{Unroll}
 Actually, in addition to the \textit{Propagate} function, called when a literal has been chosen as a branching literal,
-also a \textit{Unroll} function has to be defined, to update the internal state of the propagator when a literal 
+also a \textit{Unroll} function has to be defined, to update the internal state (\textit{mps}) of the propagator when a literal 
 becomes undefined (due to some backjump in the search process).
+Algorithm ~\ref{alg:Unroll} implements such procedure.
+Given a literal $\ell$ that becomes \textit{undefined}, that is $\ell \not\in (I \cup \overline{I})$,
+to update the $\mps$ it is necessary to know its previous value.
+To have such information a \textit{boolean} variable $v$ is provided in input, if $v = \top$
+then $\ell$ was \textit{true}, otherwise it was \textit{false}.
+If $\overline{\ell} \in \sigma$, to \textit{`simplify'} the algorithm, we only need to flip $v$ and $\ell$.
+On one hand, if $\ell$ was true can happend that there is an undefined literal
+with weight greater then $\ell$, i.e., $\mwh(I,g) > \wh(\ell)$;
+in this case $\ell$ will not contribute anymore and 
+the $\mps$ will increase of $\mwh(I,g) - \wh(\ell)$.
+On the other hand, if $\ell$ was false, it may become the new max undefined,
+and there might be no true literal in $\lits|_g$. 
+Formally, if $\wh(\ell) > \mwh(I \cup \{\overline{\ell}\}, g)$ and $\lits|_g \cap I = \emptyset$, 
+then $\ell$ will contribute to the $\mps$,
+increasing it by $\wh(\ell) - \mwh(I \cup \{\overline{\ell}\}, g)$.
 
 \begin{algorithm}[H]\small
     \caption{Unroll}
