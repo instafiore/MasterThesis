@@ -62,6 +62,7 @@ the first 2 have a counterpart in the classical setting, instead the last
 one is a totally new one.
 
 \paragraph{AMO inference rule} 
+\label{eq:amosum:propagation:1}
 The first inference rule is the one ensuring the at most one constraint 
 (~\ref{eq:amo}): given a literal 
 $\ell$ such that $(w : \ell [g]) \in \sigma$ for some $w \in \mathbb{N}$ and $g \in \mathbb{G}$,
@@ -170,15 +171,15 @@ $\mathit{reason}(z) = \{z\}$.
 \section{Propagate}
 \label{sec:amo:propagator}
 
-In this section on the details about the \textit{Propagate} function implemented in the AMOSUM 
-propagator.
-The Propagate function is divided in two phases: \textit{update\_phase} and \textit{propagate\_phase};
-the first one updates the internal states (more precisely the global variable $\mps$ (\textit{Max Possible Sum}))
-of the propagator and understands if the propagation phase is 
-required; the second one is the `actual' propagator, it implements the inference rules and 
-correlated reasons, as described in section ~\ref{sec:amo:inference_rules}.
-The Propagate function is defined with the algorithm ~\ref{alg:Propagate}.
-Let assume to have in input to the function propagate function the literal $\ell$.
+In this section, we discuss the details of the \textit{Propagate} function implemented in the AMOSUM propagator.
+The \textit{Propagate} function consists of two phases: \textit{update\_phase} and \textit{propagate\_phase}.
+The \textit{update\_phase} updates the internal states, specifically the global variable $\mps$ (\textit{Max Possible Sum}), 
+of the propagator and determines if the \textit{propagate\_phase} is necessary. 
+The \textit{propagate\_phase} is the actual propagator, which implements the inference 
+rules and related logic, as described in Section~\ref{sec:amo:inference_rules}.
+The \textit{Propagate} function is defined in Algorithm~\ref{alg:Propagate}.
+Assume the input to the \textit{Propagate} function is the literal $\ell$.
+
 \begin{algorithm}[H]\small
     \caption{Propagate}
     \label{alg:Propagate}
@@ -205,18 +206,17 @@ is extended, defining $\ell \in \sigma$ true if $(w : \ell [g]) \in \sigma$ for 
 weight $w \in \mathbb{N}$ and group $g \in \mathbb{G}_{\sigma}$.  
 If $\ell \in \sigma$ it means that it means that $\ell$ is true and it is in the 
 aggregate set of $\sigma$. 
-If $\ell$ becomes true, it will contribute to the $\mps$;
-On one hand, if it was already contribuiting to the $\mps$ (it was the max undefined)
-then the $mps$ will not change, i.e., will not be inferred any 
-literal, so the next phase will not start.
-On the other hand the \textit{mps} will change so.
-To update the $\mps$ when a literal becomes true then 
-it is necessary to remove the contribution of the previous 
-literal and add the contribution of $\ell$, that is,
-$\mathit{mps}_\sigma \gets \mathit{mps}_\sigma -\mwh_\sigma(I,g) + \wh_\sigma(\ell)$\;
+If $\ell$ becomes true, accordingly to AMO inference rule, it will contribute to the $\mps$ (since all other literals
+will be inferred as false). 
+If $\ell$ was already contributing to the $\mps$ (it was the maximum undefined), then the $\mps$ will not change. 
+In this case, no literal will be inferred, and the next phase will not start. 
+However, if $\ell$ was not previously contributing to the $\mps$, the $\mps$ will change accordingly.
+To update the $\mps$ when a literal becomes true, it is necessary to remove the contribution of the previous literal and add the contribution of $\ell$
+, that is,
+$\mathit{mps}_\sigma \gets \mathit{mps}_\sigma -\mwh_\sigma(I,g) + \wh_\sigma(\ell)$.
 In this case $\mps$ has changed so the next phase is required.
-If, instead, $\overline{\ell} \in \sigma$, it means that $\overline{\ell}$ is false
-and (maybe) will not contribute anymore on $\mps$.
+If, instead, $\overline{\ell} \in \sigma$, it means that $\overline{\ell}$ is false and may no longer contribute 
+to the $\mps$.
 To check this, it is sufficient to check that it 
 was contributing and there was no true literal in its group;
 more precisely: $\wh_\sigma(\overline{\ell}) = \mwh_\sigma(I \setminus \{\ell\},g)$
@@ -224,12 +224,10 @@ and $\lits_\sigma|_{\group(\ell)} \cap I = \emptyset$.
 In this case, the contribution of $\ell$ has to be removed, since it is false,
 and the new contribution ($\mwh_\sigma(I,g)$) has to be added to $\mps$.
 In this case $\mps$ has changed so the next phase is required.
-When $\wh_\sigma(\overline{\ell}) = \mwh_\sigma(I \setminus \{\ell\},g)$
-is false can happen that: there is no true literal in $\lits|_g$ and
-there is just one undefined literal in $\lits|_g$;
-in this case, thanks to ~\eqref{eq:amosum:propagation:2},
-some literal could be inferred, so whatever is the $\mps$
-the next phase is required.
+When $\wh_\sigma(\overline{\ell}) = \mwh_\sigma(I \setminus \{\ell\}, g)$ is false,
+the following can occur: there is no true literal in $\lits|_g$ and there is only 
+one undefined literal in $\lits|_g$. In this case, according to \eqref{eq:amosum:propagation:2},
+some literal could be inferred. Therefore, regardless of the $\mps$, the next phase is required.
 In all the other cases the next phases is not required.
 
 \begin{algorithm}[H]\small
@@ -266,18 +264,25 @@ In all the other cases the next phases is not required.
     }
 \end{algorithm}
 
-Now, let's proceed to the \textit{propagation} phase.
-To infer a literal, we only need to consider its group and the current $\mps$.
-Thus, Algorithm~\ref{alg:propagate_phase} iterates through all groups to derive literals.
-The first two blocks implement the two inference rules: \textit{AMO inference rule}
-and \textit{Enforced falsity rule}.
-The inference rule \textit{SUM inference rule} has to start after the first two, 
-since some new literal can be inferred, changing the number 
-of literals undefined for that group. 
-To check track of those falses literals it is necessary a set named
-\textit{falses}.
-After computing this set the third block 
-can compute the \textit{SUM inference rule}.
+Now, let's proceed to the \textit{propagation} phase. 
+To infer a literal, we only need to consider its group and the current $\mps$. 
+Thus, Algorithm~\ref{alg:propagate_phase} iterates through all groups to derive new literals. 
+The first two blocks implement the \textit{AMO inference rule} and the \textit{Enforced falsity rule}. 
+The \textit{SUM inference rule} must start after the first two since some new literals can be inferred as false, 
+affecting the number of false literals for that group. 
+To keep track of these false literals, a set named \textit{falses} is necessary. 
+After computing this set, the third block can compute the \textit{SUM inference rule}.
+Note: If 
+\[
+\lits_\sigma|_g \setminus (I \cup \mathit{falses}) = \{\ell\}
+\]
+and
+\[
+\lits_\sigma|_g \cap I = \emptyset,
+\]
+then \(\ell = \ml(I,g)\). This is because the maximum undefined literal cannot be inferred as false. If it could have been inferred as false, it would have been inferred as such in a previous iteration and would not have remained the maximum undefined literal.
+That is, in the SUM inference rule $\wh(\ell) = \mwh(I,g)$, 
+thus, $\mps - \wh(\ell) = \mps(I,\ell)$ (as defined in ~\eqref{eq:amosum:propagation:2}).
 
 \begin{algorithm}[H]\small
     \caption{propagate\_phase}
@@ -294,13 +299,14 @@ can compute the \textit{SUM inference rule}.
             \tcp{AMO inference rule}
             \If{$\lits_\sigma|_g \cap I = \{\ell\}$}{
                 $S \gets S \cup {(\overline{\ell_i},\{\overline{\ell_i},\overline{\ell})\}} 
-                \quad \forall \ell_i \in \lits_\sigma|_{g} \setminus (\{\ell\} \cup I \cup \overline{I})$
+                \quad \forall \ell_i \in \lits_\sigma|_{g} \setminus (\{\ell\} \cup I \cup \overline{I})$\\
+                \textbf{continue}
             }
 
             \tcp{Enforced falsity rule}
             \For{$\ell \in \lits_\sigma|_g$}{
                 \If{$\ell \not\in I \cup \overline{I}$}{
-                    \If{$mps_\sigma - \mwh_\sigma(I,g) + \wh_\sigma(\ell) < \mathit{bnd}_\sigma$}{
+                    \If{$mps_\sigma - \mwh_\sigma(I ,g) + \wh_\sigma(\ell) < \mathit{bnd}_\sigma$}{
                         $\mathit{rns}_\ell = \lits_\sigma|_g \cup 
                         \bigcup_{x \in \mathbb{G}_\sigma \setminus \{g\}}{
                             \mathit{just}_\sigma(I,x)
@@ -326,20 +332,20 @@ can compute the \textit{SUM inference rule}.
 \end{algorithm}
 
 \section{Unroll}
-Actually, in addition to the \textit{Propagate} function, called when a literal has been chosen as a branching literal,
+In addition to the \textit{Propagate} function, called when a literal has been chosen as a branching literal,
 also a \textit{Unroll} function has to be defined, to update the internal state (\textit{mps}) of the propagator when a literal 
 becomes undefined (due to some backjump in the search process).
 Algorithm ~\ref{alg:Unroll} implements such procedure.
 Given a literal $\ell$ that becomes \textit{undefined}, that is $\ell \not\in (I \cup \overline{I})$,
 to update the $\mps$ it is necessary to know its previous value.
-To have such information a \textit{boolean} variable $v$ is provided in input, if $v = \top$
-then $\ell$ was \textit{true}, otherwise it was \textit{false}.
+To have such information a \textit{boolean} variable $v$ is provided in input.
+If $v = \top$ then $\ell$ was \textit{true}, otherwise it was \textit{false}.
 If $\overline{\ell} \in \sigma$, to \textit{`simplify'} the algorithm, we only need to flip $v$ and $\ell$.
 On one hand, if $\ell$ was true can happend that there is an undefined literal
 with weight greater then $\ell$, i.e., $\mwh(I,g) > \wh(\ell)$;
 in this case $\ell$ will not contribute anymore and 
 the $\mps$ will increase of $\mwh(I,g) - \wh(\ell)$.
-On the other hand, if $\ell$ was false, it may become the new max undefined,
+On the other hand, if $\ell$ was false, it may become the new maximum undefined,
 and there might be no true literal in $\lits|_g$. 
 Formally, if $\wh(\ell) > \mwh(I \cup \{\overline{\ell}\}, g)$ and $\lits|_g \cap I = \emptyset$, 
 then $\ell$ will contribute to the $\mps$,

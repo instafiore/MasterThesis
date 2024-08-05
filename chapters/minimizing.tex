@@ -1,7 +1,7 @@
 \chapter{Minimizing reason}
 \label{cp:minimizing_reason}
 In Section~\ref{sec:properties_reason},
-we  discuss some important properties of the reason. Subsequently,
+we  discuss some important properties of a reason. Subsequently,
 we introduce the concept of a \textit{redundant literal}
 and explain the notion of \textit{increment},in section ~\ref{sec:redundant_literal} and ~\ref{sec:increment} respectively.
 Utilizing these concepts,
@@ -82,15 +82,15 @@ It is easy to see that every redundat literal of a reason $R$ can be removed fro
     infers $z$. Hence, $x$ is redundant in $R$.
 \end{example}
 Continuing the discussion about the example ~\ref{ex:redundant_lit}.
-Let's examine the first case more in detail: $\mathit{reason}(z) = \{z, w, y\}$ is a 
-reason of $z$ under $I = [\overline{y}, \overline{z}]$. This is true because,
-given $J_R = \overline{\{z, w, y\} \setminus \{z\}} = \{w,y\} $,
+Let's examine the first case more in detail: $\mathit{reason}(z) = \{z, w, y\} = R $ is a 
+reason of $z$ under $I = [\overline{y}, \overline{w}]$. This is true because,
+given $J_R = \overline{\{z, w, y\} \setminus \{z\}} = \{\overline{w},\overline{y}\} $,
 $mps(J_R,z) = \mathit{wh}(x) = 1 < 3$ and $lits\mid_{group(z)} \setminus \overline{I} = \{z\}$.
 Since $R_{\overline{y}} = \{z, w, \overline{y}\}$ then $J_{R_{\overline{y}}} = [\overline{w},y]$ and 
 $mps(J_{R_{\overline{y}}},z) = \mathit{wh}(y) = 2 < 3$ and
 $lits\mid_{group(z)} \setminus \overline{I_y} = \{z\}$, thus $z$ would be added in $I_y$.
 More in concrete, $y$ is redundant because $mps(J_R,z) + \mathit{inc}(y) = 1 + 1 < \mathit{bnd} = 3$ and
-$y \not\in group(z)$, where the $\mathit{inc}(y) = mps(J_{R_{\overline{y}}},z) - mps(J_R,z) = 2 - 1$.
+$y \not\in group(z)$, where the $\mathit{inc}(y) = \max\{mps(J_{R_{\overline{y}}},z) - mps(J_R,z),0\} = \max\{2 - 1,0\} = 1$.
 Now, let's take the other case, where $I = [x, \overline{y}, \overline{w}]$, 
 and $z$ is inferred with $\mathit{reason}(z) = \{z, w, \overline{x}\}$, that is, 
 $\overline{w} \land  x \rightarrow z$.
@@ -102,9 +102,23 @@ and $\overline{x}$ is redundant.
 
 \section{Increment}
 \label{sec:increment}
-As mentioned before, increment of $\ell$, written $\mathit{inc}(\ell)$, defines 
-how much the $mps$ increases when that literal is flipped in the reason (to possibly
-be removed).
+
+As mentioned before, increment of $\ell$, written $\mathit{inc}(\ell)$, is used to check 
+if $\ell$ is redundant in $R$.
+Given a reason $R$ of a literal $z$, the increment of a literal $\ell \in R$ is computed as:
+$$\mathit{inc}(\ell) = \max\{mps(J_{R_{\overline{\ell}}},z) - mps(J_R,z),0\}$$
+
+There is no need to have an increment possibly negative, given that if $\inc(\ell) \le 0$
+then by assumption $\mps(J_R,z) + \inc(y) < \mathit{bnd}$.
+The increment is bounded below by 0 for another important reason: 
+when a literal \(\ell\) is found to be redundant in \(R\), it will be removed from \(R\).
+
+If \(\mathit{inc}(\ell) = \mathit{mps}(J_{R_{\overline{\ell}}}, z) - \mathit{mps}(J_R, z)\) were not bounded, 
+then \(\mathit{mps}(J_R, z) + \mathit{inc}(\ell)\) would represent the \textit{mps} where \(\ell\) is flipped.
+However, the new \textit{mps} needs to represent the value when \(\ell\) is removed.
+This property of the increment is important for the following algorithms (~\ref{subsec:minimal_reason},
+~\ref{subsec:cardinality_minimal_reason}) that try
+to remove literals from \(R\).
 
 \subsection{False literal}
 Let $\ell$ be a \textit{false} literal that is,
@@ -117,14 +131,13 @@ $\ell \in J_{R_{\overline{\ell}}}$.\\
 Note that $mps(J_R,z) = \sum_{g \in \mathbb{G} \setminus
 \{\mathit{group}(z)\}}{\mathit{mwh}(J_R,g)}$ and \\
 $mps(J_{R_{\overline{\ell}}},z) = \sum_{g \in \mathbb{G} \setminus
-\{\mathit{group}(z)\}}
-{\mathit{mwh}(J_{R_{\overline{\ell}}},g)}$.
-Since $J_R \setminus \lits|_{\group(\ell)} = J_{R_{\overline{\ell}}} \setminus \lits|_{\group(\ell)}$,
-that is, all the literals outside $\group(\ell)$ remain with the same value;
-then just the maximum weight of $\lits|_{\group(\ell)}$ can change.
-Hence,
-$$ \inc(\ell) = \mathit{mps}(J_{R_{\overline{\ell}}},z)-\mathit{mps}(J_r,z) = 
-\mathit{mwh}(J_{R_{\overline{\ell}}},\mathit{group}(\ell)) - \mathit{mwh}(J_r,\mathit{group}(\ell))$$
+\{\mathit{group}(z) \cup \group(\ell)\}}
+{\mathit{mwh}(J_{R_{\overline{\ell}}},g) + \wh(\ell)}$;
+given that $\ell$ will be true and thank to AMO inference rule it will 
+contribute to the $\mps$.
+Hence: $$\mathit{mps}(J_{R_{\overline{\ell}}},z)-\mathit{mps}(J_R,z) = 
+\wh(\ell) - \mathit{mwh}(J_R,\mathit{group}(\ell))$$ and 
+$$ \inc(\ell) = \max\{\wh(\ell) - \mathit{mwh}(J_R,\mathit{group}(\ell)),0\}$$
 Hence, when a literal has to be checked to be redundant and it is false then 
 $\inc(\ell)$ has to be considered has the increment of the $\mps$.
 
@@ -143,44 +156,46 @@ except $\overline{\ell}$ (since it is false, it does not contribute to the $\mps
 That is, $\mathit{mwh}(J_{R_{\ell}},group(\ell))= \max\{ \mathit{mwh}(x) \mid \mathit{group}(x) = group(\ell) \} 
 = \mathit{mwh}(group(\ell))$.
 It is easy to see that
-$$\inc(\ell) = \mathit{mps}(J_{R_{\ell}},z)-\mathit{mps}(J_r,z) = \mathit{mwh}(group(\ell)) - \mathit{wh}(\ell)$$
+$$\mathit{mps}(J_{R_{\ell}},z)-\mathit{mps}(J_R,z) = \mathit{mwh}(group(\ell)) - \mathit{wh}(\ell)$$
+By construction $\mathit{mwh}(group(\ell)) - \mathit{wh}(\ell) \ge 0$, then:
+$$\inc(\ell) = \max\{\mathit{mwh}(group(\ell)) - \mathit{wh}(\ell),0\} = \mathit{mwh}(group(\ell)) - \mathit{wh}(\ell)$$
 Hence, when a literal has to be checked to be redundant and it is true then 
 $\inc(\ell)$ has to be considered has the increment of the $\mps$.
 
 \subsection{Algorithm}
-In this section is proposed the algorithm computing the increment and its lower bound 0 is proved.
-The increment is always non-negative since removing a literal from a reason 
-in the worst case does not affect the mps.
+In this section, the algorithm computing the increment is proposed. By construction,
+the function \(\mathit{inc}(\ell) \geq 0\) for all \(\ell \in R \setminus \lits|_{\group(z)}\), since removing 
+a literal from a reason in the worst case does not affect the \textit{mps}.
 
-\begin{theorem}
-    \label{theorem:inc}
-    Given a reason $R$ and a literal $\ell \in R$ then $\inc(\ell) \ge 0$.
-\end{theorem}
+% \begin{theorem}
+%     \label{theorem:inc}
+%     Given a reason $R$ and a literal $\ell \in R$ then $\inc(\ell) \ge 0$.
+% \end{theorem}
 
-\begin{proof}
-    Case when $I \models \ell \in R$.
-    Then $\inc(\ell) = \mwh(\group(\ell))-\mathit{wh}(\ell)$. Since $\mwh(\group(\ell))$ is the  
-    maximum weight in $\lits \mid_{\group(\ell)}$ and $\ell \in \lits \mid_{\group(\ell)}$ then 
-    $\mwh(\group(\ell)) \ge \mathit{wh}(\ell)$ and $\inc(\ell) \ge 0$.
+% \begin{proof}
+%     Case when $I \models \ell \in R$.
+%     Then $\inc(\ell) = \mwh(\group(\ell))-\mathit{wh}(\ell)$. Since $\mwh(\group(\ell))$ is the  
+%     maximum weight in $\lits \mid_{\group(\ell)}$ and $\ell \in \lits \mid_{\group(\ell)}$ then 
+%     $\mwh(\group(\ell)) \ge \mathit{wh}(\ell)$ and $\inc(\ell) \ge 0$.
 
-    Case when $I \models \overline{\ell} \in R$.
-    For readability let define $g = \group(\ell)$.\\
-    Then $\inc(\ell) = \mathit{mwh}(J_{R_{\overline{\ell}}},g) - \mathit{mwh}(J_R,g).$\\
-    Since $J_{R_{\overline{\ell}}} = (J_R \setminus \{\overline{\ell}\}) \cup \{\ell\}$ then 
-    $$\mathit{mwh}(J_{R_{\overline{\ell}}},g) = 
-    \max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\}$$
-    It is trivial to see that 
-    $$\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\}
-    \ge \max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\}$$
-    Since $\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} = \mwh(J_R,g)$
-    then $$\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\}
-    \ge \mwh(J_R, g).$$
-    Given that  $\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\} = 
-    \mathit{mwh}(J_{R_{\overline{\ell}}},g)$, finally, 
-    $$\mathit{mwh}(J_{R_{\overline{\ell}}},g) \ge \mwh(J_R, g)$$
+%     Case when $I \models \overline{\ell} \in R$.
+%     For readability let define $g = \group(\ell)$.\\
+%     Then $\inc(\ell) = \mathit{mwh}(J_{R_{\overline{\ell}}},g) - \mathit{mwh}(J_R,g).$\\
+%     Since $J_{R_{\overline{\ell}}} = (J_R \setminus \{\overline{\ell}\}) \cup \{\ell\}$ then 
+%     $$\mathit{mwh}(J_{R_{\overline{\ell}}},g) = 
+%     \max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\}$$
+%     It is trivial to see that 
+%     $$\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\}
+%     \ge \max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\}$$
+%     Since $\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} = \mwh(J_R,g)$
+%     then $$\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\}
+%     \ge \mwh(J_R, g).$$
+%     Given that  $\max\{w \cdot J_R^{\neg\bot}(\ell) \mid (w : \ell\ [g]) \in \sigma\} \cup \{\wh(\ell)\} = 
+%     \mathit{mwh}(J_{R_{\overline{\ell}}},g)$, finally, 
+%     $$\mathit{mwh}(J_{R_{\overline{\ell}}},g) \ge \mwh(J_R, g)$$
 
-    In both cases $\inc(\ell) \ge 0$.\\ Hence, $\inc(\ell) \ge 0$ for all $\ell \in R$
-\end{proof}
+%     In both cases $\inc(\ell) \ge 0$.\\ Hence, $\inc(\ell) \ge 0$ for all $\ell \in R$
+% \end{proof}
 
 The following algorithm computes the increment as previously described.
 \begin{algorithm}[h]\small
@@ -191,11 +206,10 @@ The following algorithm computes the increment as previously described.
         \SetKwBlock{Loop}{Loop}{end}
         \Begin{
             \If {$I \models \ell$}{
-                \Return{ $\mwh(\group(\ell))-\mathit{wh}(\ell)$}
+                \Return{ $\mathit{mwh}(group(\ell)) - \mathit{wh}(\ell)$}
             }\Else{
                 $J_R = \overline{R \setminus \{z\}}$ \\
-                $J_{R_{\overline{\ell}}} = \overline{R_{\overline{\ell}} \setminus \{z\}}$\\
-                \Return{$\mathit{mwh}(J_{R_{\overline{\ell}}},\mathit{group}(\ell)) - \mathit{mwh}(J_R,\mathit{group}(\ell))$}
+                \Return{$\max\{\wh(\ell) - \mathit{mwh}(J_R,\mathit{group}(\ell)),0\}$}
             }
         }
 \end{algorithm}
@@ -291,8 +305,7 @@ the following lemma has to be proved.
 \begin{proof}
     The total increment of $S' = \inc(S',I,R) = \inc(S,I,R) + \inc(\ell,I,R \setminus \mathit{S}) + 
     \sum_{\ell \in S'} \inc(x, I, R \setminus S' \cup \{x\})$.
-    Since $\inc(S,I,R) + \inc(\ell,I,R \setminus \mathit{S}) > s$ by assumption and 
-    ,thanks to theorem ~\ref{theorem:inc}, $\inc(x, I, R \setminus S' \cup \{x\}) \ge 0$ then 
+    By assumption $\inc(S,I,R) + \inc(\ell,I,R \setminus \mathit{S}) > s$  and  by construction $\inc(x, I, R \setminus S' \cup \{x\}) \ge 0$ then 
     $\inc(S',I,R) > s$.
     Hence, $S'$ is not a subset of $R$ giving as sum a value less than $s$.
 

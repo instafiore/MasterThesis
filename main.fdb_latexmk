@@ -1,10 +1,10 @@
 # Fdb version 3
-["biber main"] 1722708423 "main.bcf" "main.bbl" "main" 1722708574
-  "main.bcf" 1722708573 108827 90916b8de8bfed1c61b2ba1182bc6069 "pdflatex"
+["biber main"] 1722846947 "main.bcf" "main.bbl" "main" 1722847387
+  "main.bcf" 1722847387 108827 90916b8de8bfed1c61b2ba1182bc6069 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1722708571 "/home/instafiore/CF/Thesis/thesis/main.tex" "main.pdf" "main" 1722708574
+["pdflatex"] 1722847385 "/home/instafiore/CF/Thesis/thesis/main.tex" "main.pdf" "main" 1722847387
   "/etc/texmf/web2c/texmf.cnf" 1715267632 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/instafiore/CF/Thesis/thesis/main.tex" 1722677834 4832 8f4886fa5c1ec85e6edf96a3aea44368 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -307,18 +307,18 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1715416641 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1715416689 2798827 b94d68c2f7d93c9c2f0dbd73be31c567 ""
   "algorithm2e.sty" 1722156331 127375 1e6b218a1e3d2d168e39d937af3a2125 ""
-  "chapters/amosum.tex" 1722708567 19471 223eff1a2218d97c6aea6c8304c3e8f2 ""
+  "chapters/amosum.tex" 1722843241 20236 8cecb97931b4b554d83bfa3be9d0e4a1 ""
   "chapters/background.tex" 1722663615 26307 ec0f7d038507fc8087b7239ec9321a23 ""
   "chapters/introduction.tex" 1722663482 5989 e44acb9230edf4d7e6bb9b6161604add ""
-  "chapters/minimizing.tex" 1722702362 37208 e632813cb450747b1de4b8a096af698a ""
+  "chapters/minimizing.tex" 1722847385 38210 351e8295b3aa4f1fcc2e90484f5f3cc3 ""
   "imgs//logo.png" 1720799041 6363 566a456e536fecba60e68316096fb150 ""
-  "main.aux" 1722708573 14110 451048067b7435255b35d0c77b45c1ad "pdflatex"
-  "main.bbl" 1722708424 29968 8a39af68fe93d32a1ab104f6ebdec4a9 "biber main"
-  "main.out" 1722708573 1796 fcead75e8fe8968c773052124274db4d "pdflatex"
-  "main.run.xml" 1722708574 2402 7c866ed2192e71c57464ed4279aadefa "pdflatex"
+  "main.aux" 1722847387 14143 25f09fda8fd02ec4b59a2a66f5d91a11 "pdflatex"
+  "main.bbl" 1722846948 29968 8a39af68fe93d32a1ab104f6ebdec4a9 "biber main"
+  "main.out" 1722847387 1796 fcead75e8fe8968c773052124274db4d "pdflatex"
+  "main.run.xml" 1722847387 2402 7c866ed2192e71c57464ed4279aadefa "pdflatex"
   "main.tex" 1722677834 4832 8f4886fa5c1ec85e6edf96a3aea44368 ""
-  "main.toc" 1722708574 2559 e94cb294968c0ef6c5d0a4dfaf10f2e2 "pdflatex"
-  "pdfa.xmpi" 1722708571 5042 0c92c4e99af788989eba5e9b169152c2 "pdflatex"
+  "main.toc" 1722847387 2559 2e20fc1ee5af230a97749e3f37a2eb37 "pdflatex"
+  "pdfa.xmpi" 1722847385 5042 64a272c911fc8ae99fa9bd70d1d37b8e "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
