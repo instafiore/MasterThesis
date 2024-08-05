@@ -103,19 +103,24 @@ and $\overline{x}$ is redundant.
 \section{Increment}
 \label{sec:increment}
 
-As mentioned before, increment of $\ell$, written $\mathit{inc}(\ell)$, is used to check 
+The increment of $\ell$, \textit{w.r.t.} a reason $R$, written $\mathit{inc}(\ell)$, is used to check 
 if $\ell$ is redundant in $R$.
 Given a reason $R$ of a literal $z$, the increment of a literal $\ell \in R$ is computed as:
 $$\mathit{inc}(\ell) = \max\{mps(J_{R_{\overline{\ell}}},z) - mps(J_R,z),0\}$$
 
 There is no need to have an increment possibly negative, given that if $\inc(\ell) \le 0$
-then by assumption $\mps(J_R,z) + \inc(y) < \mathit{bnd}$.
+then by assumption $\mps(J_R,z) + \inc(\ell) < \mathit{bnd}$.
 The increment is bounded below by 0 for another important reason: 
 when a literal \(\ell\) is found to be redundant in \(R\), it will be removed from \(R\).
 
-If \(\mathit{inc}(\ell) = \mathit{mps}(J_{R_{\overline{\ell}}}, z) - \mathit{mps}(J_R, z)\) were not bounded, 
+If \(\mathit{inc}(\ell) = \mathit{mps}(J_{R_{\overline{\ell}}}, z) - \mps(J_R,z)\) were not bounded, 
 then \(\mathit{mps}(J_R, z) + \mathit{inc}(\ell)\) would represent the \textit{mps} where \(\ell\) is flipped.
 However, the new \textit{mps} needs to represent the value when \(\ell\) is removed.
+To see this, consider that when a literal is removed from \(R\), the new reason \(R'\) 
+will have an interpretation where \(\ell\) is undefined. Thus, by construction, the \textit{mps}
+will be equal to the maximum value reached when \(\ell\) is false or true.
+If $\mathit{mps}(J_{R_{\overline{\ell}}}, z) < \mps(J_R,z)$
+then the `previous' $\mps$ is the greatest, that is, the increment of it is $0$.
 This property of the increment is important for the following algorithms (~\ref{subsec:minimal_reason},
 ~\ref{subsec:cardinality_minimal_reason}) that try
 to remove literals from \(R\).
@@ -133,7 +138,7 @@ Note that $mps(J_R,z) = \sum_{g \in \mathbb{G} \setminus
 $mps(J_{R_{\overline{\ell}}},z) = \sum_{g \in \mathbb{G} \setminus
 \{\mathit{group}(z) \cup \group(\ell)\}}
 {\mathit{mwh}(J_{R_{\overline{\ell}}},g) + \wh(\ell)}$;
-given that $\ell$ will be true and thank to AMO inference rule it will 
+given that $\ell$ will be true and thanks to AMO inference rule it will 
 contribute to the $\mps$.
 Hence: $$\mathit{mps}(J_{R_{\overline{\ell}}},z)-\mathit{mps}(J_R,z) = 
 \wh(\ell) - \mathit{mwh}(J_R,\mathit{group}(\ell))$$ and 
@@ -215,7 +220,7 @@ The following algorithm computes the increment as previously described.
 \end{algorithm}
 
 Given a reason $R$, intepretation $I$ and a set $S \subseteq R$
-the \textit{total increment of S} denoted $\inc(S,I,R) = \sum_{\ell \in S} \inc(\ell, I, R \setminus S \cup \{\ell\})$ 
+the \textit{total increment of S} denoted $\inc(S,I,R) = \sum_{\ell \in S} \inc(\ell, I, (R \setminus S)\cup \{\ell\})$ 
 
 \section{Minimality}
 \label{sec:minimality}
@@ -267,7 +272,7 @@ of $z$ it verifies if $\ell$ is \textit{redundant}.
 If it is, it is added to the set $S$ and the $ci$
 increase of $\inc(\ell)$. 
 \begin{algorithm}[h]\small
-    \caption{Maximal Subset sum (mss)}
+    \caption{Maximal Subset sum (MSS)}
     \label{alg:maximal_subset}
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Parameters}{Paramenters}
@@ -316,17 +321,17 @@ the following lemma has to be proved.
 \end{theorem}
 
 \begin{proof}
-    Let $S_m$ the final subset returned by \textit{mss}.
+    Let $S_m$ the final subset returned by \textit{MSS}.
     Arguing by contradiction, if it is not maximal 
     it means that there is a literal $\ell \in R \setminus S_m$ that could be
     added to $S_m$.
     But since $\mathit{ci} +  \inc(\ell,I,R \setminus \mathit{S}) \ge s$
     for some $S$.
-    Since $S \subseteq S_m$, then $S \cup \{\ell\} \subseteq S_m \cup \{\ell\}$,;
+    Since $S \subseteq S_m$, then $S \cup \{\ell\} \subseteq S_m \cup \{\ell\}$;
     thanks to theorem ~\ref{lemma:maximal_subset} $S_m \cup \{\ell\}$
     is not a subset giving as sum a value less then $s$, that is, $\ell$ cannot be 
     added to $S_m$.
-    Hence, $S_m$ is maximal,
+    Hence, $S_m$ is maximal.
 \end{proof}
 
 
@@ -346,7 +351,7 @@ and $S \subseteq R$ a set of redundant literals of $R$.\\
 Function $\mathit{\ml_\inc} : \mathcal{P}(R) \times \mathit{G} \mapsto R$ 
 returns the \textit{maximum increment literal in S of group g};
 that is, 
-$\ml_\inc(S,g)= \arg\max_{k \in S \cap \lits|_{{\group(g)}}} \inc(k)$.\\   
+$\ml_\inc(S,g)= \arg\max_{k \in S \cap \lits|_{{\group(g)}}} \inc(k,I,(R \setminus S) \cup \{k\} )$.\\   
 Given a set , a literal $\ell$ is active in $S$ if $\ml_\inc(S,\group(\ell)) = \ell$;
 the set of active literal of $S$ is equal to $A_S = \{\ell \in S \mid \ell \text{ is active in S}\}$.
 Given a literal $l \in R$ then $blw: R \mapsto \mathcal{P}(R)$ is a function 
@@ -358,7 +363,7 @@ A extension of a set $S$ with a literal $\ell \in R \setminus S$, written as $S'
 is equal to $S' = S \cup blw(\ell)$.\\
 A sufficient condition for a literal $\ell$ 
 to be active in $S' = S \ext \ell$ is that 
-$S \cap \group(\ell) = \emptyset$..
+$S \cap \group(\ell) = \emptyset$.
 Let $(\lits\_\mathit{ord}_g, \preceq)$ be an ordered set where $\lits\_\mathit{ord}_g = \lits|_g$
 and $\preceq = \{(l,l') \in \lits|_g \times \lits|_g \,:\, \inc(l,I,R) \ge \inc(l',I,R)\}$.\\
 Let 
@@ -386,8 +391,8 @@ with respect the \textit{`initial'} increment, that is, with respect to the init
 instead in the first algorithm the increment dependes from the \textit{current} reason.
   
 \begin{algorithm}[H]\small
-\caption{Cardinality Maximum Subset Sum (cmss)}
-    \label{alg:cmss}
+\caption{Cardinality Maximum Subset Sum (CMSS)}
+    \label{alg:CMSS}
     \SetKwInOut{Input}{Input} 
     \SetKwInOut{Parameters}{Parameters}
     \SetKwInOut{Output}{Output}
@@ -403,14 +408,8 @@ instead in the first algorithm the increment dependes from the \textit{current} 
                 \(\ell \leftarrow \ell_{j - 1}\)\\
                 \(w \leftarrow inc(\ell,I,R)\)\\
                 \If{\(i \geq w\)}{
-                    \For{$k \gets j-1$ \KwTo $0$}{
-                        \If{\(\ell \notin M_{i - w,k}\) $\lor$ $\Box \in M_{i - w,k}$}{
-                            \textbf{break}
-                        }
-                    }
-                $\mathit{bool} \gets \Box \not\in M_{i - w,k} \land \ell \notin M_{i - w,k}$ \\
-                $wls \leftarrow M_{i - w,k} \ext \ell \quad \textbf{if } \mathit{bool}  \textbf{  Else  } \Box$\\
-                $M_{i,j} \leftarrow \arg \max \{|wls|, |M_{i,j - 1}| \}$
+                    $k = \arg \max_{k \in \{0,\hdots,j-1\}} \ell_j \not\in M_{i-w,k}$\\
+                    $M_{i,j} \leftarrow \arg \max \{|M_{i - w,k} \ext \ell|, |M_{i,j - 1}| \}$
                 }\Else{
                     \(M_{i,j} \leftarrow M_{i,j-1}\)\\
                 }
@@ -433,7 +432,7 @@ instead in the first algorithm the increment dependes from the \textit{current} 
         }
 \end{algorithm}
 
-The algorithm ~\ref{alg:cmss} computes the cardinality-maximal subset $S$ of $L$ such that 
+The algorithm ~\ref{alg:CMSS} computes the cardinality-maximal subset $S$ of $L$ such that 
 the total increment $\inc(S,I,R) \le s$, using a \textit{dynamic} approach.
 It creates a matrix $M$ where each cell $M_{i,j}$ has domain $\mathcal{P}(L) \cup \{\Box\}$.
 $M_{i,j}$ represents the cardinality-maximal set with $sum(M_{i,j}) = i$ and $M_{i,j}$ \textit{`considers'} 
@@ -441,7 +440,7 @@ literal in $L_j$; considers means that \textbf{just} literals in $L_j$ can be ac
 in $L \setminus L_j$ can appear in $M_{i,j}$ but are \textbf{not} active. 
 If a set $S$ is built considering just literals in $D \subseteq L$ then 
 it is written: $S \sqsubseteq D$.
-if $M_{i,j} = \Box$ it means that such set does not exists.
+If $M_{i,j} = \Box$ it means that such set does not exists.
 When $M_{i,j} = \Box$ then, abusing of notation, $|M_{i,j}| = -1$,
 $M_{i,j} \ext \ell = \Box$ and $\ell \not\in M_{i,j}$ for all $\ell \in L$.
 The matrix is initialized with function \textit{Init} ~\ref{alg:init}.
@@ -453,9 +452,9 @@ $M_{0,j} = \{ \ell \mid \ell \in L_j \land inc(\ell,I,R) = 0\} \quad \forall j \
 
 When the sum $ i > 0$ then with $L_0 = \emptyset$ is impossible to reach $i$, 
 that's why $M_{i,0} = \Box \quad \forall i \in \{1, \hdots , s\}$.
-After initilization the algorithm ~\ref{alg:cmss} constructs each cell $M_{i,j}$
-, with $ 1 \ge i \ge s$ and $1 \ge j \ge n$, starting from $M_{i,j-1}$ and $M_{i-w,j-1}$,
-where $w = \inc(\ell_j,I,R)$.
+After initilization the algorithm ~\ref{alg:CMSS} constructs each cell $M_{i,j}$
+, with $ 1 \le i \le s$ and $1 \le j \le n$, starting from $M_{i,j-1}$ and $M_{i-w,k}$,
+where $w = \inc(\ell_j,I,R)$ and $k = \arg \max_{k \in \{0,\hdots,j-1\}} \ell_j \not\in M_{i-w,k}$.
 Let $S_{\overline{\ell}} \sqsubseteq L_j $ and $S_{\ell} \sqsubseteq L_j$ and having 
 a total increment equal to $i$, with \(\ell_j\) 
 non-active and \(\ell_j\) active, respectively. 
@@ -486,8 +485,12 @@ Subsequently, after the for loop is completed all cells of the matrix are correc
 and it is enough to take the largest set in the last column, that is, the 
 largest set giving as sum a value less or equal to $s$ considering all literals in $L$.
 
+This informal discussion has outlined the reasoning behind the algorithm. 
+The following section will provide a formal proof of the concepts discussed.
+so far.
+
 \subparagraph{Proof Correcntess}
-To formally prove that algorithm ~\ref{alg:cmss} is correct a lemma 
+To formally prove that algorithm ~\ref{alg:CMSS} is correct, a lemma 
 has to be proved.
 \begin{lemma}
     Given a set of literals $D \subseteq L$, a literal $\ell \in D$ and a set $S_{\overline{\ell}} \sqsubseteq D$
@@ -512,7 +515,7 @@ has to be proved.
 
 
 
-To prove that algorithm \textit{cmss} ~\ref{alg:cmss} returns the cardinality maximal subset $S$ 
+To prove that algorithm \textit{CMSS} ~\ref{alg:CMSS} returns the cardinality maximal subset $S$ 
 where  $\inc(S,I,R) \le s$ it is necessary to introduce the
 relation $C_M \subseteq N_1 \times N_2$, where $N_1 = \{-\mathit{max}_\inc, \hdots, -1, 0, \hdots, s\}$,
 $N_2 = \{0, \hdots, n\}$ and $\mathit{max}_\inc = \max \{ \inc(\ell,I,R) \mid \ell \in L\}$.
@@ -520,7 +523,7 @@ The relation $C_M$ is defined as follows:
 \begin{align*}
     C_M = \{ (i,j) \in N_1 \times N_2 \mid i \in \{-\mathit{max}_\inc, \hdots, -1\}\} \quad  \cup \\
     \{(i,j) \in N_1 \times N_2 \mid M_{i,j} \text{ is largest set s.t. } M_{i,j} \sqsubseteq L_j \text{ and } 
-    \inc(M_{i,j},I,R) = i\}
+    \mathit{sum}(M_{i,j}) = i\}
 \end{align*}
 % \mathit{sum}(M_{i,j}) = i \text{ and } M_{i,j} \subseteq L_j
 $C_M$ represents the notion of \textit{`correct'}: $(i,j) \in C_M$ \textit{iff}
@@ -553,7 +556,7 @@ theorem).
         \\ Where $w = \inc(\ell_j,I,R)$ and $k = \arg \max_{k \in \{0,\hdots,j-1\}} \ell_j \not\in M_{i-w,k}$.
    \end{itemize}
    It is easy to see that, if the base cases  and the induction are proved then 
-   every $C_M(i,j)$ is \textit{`inferred '} from previous cells $(i,j-1)$ and $(i-w,j-1)$ 
+   every $C_M(i,j)$ is \textit{`inferred '} from previous cells $(i,j-1)$ and $(i-w,k)$ 
    $\forall i \in \{1,\hdots,s\}$ and $\forall j \in \{1, \hdots, n\}$;
    it would mean that $C_M(i,j)$ holds $\forall i \in \{0,\hdots,s\}$ and $\forall j \in \{0, \hdots, n\}$.\\
    \textit{Proof base cases}
@@ -566,7 +569,7 @@ theorem).
     \begin{itemize}
         \item \textit{By construction}, $(0,j) \in C_M$ \textit{iff}
         $M_{i,j} \text{ is the maximum subset on } L_j \text{ giving as sum } 0$.
-        Algorithm \textit{cmss} ~\eqref{alg:cmss} builds 
+        Algorithm \textit{CMSS} ~\eqref{alg:CMSS} builds 
         $$M_{0,j} = \{ \ell \mid \ell \in L_j \land inc(\ell,I,R) = 0\} \quad \forall j \in \{1, \hdots , |L|\}$$
         Then $M_{0,j} \subseteq L_j$ and
         $M_{i,j} \text{ is the maximum subset s.t. } \inc(M_{i,j},I,R) = 0$,
@@ -576,7 +579,7 @@ theorem).
     \end{itemize}
     \item $C_M(i,0)$ holds $\forall i \in \{1, \hdots, s\}$
     \begin{itemize}
-        \item Algorithm \textit{cmss} builds 
+        \item Algorithm \textit{CMSS} builds 
         $$M_{i,0} = \Box \quad \forall i \in \{1, \hdots , s\}$$
         It is trivial to see that, if $i > 0$ and $j = 0$ then it is impossible 
         to reach sum $i$ with $0$ elements, so such subset does not exists.
@@ -586,7 +589,7 @@ theorem).
    \end{itemize}
    Now, let's move to the induction hypothesis.
    \begin{itemize}
-    \item If $C_M(i,j-1)$ and $C_M(i-w,j-1)$ hold then $C_M(i,j)$ holds $\forall i \in \{1,\hdots,s\}$
+    \item If $C_M(i,j-1)$ and $C_M(i-w,k)$ hold then $C_M(i,j)$ holds $\forall i \in \{1,\hdots,s\}$
     and $\forall j \in \{1, \hdots, n\}$.
     \\ Where $w = \inc(\ell_j,I,R)$.
     \begin{itemize}
@@ -615,29 +618,30 @@ theorem).
             By \textit{construction}  $\mathit{sum}(M_{i-w,k}) \cap \lits|_{\group(\ell)} = \emptyset$;
             as seen in the preliminars it is a sufficient condition to deduce that $\ell_j$ is active 
             in $M_{i,k} \ext \ell_j$, that is, $\ell_j \in A_{E_{\ell_j}}$.
-            Thus, since $\mathit{sum}(M_{i-w,k}) = i-w$ and $\ell_j \in M_{i,k} \ext \ell_j$ then 
+            Thus, since $\mathit{sum}(M_{i-w,k}) = i-w$ and $\ell_j \not\in M_{i,k}$ and $ \ell \in A_{E_{\ell_j}}$ then 
             $\mathit{sum}(M_{i,k} \ext \ell_j,I,R) = \mathit{sum}(E_{\ell_j}) = \mathit{sum}(M_{i-w,k}) + \inc(\ell_j,I,R) = i - w + w = i$.
             Now the claim to get is that $E_{\ell_l} = S_{\ell_j}$.
             This claim is reached reasoning by contradition.
             Let's assume that $E_{\ell_l}$ is not the largest set, in other words: 
-            there exists a set $S' \sqsubseteq L_j$ such that $|S'| > E_{\ell_j}$, moreover,
+            there exists a set $S' \sqsubseteq L_j$ such that $|S'| > |E_{\ell_j}|$, moreover,
             $\mathit{sum}(S') = i$ and $\ell_j \in A_{S'}$ (i.e., $\ell_j$ is active).
             In this case $\ell_j \in A_{E_{\ell_j}} \cap A_{S'}$, i.e., it is active in both sets;
-            so by construction $\blw(\ell_j) \in E_{\ell_j}$ and $\blw(\ell_j) \in S'$, furthermore,
+            so by construction $\blw(\ell_j) \subseteq E_{\ell_j}$ and $\blw(\ell_j) \subseteq S'$, furthermore,
             there not exists a literal $\ell' \in \lits|_{\group(\ell_j)}$ such that $\wh(\ell') > \wh(\ell_j)$
-            and $\ell' \in E_{\ell_j}$ or $\ell' \in S'$, thus, $|S' \setminus \blw(\ell_j)| > |E_{\ell_j} \setminus \blw(\ell_j)|$
+            and $\ell' \in E_{\ell_j}$ or $\ell' \in S'$, thus,
+            $|S' \setminus \blw(\ell_j)| > |E_{\ell_j} \setminus \blw(\ell_j)|$.
             Given that $E_{\ell_j} = M_{i-w,k} \ext \ell_j = M_{i-w,k} \cup blw(\ell_j,j)$ then
             $E_{\ell_j} \setminus blw(\ell_j) = (M_{i-w,k} \cup blw(\ell_j)) \setminus blw(\ell_j) = M_{i-w,k}.$
             Given that $\ell_j \in A_{S'}$ it means that $S' \cap \group(\ell_j) \setminus \blw(\ell_j) = \emptyset$, i.e.,
             there is no literal $\ell' \in S'$ such that $\wh(\ell') > \ell_j$.
-            So, $S'' = S' \setminus \blw(\ell_j) \sqsubseteq L_d$ where $d \in {0,\hdots,j-1}$
+            So, $S'' = S' \setminus \blw(\ell_j) \sqsubseteq L_d$ where $d \in \{0,\hdots,j-1\}$
             such that $L_d \cap \group(\ell_j) = \emptyset$.
             Given that $\ell_j$ is active in $S'$ then $\mathit{sum}(S'') = \mathit{sum}(S') - \inc(\ell_j,I,R) = i - w$.
             Since $|S'' \sqsubseteq L_d| > |M_{i-w,k}| \sqsubseteq L_k $ it means that
             $d > k$, since to be greater than $M_{i-w,k}$ then $S''$ 
             has to consider more literals then $L_k$ (otherwise $M_{i-w,k}$ would not be the largest set considering $L_k$).
             So $d > k = \arg \max_{k \in \{0,\hdots,j-1\}} \ell_j \not\in M_{i-w,k}$.
-            So $k < d \ge j-1$, it means that $L_d$ contains some literal of the group of $\ell_j$,
+            So $k < d \le j-1$, it means that $L_d$ contains some literal of the group of $\ell_j$,
             and it is a contradiction.
             Thus, $E_{\ell_l}$ is the largest set such that $E_{\ell_l} \sqsubseteq L_j$ and $\ell_j \in A_{E_{\ell_j}}$.
             Hence, we can take $S_{\ell_j} = E_{\ell_j}$.
@@ -673,4 +677,33 @@ Now the theorem proving the correctness is straightforward.
 \subsubsection{Pseudo-Polynomial}
 \subsubsection{NP-Hardness}
 \label{subsubsection:hardness}
+
+To prove that problem to find a \textit{Cardinality Maximum Subset Sum (CMSS)}
+is \textit{NP-Hard} we define a reduction from the well-know NP-Hard problem 
+\textit{0/1 Knapsack Problem} to \textit{CMR}.\\
+\textbf{\textit{Problem Definitions}}\\
+\textit{0/1 Knapsack Problem:}\\
+Input:
+    \begin{itemize}
+        \item A set $K=\{(v_1,w_1),\hdots,(v_n,w_n)\}$ of \( n \) of 
+        items defined by pairs, each item with weight \( w_i \) and value \( v_i \), for \( i = 1, \ldots, n \).
+        \item A knapsack with a maximum weight capacity \( W \).
+    \end{itemize}
+Output:
+    \begin{itemize}
+        \item A subset of items that maximizes the total value while keeping the total weight within \( W \).
+    \end{itemize}
+\textit{Cardinality Maximum Subset Sum:}\\
+Input:
+    \begin{itemize}
+        \item A reason $R$ of a literal $z$ under interpretation $I$.
+        \item A threshold $s$.
+    \end{itemize}
+Output:
+    \begin{itemize}
+        \item A subset of items that maximizes the total value while keeping the total weight within \( W \).
+    \end{itemize}
+\textbf{\textit{Reduction from 0/1 Knapsack Problem to CMSS}}
+
+
 

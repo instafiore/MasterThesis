@@ -21,11 +21,11 @@
 \contentsline {subsection}{\numberline {4.3.2}True literal}{28}{subsection.4.3.2}%
 \contentsline {subsection}{\numberline {4.3.3}Algorithm}{29}{subsection.4.3.3}%
 \contentsline {section}{\numberline {4.4}Minimality}{29}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Minimal reason}{29}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.1}Minimal reason}{30}{subsection.4.4.1}%
 \contentsline {paragraph}{Maximal Subset Sum}{30}{section*.9}%
-\contentsline {subparagraph}{Proof Correctness}{30}{section*.11}%
-\contentsline {subsection}{\numberline {4.4.2}Cardinality Minimal Reason}{31}{subsection.4.4.2}%
-\contentsline {paragraph}{Cardinality-Maximal Set}{32}{section*.13}%
+\contentsline {subparagraph}{Proof Correctness}{31}{section*.11}%
+\contentsline {subsection}{\numberline {4.4.2}Cardinality Minimal Reason}{32}{subsection.4.4.2}%
+\contentsline {paragraph}{Cardinality-Maximal Set}{33}{section*.13}%
 \contentsline {subparagraph}{Proof Correcntess}{35}{section*.14}%
 \contentsline {section}{\numberline {4.5}Complexity}{39}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}Minimal Reason}{39}{subsection.4.5.1}%
