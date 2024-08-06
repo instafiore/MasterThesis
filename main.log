@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.11)  5 AUG 2024 15:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.11)  6 AUG 2024 19:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1040,24 +1040,24 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
  (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 129.
-LaTeX Font Info:    ... okay on input line 129.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count501
@@ -1077,7 +1077,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 129.
+Package hyperref Info: Link coloring OFF on input line 132.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -1087,9 +1087,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count507
 )
-LaTeX Info: Redefining \ref on input line 129.
-LaTeX Info: Redefining \pageref on input line 129.
-LaTeX Info: Redefining \nameref on input line 129.
+LaTeX Info: Redefining \ref on input line 132.
+LaTeX Info: Redefining \pageref on input line 132.
+LaTeX Info: Redefining \nameref on input line 132.
  (./main.out) (./main.out)
 \@outlinefile=\write7
 \openout7 = `main.out'.
@@ -1150,27 +1150,27 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl)
-Package biblatex Info: Reference section=0 on input line 129.
-Package biblatex Info: Reference segment=0 on input line 129.
-<imgs//logo.png, id=117, 459.7175pt x 110.4125pt>
+Package biblatex Info: Reference section=0 on input line 132.
+Package biblatex Info: Reference segment=0 on input line 132.
+<imgs//logo.png, id=133, 459.7175pt x 110.4125pt>
 File: imgs//logo.png Graphic file (type png)
 <use imgs//logo.png>
-Package pdftex.def Info: imgs//logo.png  used on input line 138.
+Package pdftex.def Info: imgs//logo.png  used on input line 141.
 (pdftex.def)             Requested size: 459.71637pt x 110.41222pt.
 
-Overfull \hbox (61.37778pt too wide) in paragraph at lines 138--139
+Overfull \hbox (61.37778pt too wide) in paragraph at lines 141--142
  [][] 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 148.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 151.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 148.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 151.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (80.90549pt too wide) in paragraph at lines 148--154
+Overfull \hbox (80.90549pt too wide) in paragraph at lines 151--157
  [][] 
  []
 
@@ -1180,13 +1180,13 @@ Overfull \hbox (80.90549pt too wide) in paragraph at lines 148--154
  <./imgs//logo.png>] [2]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.169 \end{dedication}
+l.172 \end{dedication}
                        [1
 
 ] (./main.tocpdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.31 ....5.1}Minimal Reason}{39}{subsection.4.5.1}
+l.31 ....5.1}Minimal Reason}{40}{subsection.4.5.1}
                                                   % [2
 
 
@@ -1236,12 +1236,7 @@ Overfull \hbox (8.3059pt too wide) in paragraph at lines 130--148
 []\OT1/cmr/m/n/12 A pos-si-ble (to-tal) in-ter-pre-ta-tion $\OML/cmm/m/it/12 I$ \OT1/cmr/m/n/12 sat-is-fy-ing $^^E[]$ is: $\OML/cmm/m/it/12 I[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 x; z; []; x[]; y[]; z[]\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 .
  []
 
-[8]
-Overfull \hbox (3.68703pt too wide) in paragraph at lines 159--159
-[]\OT1/cmr/bx/n/17.28 ALO (clauses) and AMO as a Spe-cial Cases 
- []
-
-[9]
+[8] [9]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
 (Font)              using `OT1/cmr/m/sc' instead on input line 191.
@@ -1284,14 +1279,14 @@ LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
 [17] [18]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
-(Font)              using `OT1/cmr/m/sc' instead on input line 147.
+(Font)              using `OT1/cmr/m/sc' instead on input line 149.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/scit' undefined
-(Font)              using `OT1/cmr/m/sc' instead on input line 147.
+(Font)              using `OT1/cmr/m/sc' instead on input line 149.
 
 
-Overfull \hbox (1.22998pt too wide) in paragraph at lines 147--168
+Overfull \hbox (1.22998pt too wide) in paragraph at lines 149--170
 \OT1/cmr/m/it/12 If $\OML/cmm/m/it/12 I \OT1/cmr/m/n/12 = [[]]$\OT1/cmr/m/it/12 , the sec-ond in-fer-ence rule as-so-ci-ated with $\OML/cmm/m/it/12 ^^[[]$ \OT1/cmr/m/it/12 in-fers $\OML/cmm/m/it/12 z$ \OT1/cmr/m/it/12 with $[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OT1/cmr/m/n/12 ) =
  []
 
@@ -1300,12 +1295,12 @@ Chapter 4.
 [25
 
 ]
-Overfull \hbox (2.06923pt too wide) in paragraph at lines 65--83
+Overfull \hbox (2.06923pt too wide) in paragraph at lines 66--84
 [] \OT1/cmr/m/it/12 When $\OML/cmm/m/it/12 I \OT1/cmr/m/n/12 = [[]\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 ]$ \OT1/cmr/m/it/12 then $\OML/cmm/m/it/12 z$ \OT1/cmr/m/it/12 is in-ferred, thanks to [],with $[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 z\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 z; y; w\OMS/cmsy/m/n/12 g \OT1/cmr/m/n/12 =
  []
 
 [26] [27] [28] [29]
-Overfull \hbox (0.94325pt too wide) detected at line 267
+Overfull \hbox (0.94325pt too wide) detected at line 269
 []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 I; z\OT1/cmr/m/n/12 ) + [] [](\OML/cmm/m/it/12 e; I; \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 R[] \OMS/cmsy/m/n/12 n \OML/cmm/m/it/12 S\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 [ f\OML/cmm/m/it/12 e\OMS/cmsy/m/n/12 g\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^T []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 I; z\OT1/cmr/m/n/12 ) + [] \OMS/cmsy/m/n/12 ^^@ []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 I; z\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 1 = [] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 1
  []
 
@@ -1313,58 +1308,275 @@ Overfull \hbox (0.94325pt too wide) detected at line 267
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [30] [31]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 376.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 378.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 376.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 378.
  [32] [33] [34] [35] [36]
-Overfull \hbox (83.63359pt too wide) in paragraph at lines 570--573
+Overfull \hbox (83.63359pt too wide) in paragraph at lines 572--575
 []\OT1/cmr/m/it/12 By con-struc-tion\OT1/cmr/m/n/12 , $(0\OML/cmm/m/it/12 ; j\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 C[]$ \OT1/cmr/m/it/12 iff $\OML/cmm/m/it/12 M[][]L[][]\OT1/cmr/m/n/12 0$.
  []
 
 
-Overfull \hbox (14.61055pt too wide) in paragraph at lines 573--578
+Overfull \hbox (14.61055pt too wide) in paragraph at lines 575--580
 \OT1/cmr/m/n/12 Then $\OML/cmm/m/it/12 M[] \OMS/cmsy/m/n/12 ^^R \OML/cmm/m/it/12 L[]$ \OT1/cmr/m/n/12 and $\OML/cmm/m/it/12 M[][][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 M[]; I; R\OT1/cmr/m/n/12 ) =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 596--608
+Underfull \hbox (badness 10000) in paragraph at lines 598--610
 
  []
 
-[37] [38]
-Overfull \hbox (5.53403pt too wide) in paragraph at lines 681--687
+[37] [38] [39]
+Overfull \hbox (5.53403pt too wide) in paragraph at lines 707--713
 []\OT1/cmr/m/n/12 To prove that prob-lem to find a \OT1/cmr/m/it/12 Car-di-nal-ity Max-i-mum Sub-set Sum (CMSS)
  []
 
-[39]) [40]
-Overfull \hbox (29.52362pt too wide) in paragraph at lines 187--187
+[40]) (./chapters/implementation_experiments.tex [41]
+Chapter 5.
+[42
+
+] [43] [44]
+Package pgfplots info on input line 145: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 145: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
+Package pgfplots info on input line 181: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 181: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
+Package pgfplots info on input line 214: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 214: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
+ [45]
+Package pgfplots info on input line 259: Overriding colorspace to rgb due to xcolor configuration.
+PGFPlots: reading {./graphcoloringcactus.csv}
+
+NOTE: coordinate (54,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (55,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (56,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (57,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (58,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (59,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (60,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (61,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (62,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (63,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (64,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (65,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (66,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (67,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (68,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (69,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (70,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (71,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (72,) has been dropped because of a coordinate filter. 
+PGFPlots: reading {./graphcoloringcactus.csv}
+NOTE: coordinate (19,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (20,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (21,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (22,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (23,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (24,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (25,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (26,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (27,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (28,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (29,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (30,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (31,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (32,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (33,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (34,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (35,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (36,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (37,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (38,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (39,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (40,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (41,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (42,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (43,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (44,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (45,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (46,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (47,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (48,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (49,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (50,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (51,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (52,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (53,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (54,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (55,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (56,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (57,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (58,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (59,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (60,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (61,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (62,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (63,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (64,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (65,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (66,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (67,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (68,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (69,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (70,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (71,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (72,) has been dropped because of a coordinate filter. 
+PGFPlots: reading {./graphcoloringcactus.csv}
+Package pgfplots info on input line 287: Overriding colorspace to rgb due to xcolor configuration.
+PGFPlots: reading {./knapsackcactus.csv}
+NOTE: coordinate (49,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (50,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (51,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (52,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (53,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (54,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (55,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (56,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (57,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (58,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (59,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (60,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (61,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (62,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (63,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (64,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (65,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (66,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (67,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (68,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (69,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (70,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (71,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (72,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (73,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (74,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (75,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (76,) has been dropped because of a coordinate filter. 
+PGFPlots: reading {./knapsackcactus.csv}
+NOTE: coordinate (13,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (14,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (15,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (16,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (17,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (18,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (19,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (20,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (21,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (22,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (23,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (24,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (25,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (26,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (27,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (28,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (29,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (30,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (31,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (32,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (33,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (34,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (35,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (36,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (37,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (38,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (39,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (40,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (41,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (42,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (43,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (44,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (45,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (46,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (47,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (48,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (49,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (50,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (51,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (52,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (53,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (54,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (55,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (56,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (57,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (58,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (59,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (60,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (61,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (62,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (63,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (64,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (65,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (66,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (67,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (68,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (69,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (70,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (71,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (72,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (73,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (74,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (75,) has been dropped because of a coordinate filter. 
+NOTE: coordinate (76,) has been dropped because of a coordinate filter. 
+PGFPlots: reading {./knapsackcactus.csv}
+
+Overfull \hbox (19.56061pt too wide) in paragraph at lines 269--301
+[][] [] 
+ []
+
+Package pgfplots info on input line 326: Overriding colorspace to rgb due to xcolor configuration.
+PGFPlots: reading {graphcoloringscatter15.csv}
+PGFPlots: reading {graphcoloringscatter45.csv}
+PGFPlots: reading {graphcoloringscatter75.csv}
+Package pgfplots info on input line 358: Overriding colorspace to rgb due to xcolor configuration.
+PGFPlots: reading {graphcoloringscatter15.csv}
+PGFPlots: reading {graphcoloringscatter45.csv}
+PGFPlots: reading {graphcoloringscatter75.csv}
+Package pgfplots info on input line 392: Overriding colorspace to rgb due to xcolor configuration.
+PGFPlots: reading {knapsackscatter-type1.csv}
+PGFPlots: reading {knapsackscatter-type2.csv}
+PGFPlots: reading {knapsackscatter-type3.csv}
+PGFPlots: reading {knapsackscatter-type4.csv}
+Package pgfplots info on input line 427: Overriding colorspace to rgb due to xcolor configuration.
+PGFPlots: reading {knapsackscatter-type1.csv}
+PGFPlots: reading {knapsackscatter-type2.csv}
+PGFPlots: reading {knapsackscatter-type3.csv}
+PGFPlots: reading {knapsackscatter-type4.csv}
+) (./chapters/related_works.tex [46] [47]
+Chapter 6.
+) (./chapters/conclusion.tex [48
+
+]
+Chapter 7.
+) [49
+
+]
+Overfull \hbox (29.52362pt too wide) in paragraph at lines 192--192
 \OT1/cmr/m/it/12 In-tel-li-gence\OT1/cmr/m/n/12 , vol. 25, no. 3,4, pp. 241{273, 1999. \OT1/cmr/m/sc/12 doi\OT1/cmr/m/n/12 : []$10 . 1023 / A : 1018930122475$[]. 
  []
 
-[41
+[50
 
-] [42] [43] (./main.aux)
+] [51] [52] [53] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: FCEAD75E8FE8968C773052124274DB4D;1796.
+(rerunfilecheck)             Checksum: 97751D0F8819323CB68849EADC5C980B;2011.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 49516 strings out of 478287
- 1067757 string characters out of 5849289
- 1874340 words of memory out of 5000000
- 66697 multiletter control sequences out of 15000+600000
+ 50233 strings out of 478287
+ 1086576 string characters out of 5849289
+ 1931824 words of memory out of 5000000
+ 67359 multiletter control sequences out of 15000+600000
  481962 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,30n,133p,1090b,3711s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (45 pages, 554565 bytes).
+Output written on main.pdf (55 pages, 623563 bytes).
 PDF statistics:
- 832 PDF objects out of 1000 (max. 8388607)
- 253 named destinations out of 1000 (max. 500000)
- 246 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 946 PDF objects out of 1000 (max. 8388607)
+ 280 named destinations out of 1000 (max. 500000)
+ 278 words of extra memory for PDF output out of 10000 (max. 10000000)
 

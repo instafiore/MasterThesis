@@ -724,6 +724,7 @@
       \strng{authorbibnamehash}{6ff2ecbb0dace9a796d510f578f069a3}
       \strng{authornamehash}{77eef0114e7d390785721504ab46b449}
       \strng{authorfullhash}{6ff2ecbb0dace9a796d510f578f069a3}
+      \field{extraname}{1}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
@@ -776,6 +777,212 @@
       \field{year}{2011}
       \field{pages}{379\bibrangedash 413}
       \range{pages}{35}
+    \endentry
+    \entry{DBLP:conf/lpnmr/AlvianoDLR15}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=4251092d5873b2e2fb3366039c8a5937}{%
+           family={Alviano},
+           familyi={A\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5dab82e1316a61875fa864346d121e08}{%
+           family={Dodaro},
+           familyi={D\bibinitperiod},
+           given={Carmine},
+           giveni={C\bibinitperiod}}}%
+        {{hash=77e491ad5f8cdd4f2edef120a74f5a17}{%
+           family={Leone},
+           familyi={L\bibinitperiod},
+           given={Nicola},
+           giveni={N\bibinitperiod}}}%
+        {{hash=d50b8c03eb60f0c7de0df2462c97c37c}{%
+           family={Ricca},
+           familyi={R\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{ae66ddfa4e66b287edc3d8a9fd3da938}
+      \strng{fullhash}{eca87f7e65c2e668d6e4de282e8c9500}
+      \strng{bibnamehash}{eca87f7e65c2e668d6e4de282e8c9500}
+      \strng{authorbibnamehash}{eca87f7e65c2e668d6e4de282e8c9500}
+      \strng{authornamehash}{ae66ddfa4e66b287edc3d8a9fd3da938}
+      \strng{authorfullhash}{eca87f7e65c2e668d6e4de282e8c9500}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{LPNMR}}
+      \field{series}{LNCS}
+      \field{title}{Advances in {WASP}}
+      \field{volume}{9345}
+      \field{year}{2015}
+      \field{pages}{40\bibrangedash 54}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1007/978-3-319-23264-5\_5
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-319-23264-5\_5
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-319-23264-5%5C_5
+      \endverb
+    \endentry
+    \entry{DBLP:journals/tplp/DodaroR20}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5dab82e1316a61875fa864346d121e08}{%
+           family={Dodaro},
+           familyi={D\bibinitperiod},
+           given={Carmine},
+           giveni={C\bibinitperiod}}}%
+        {{hash=d50b8c03eb60f0c7de0df2462c97c37c}{%
+           family={Ricca},
+           familyi={R\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{fbec77ab7f3230b764da577e78e49679}
+      \strng{fullhash}{fbec77ab7f3230b764da577e78e49679}
+      \strng{bibnamehash}{fbec77ab7f3230b764da577e78e49679}
+      \strng{authorbibnamehash}{fbec77ab7f3230b764da577e78e49679}
+      \strng{authornamehash}{fbec77ab7f3230b764da577e78e49679}
+      \strng{authorfullhash}{fbec77ab7f3230b764da577e78e49679}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theory Pract. Log. Program.}
+      \field{number}{2}
+      \field{title}{The External Interface for Extending {WASP}}
+      \field{volume}{20}
+      \field{year}{2020}
+      \field{pages}{225\bibrangedash 248}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.1017/S1471068418000558
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1017/S1471068418000558
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1017/S1471068418000558
+      \endverb
+    \endentry
+    \entry{DBLP:conf/iclp/GebserKKOSW16}{inproceedings}{}
+      \name{author}{6}{}{%
+        {{hash=a296fbe902a96f2ceebb7398463f3e13}{%
+           family={Gebser},
+           familyi={G\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=75758236531a52ffc97ef10f8b482f05}{%
+           family={Kaminski},
+           familyi={K\bibinitperiod},
+           given={Roland},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3fe0253f0b3212a4109e50143a91fede}{%
+           family={Kaufmann},
+           familyi={K\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=121398acde74ccd9e0d29d065c9c45eb}{%
+           family={Ostrowski},
+           familyi={O\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3c55d70c19bd5f5a654a6ad7ae64450c}{%
+           family={Schaub},
+           familyi={S\bibinitperiod},
+           given={Torsten},
+           giveni={T\bibinitperiod}}}%
+        {{hash=5a28f806bf3518aaa98d2cdef7416984}{%
+           family={Wanko},
+           familyi={W\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Schloss Dagstuhl - Leibniz-Zentrum für Informatik}%
+      }
+      \strng{namehash}{77eef0114e7d390785721504ab46b449}
+      \strng{fullhash}{20ec61f8a8be834812019bad4bc7fa30}
+      \strng{bibnamehash}{20ec61f8a8be834812019bad4bc7fa30}
+      \strng{authorbibnamehash}{20ec61f8a8be834812019bad4bc7fa30}
+      \strng{authornamehash}{77eef0114e7d390785721504ab46b449}
+      \strng{authorfullhash}{20ec61f8a8be834812019bad4bc7fa30}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Technical Communications of {ICLP}}
+      \field{series}{OASIcs}
+      \field{title}{Theory Solving Made Easy with Clingo 5}
+      \field{volume}{52}
+      \field{year}{2016}
+      \field{pages}{2:1\bibrangedash 2:15}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.4230/OASICS.ICLP.2016.2
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.4230/OASIcs.ICLP.2016.2
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.4230/OASIcs.ICLP.2016.2
+      \endverb
+    \endentry
+    \entry{DBLP:journals/ai/CalimeriGMR16}{article}{}
+      \name{author}{4}{}{%
+        {{hash=e9fed945f8bf084a0ec7bf1512943829}{%
+           family={Calimeri},
+           familyi={C\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=a296fbe902a96f2ceebb7398463f3e13}{%
+           family={Gebser},
+           familyi={G\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a65827edc12272b7d5310245c1a17588}{%
+           family={Maratea},
+           familyi={M\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d50b8c03eb60f0c7de0df2462c97c37c}{%
+           family={Ricca},
+           familyi={R\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{80f22b99324867283173ac806bc7b390}
+      \strng{fullhash}{e7f0a27f0c0eb8900f7de11b0a781e1c}
+      \strng{bibnamehash}{e7f0a27f0c0eb8900f7de11b0a781e1c}
+      \strng{authorbibnamehash}{e7f0a27f0c0eb8900f7de11b0a781e1c}
+      \strng{authornamehash}{80f22b99324867283173ac806bc7b390}
+      \strng{authorfullhash}{e7f0a27f0c0eb8900f7de11b0a781e1c}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Artif. Intell.}
+      \field{title}{Design and results of the Fifth Answer Set Programming Competition}
+      \field{volume}{231}
+      \field{year}{2016}
+      \field{pages}{151\bibrangedash 181}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1016/J.ARTINT.2015.09.008
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.artint.2015.09.008
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.artint.2015.09.008
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

@@ -7,8 +7,8 @@ program (section $~\ref{sec:bg-syntax_semantics}$) is showed,
 primarly focusing on notions relevant for this thesis, for instance on some
 extension such as the SUM constraints.
 Then some specific cases of SUM constraints, the so-called ALO and AMO constraints, 
-is explained in section ($~\ref{sec:bg-clauses_AMO}$).
-Afterwards, the current State-of-Art ASP solver algorithm to find a stable model 
+is explained in section $~\eqref{sec:bg-clauses_AMO}$.
+Afterwards, the current state-of-the-art ASP solver algorithm to find a stable model 
 is discussed (section $~\ref{sec:bg-SM}$), focusing on the concept of \textit{propagator}.
 
 \section{Syntax and Semantics}
@@ -23,7 +23,7 @@ $\neg$ is a symbol representing the common negation in logic.
 A $\emph{literal}$ is an atom with possibly the negation symbol in front of it.
 For instance $a \in \mathcal{A}$ is a literal (and an atom) and $\neg b$ with $b \in \mathcal{A}$
 is a literal (but not an atom); \textit{a} is said to be a \textit{positive literal} instead
-$b$ is a negative literal. In a more formal way: given a literal $\ell \in L$, $\ell$ is 
+$\neg b$ is a negative literal. In a more formal way: given a literal $\ell \in L$, $\ell$ is 
 positive if $\ell \in \mathcal{A}$ otherwise it is negative. Let $L$ be a set of literals.
 Given $\ell \in L$ then $\overline{\ell}$ denotes its complement, if $\ell$ is a positive
 literal, i.e. $\ell = a \in \mathcal{A}$, then $\overline{\ell} = \neg a$ else 
@@ -82,7 +82,7 @@ A SUM constraint (or simply constraint) has the following form
 where $n \ge 0$, $\{\ell_1, \hdots, \ell_n\}$ is a set of literals such that 
 $\ell_i \ne \ell_j$ for all $i,j \in \{1, \hdots, n\}$ such that $i \ne j$
 and $\{b, w_1, \hdots, w_n \}$ is a set of naturals numbers.
-Let $\sigma$  be a constraint of the form $~\ref{eq:sum}$ then $\mathit{bnd}_{\sigma}$
+Let $\sigma$  be a constraint of the form $~\ref{eq:sum}$ then $\mathit{bnd}_{\sigma} = b$
 represents the \textit{bound} of the constraint $\sigma$; $w_1, \hdots, w_n$
 are the weights of each literal in $\sigma$; $lits_{\sigma}$ is the set of literals of $\sigma$.
 Let's specify the relation $\in$ as $(w_i, \ell_i) \in \sigma$ to be read  
@@ -98,7 +98,7 @@ Note that $\sigma$ may be omitted from the above notation if its meaning is clea
 Just as a side note: in ASP-Core-2 standard
 ~\cite{DBLP:journals/tplp/CalimeriFGIKKLM20} 
 the constraint  $~\ref{eq:sum}$ is written as the headless rule
-$|:- \quad \#sum\{w_1,\ell_1 : \ell_1; ...; w_n,\ell_n : \ell_n\} < b.|$ \todo{fare più carino}
+$\mathit{:-} \quad \#sum\{w_1,\ell_1 : \ell_1; ...; w_n,\ell_n : \ell_n\} < b.$
 Now a more formal definition of program can be given:
 a program $\Pi$ is a set of rules and constraint, referred as $\mathit{rules}(\Pi)$ 
 and $\mathit{constraints}(\Pi)$ respectively.
@@ -129,9 +129,9 @@ $\mathit{wh}_{\sigma_1}(\overline{x}) = 1, \mathit{wh}_{\sigma_1}(\overline{y}) 
 \end{example}
 A possible (total) interpretation $I$ satisfying $\Pi_{\mathit{run}}$ is:
 $I_1 = \{ x, z, \overline{y}, x', y', z' \}$.
-Since, $\sum_{i=1}^{2} \mathit{wh}_{\sigma_1}(l_i) \cdot I_1(l_i) = 
-\sum 1 \cdot I_1(\overline{x}) + 1 \cdot I_1(\overline{y}) = 1 \ge \mathit{bnd}_{\sigma_1}$
-and $1 \cdot I_1(x) + 2 \cdot I_1(y) + 2 \cdot I_1(z) = 3 \ge \mathit{bnd}_{\sigma_2}$.
+Since, $\sum_{i=1}^{2} \mathit{wh}_{\sigma_1}(\ell_i) \cdot I_1^{\top}(\ell_i) = 
+\sum 1 \cdot I_1^{\top}(\overline{x}) + 1 \cdot I_1^{\top}(\overline{y}) = 1 \ge \mathit{bnd}_{\sigma_1}$
+and $1 \cdot I_1(x) + 2 \cdot I_1^{\top}(y) + 2 \cdot I_1^{\top}(z) = 3 \ge \mathit{bnd}_{\sigma_2}$.
 Given a program $\Pi$ and an intepretation $I$, its \textit{reduct} is
 defined as follows: $\Pi^{I} = \{ H(r) \leftarrow B^+(r) \mid r \in \mathit{rules}, I \models B(r)\}$,
 please note that $\mathit{constraints}(\Pi^{I}) = \emptyset$.
@@ -151,12 +151,12 @@ chapter has to be addressed.
 The constraint $\sigma_1$ is a special one, it says: at least 1 of the 2 literals
 has to be satisfied. Notice that all the literals are flipped, 
 so referring to the literals without being flipped it is 
-actually saying 'at least 1 of the 2 have to be falsified' , and since $2 = 1 - 1$ it can be 
+actually saying `at least 1 of the 2 have to be falsified' , and since $2 = 1 - 1$ it can be 
 reformulated as 'at most 1 of them can be satisfied'.
 Thus, with an \textit{At least One (ALO)} sum constraint is possible to define an \textit{At Most One (AMO)}
 constraint.
 
-\section{ALO (clauses) and AMO as a Special Cases}
+\section{ALO (clauses) and AMO as a Special Case}
 \label{sec:bg-clauses_AMO}
 
 Given a set $\{\ell_1, \hdots, \ell_n\}$, with $n \ge 1$, an \textit{At Least One (ALO)} 
@@ -257,8 +257,8 @@ rule $\ell_1 \land \hdots \land \ell_n \rightarrow \ell$ and it specifies
 that when all the literals $\ell_1 \land \hdots \land \ell_n$ are true then also 
 $\ell$ must be true. $B(R) = \overline{\{\overline{\ell_1},\hdots, \overline{\ell_n}\}}$
 is the body of the reason and $H(R) = \{\ell\}$.
-Given a reason $R$ of a literal $z$, $J_r = B(R)$; note that $J_r$ is the 
-assignment blocking $R \setminus \{\ell\}$.
+$R$ is said to be a reason of the literal $z$ if $H(R) = \{z\}$.
+$J_R= B(R)$ is the assigment satisfying the body of $R$; note that $J_R$ is blocking $R \setminus H(R)$.
 A clause $C$ of the form \eqref{eq:reason_form} is a reason for $\ell$, under the assignment $I$, 
 if $I \supseteq B(C)$ and under intepretation $J_c$ the propagator 
 infers  $\ell$, thanks to some inference rule.
@@ -281,7 +281,7 @@ and a the decision level (\textit{dl}) to 0  ,
 then the \textit{propagate} phases takes place, inferring all the consequences.
 If a conflict is detected it means that the program is not satisfiable, since 
 without any choice we got a conflict.
-Else if no conflict is deteceted then the \textit{choose} phase decides the new branching literal.
+Else, if no conflict is detected then the \textit{choose} phase decides the new branching literal.
 An important note is that just the a branching literal $\ell$ has a reason of the form $\{\ell\}$, representing
 $\rightarrow \ell$ ($\ell$ must be true), since it 
 does not follows from any logic reasoning.
@@ -408,7 +408,7 @@ Given an intepretation $I$, a literal $\ell$ and a constraint $\sigma$ of the fo
 a max possible sum, considering $\ell$ as false, is $\mathit{mps}_{\sigma}(I,\ell) = 
 \sum_{j \in [1..n], \ell_j \neq \ell}{w_j \cdot I^{\neg\bot}(\ell_j)}$;
 intuitively, if all the undefined literal were true and $\ell$ was false
-then the sum would be equal to $\mathit{mps}(I,\ell)_{\sigma}$.
+then the sum would be equal to $\mathit{mps}_{\sigma}(I,\ell)$.
 An inference rule of a sum constraint essentially adds to $I$ the literal $\ell$ 
 if $\ell$ is required to (possibly) reach the bound $b$, i.e., if
 \begin{align}\label{eq:sum:propagation}

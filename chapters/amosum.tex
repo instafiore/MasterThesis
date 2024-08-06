@@ -64,7 +64,7 @@ one is a totally new one.
 \paragraph{AMO inference rule} 
 \label{eq:amosum:propagation:1}
 The first inference rule is the one ensuring the at most one constraint 
-(~\ref{eq:amo}): given a literal 
+~\eqref{eq:amo}: given a literal 
 $\ell$ such that $(w : \ell [g]) \in \sigma$ for some $w \in \mathbb{N}$ and $g \in \mathbb{G}$,
 then $\ell$ is inferred as false, i.e., $\overline{\ell} \in I$, if there exists 
 $\ell' \in \mathit{lits}|_g$ such that $\ell' \in I$. In this case
@@ -88,11 +88,13 @@ Finally, the literal $\ell$ is added to $I$ if the following condition holds
 \begin{align}\label{eq:amosum:propagation:2}
     \mathit{mps\_amo}_{\sigma}(I,\ell) < \mathit{bnd}_\sigma
 \end{align}
-Furthermore,$\mathit{mwh}_{\sigma}(g) = 
-\max\{ w \mid (w : x [g]) \in \sigma \} \cup \{0\} $\\
-and $\ml_{\sigma}(g) =  
+Furthermore, other functions are defined:\\$\mathit{mwh}_{\sigma}(g) = 
+\max\{ w \mid (w : x [g]) \in \sigma \} \cup \{0\} $
+;$\ml_{\sigma}(g) =  
 \arg \max_{e \in S} \wh(e)$ 
-where $S = \{x \mid (w : x [g]) \in \sigma, w \in \mathbb{N}\}$ 
+where $S = \{x \mid (w : x [g]) \in \sigma, w \in \mathbb{N}\}$;
+$\ml_{\sigma}(I,g) =  
+\arg \max_{e \in S} \wh(e) \cdot I^{\neg\bot}(e)$
 
 Henceforth, unless otherwise specified, \textit{mps} will be used in place of \textit{mps\_amo}.
 In this case, $\mathit{reason}(\ell)$ is
@@ -130,7 +132,7 @@ In this case, $\mathit{reason}(\overline{\ell})$ is
     Already when $I$ is empty, $\sigma_3$ infers $z$.
     In fact, $z$ is the last undefined literal in part 2, and \eqref{eq:amosum:propagation:2} gives
     \begin{align*}
-         \max\{1 \cdot [\,]^{\neg\bot}(x), 2 \cdot [\,]^{{\neg\bot}}(y)\} = \max\{1 \cdot 1, 2 \cdot 1\} = 2 < 3
+         \max\{1 \cdot [\,]^{\neg\bot}(x), 2 \cdot [\,]^{{\neg\bot}}(y)\} = \max\{1 \cdot 1, 2 \cdot 1,0\} = 2 < 3
     \end{align*}
 From \eqref{eq:amosum:reason:2},
 $\mathit{reason}(z) = \{z\}$.
@@ -282,7 +284,7 @@ and
 \]
 then \(\ell = \ml(I,g)\). This is because the maximum undefined literal cannot be inferred as false. If it could have been inferred as false, it would have been inferred as such in a previous iteration and would not have remained the maximum undefined literal.
 That is, in the SUM inference rule $\wh(\ell) = \mwh(I,g)$, 
-thus, $\mps - \wh(\ell) = \mps(I,\ell)$ (as defined in ~\eqref{eq:amosum:propagation:2}).
+thus, $\mps - \wh(\ell) = \mps(I,\ell)$ (as defined in ~\ref{eq:amosum:propagation:2}).
 
 \begin{algorithm}[H]\small
     \caption{propagate\_phase}
