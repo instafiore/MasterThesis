@@ -22,21 +22,24 @@
 \contentsline {subsection}{\numberline {4.3.3}Algorithm}{29}{subsection.4.3.3}%
 \contentsline {section}{\numberline {4.4}Minimality}{29}{section.4.4}%
 \contentsline {subsection}{\numberline {4.4.1}Minimal reason}{30}{subsection.4.4.1}%
-\contentsline {paragraph}{Maximal Subset Sum}{30}{section*.9}%
-\contentsline {subparagraph}{Proof Correctness}{31}{section*.11}%
+\contentsline {paragraph}{Maximal Subset Sum}{30}{section*.8}%
+\contentsline {subparagraph}{Proof Correctness}{31}{section*.10}%
 \contentsline {subsection}{\numberline {4.4.2}Cardinality Minimal Reason}{32}{subsection.4.4.2}%
-\contentsline {paragraph}{Cardinality-Maximal Set}{33}{section*.13}%
-\contentsline {subparagraph}{Proof Correcntess}{35}{section*.14}%
+\contentsline {paragraph}{Cardinality-Maximal Set}{33}{section*.12}%
+\contentsline {subparagraph}{Proof Correctness}{35}{section*.13}%
 \contentsline {section}{\numberline {4.5}Complexity}{39}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}Minimal Reason}{40}{subsection.4.5.1}%
 \contentsline {subsection}{\numberline {4.5.2}Cardinality Minimal Reason}{40}{subsection.4.5.2}%
-\contentsline {subsubsection}{Pseudo-Polynomial}{40}{section*.15}%
+\contentsline {subsubsection}{Pseudo-Polynomial}{40}{section*.14}%
 \contentsline {subsubsection}{NP-Hardness}{40}{section*.16}%
-\contentsline {chapter}{\numberline {5}Implementation and Experiments}{42}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Benchmarks}{43}{section.5.1}%
-\contentsline {paragraph}{Synthetic Benchmark (SB).}{43}{section*.17}%
-\contentsline {paragraph}{Graph Coloring (GC).}{44}{section*.18}%
-\contentsline {paragraph}{Knapsack (K).}{44}{section*.19}%
-\contentsline {section}{\numberline {5.2}Results}{45}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Related Work}{48}{chapter.6}%
-\contentsline {chapter}{\numberline {7}Conclusion}{49}{chapter.7}%
+\contentsline {subparagraph}{Function $\rho $}{42}{section*.17}%
+\contentsline {subparagraph}{Function $\phi $}{42}{section*.18}%
+\contentsline {subparagraph}{Proving correcntess of reduction}{42}{section*.19}%
+\contentsline {chapter}{\numberline {5}Implementation and Experiments}{45}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Benchmarks}{46}{section.5.1}%
+\contentsline {paragraph}{Synthetic Benchmark (SB).}{46}{section*.20}%
+\contentsline {paragraph}{Graph Coloring (GC).}{47}{section*.21}%
+\contentsline {paragraph}{Knapsack (K).}{47}{section*.22}%
+\contentsline {section}{\numberline {5.2}Results}{48}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Related Work}{51}{chapter.6}%
+\contentsline {chapter}{\numberline {7}Conclusion}{53}{chapter.7}%

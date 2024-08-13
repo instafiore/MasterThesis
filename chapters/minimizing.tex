@@ -223,7 +223,6 @@ The following algorithm computes the increment as previously described.
 Given a reason $R$, intepretation $I$ and a set $S \subseteq R$
 the \textit{total increment of S} denoted $\inc(S,I,R) = \sum_{\ell \in S} \inc(\ell, I, (R \setminus S)\cup \{\ell\})$ 
 
-\todo{to continue review from here}
 \section{Minimality}
 \label{sec:minimality}
 In this section we  propose two algorithms to minimize the reason 
@@ -236,11 +235,9 @@ For both algorithms a proof of correcntess is provided.
 \subsection{Minimal reason}
 \label{subsec:minimal_reason}
 
-Given a reason $R$ of a literal $\ell$ then it is minimal if there  not exists 
-a literal $\ell' \in R$ such that $R \setminus \{\ell'\}$ is a reason of 
-$\ell$. In other words, $R$ is minimal if it does not containts redundant literals.
-As seen before with each literal $\ell$ in a reason $R$ has an \textit{increment}.
-That is, the increment to the mps when  $\ell$ is removed from the reason.
+Given a reason $R$ for a literal $\ell$, we say that $R$ is minimal if there does not exist a literal $\ell' \in R$ such that $R \setminus \{\ell'\}$ is still a reason for $\ell$. In other words, $R$ is minimal if it does not contain redundant literals. 
+
+As discussed previously, each literal $\ell$ in a reason $R$ has an \textit{increment}, which refers to the increment to the $\mps$ (Maximal Possible Sum) when $\ell$ is removed from the reason.
 
 At this point, an important parallel must be drawn: 
 minimizing a reason \(R\) equates to maximizing the
@@ -252,20 +249,22 @@ set of literals to be removed from \(R\).
 As mentioned before finding the minimal reason is 
 equal to find the maximal set of literal to remove from the reason.
 Let $R$ be a reason of a literal $z$ under interpretation $I$ and
-$S \subseteq R'$ be a set of literals where $R' = R\setminus\lits|_{\group(z)}$.
+$S \subseteq R$;
 $S$ can be removed from $R$ if 
-$$\sum_{e \in S}\inc(e,I,(R'\setminus S) \cup \{e\}) \le s $$
+$$\sum_{e \in S}\inc(e,I,(R\setminus S) \cup \{e\}) \le s $$
+and 
+$$S \cap \lits|_{\group(z)} = \emptyset$$
 where $s = \mathit{bnd} - \mps(I,z) - 1$.
 To comprehend the reasoning behind $s$, it is crucial to observe that, 
-given $J = B(R'\setminus S)$ 
-then $$\mps(J,z) = \mps(I,z) + \sum_{e \in S}\inc(e,I,(R'\setminus S) \cup \{e\})$$
-For $R'\setminus S$ to remain a reason
-the condition $\mps(R'\setminus S,z) \le \mathit{bnd} - 1$
+given $J = B(R\setminus S)$ 
+then $$\mps(J,z) = \mps(I,z) + \sum_{e \in S}\inc(e,I,(R\setminus S) \cup \{e\})$$
+For $R\setminus S$ to remain a reason
+the condition $\mps(B(R\setminus S),z) \le \mathit{bnd} - 1$
 must continue to hold.
 Since $\mps(I,z) \le \mathit{bnd} - 1 $ (otherwise $R$ would not be a reason)
-and $\sum_{e \in S}\inc(e,I,(R'\setminus S) \cup \{e\}) \le \mathit{bnd} - \mps(I,z) - 1$
+and $\sum_{e \in S}\inc(e,I,(R\setminus S) \cup \{e\}) \le \mathit{bnd} - \mps(I,z) - 1$
 then $$\mps(I,z) + 
-\sum_{e \in S}\inc(e,I,(R'\setminus S) \cup \{e\}) \le \mps(I,z) + 
+\sum_{e \in S}\inc(e,I,(R\setminus S) \cup \{e\}) \le \mps(I,z) + 
 \mathit{bnd} - \mps(I,z) - 1 = \mathit{bnd} - 1$$.
 Now, the entire algorithm can be defined. 
 It begins with an empty set $S$ and a current increment $ci$
@@ -327,9 +326,9 @@ the following lemma has to be proved.
     Arguing by contradiction, if it is not maximal 
     it means that there is a literal $\ell \in R \setminus S_m$ that could be
     added to $S_m$.
-    But since $\mathit{ci} +  \inc(\ell,I,R \setminus \mathit{S}) \ge s$
+    But given that $\ell$ has not been added it means that $\mathit{ci} +  \inc(\ell,I,R \setminus \mathit{S}) > s$
     for some $S$.
-    Since $S \subseteq S_m$, then $S \cup \{\ell\} \subseteq S_m \cup \{\ell\}$;
+    Since, by construction, $S \subseteq S_m$, then $S \cup \{\ell\} \subseteq S_m \cup \{\ell\}$;
     thanks to theorem ~\ref{lemma:maximal_subset} $S_m \cup \{\ell\}$
     is not a subset giving as sum a value less then $s$, that is, $\ell$ cannot be 
     added to $S_m$.
@@ -358,7 +357,7 @@ Given a set , a literal $\ell$ is active in $S$ if $\ml_\inc(S,\group(\ell)) = \
 the set of active literal of $S$ is equal to $A_S = \{\ell \in S \mid \ell \text{ is active in S}\}$.
 Given a literal $l \in R$ then $blw: R \mapsto \mathcal{P}(R)$ is a function 
 that returns all the literals \textit{below} $\ell$, 
-that is, $\blw(\ell) = \{ k \in \lits|_{\group(\ell)} \mid \inc(k,I,R) \le \inc(l,I,R) \}$.
+that is, $\blw(\ell) = \{ k \in \lits|_{\group(\ell)} \cap R \mid \inc(k,I,R) \le \inc(\ell,I,R) \}$.
 Function $\mathit{sum}(S) = \sum_{\ell \in A_S} \inc(\ell,I,R)$ is the sum of all increments  
 of active literals of $S$.\\
 A extension of a set $S$ with a literal $\ell \in R \setminus S$, written as $S' = S \ext \ell$,
@@ -458,14 +457,13 @@ After initilization the algorithm ~\ref{alg:CMSS} constructs each cell $M_{i,j}$
 , with $ 1 \le i \le s$ and $1 \le j \le n$, starting from $M_{i,j-1}$ and $M_{i-w,k}$,
 where $w = \inc(\ell_j,I,R)$ and $k = \arg \max_{k \in \{0,\hdots,j-1\}} \ell_j \not\in M_{i-w,k}$.
 Let $S_{\overline{\ell}} \sqsubseteq L_j $ and $S_{\ell} \sqsubseteq L_j$ and having 
-a total increment equal to $i$, with \(\ell_j\) 
-non-active and \(\ell_j\) active, respectively. 
+$\mathit{sum}(S_{\overline{\ell}}) = \mathit{sum}(S_{\ell}) = i$, with \(\ell_j\) 
+non-active in $S_{\overline{\ell}}$ and \(\ell_j\) active $S_{\ell}$. 
 By selecting the larger set between these two, 
 we obtain the maximum set considering literals in $L_j$.
 $S_{\overline{\ell}} = M_{i,j-1}$, since is the largest set giving as sum $i$
 and $\ell$ is not active given that $M_{i,j-1}$ considers just the first $j-1$ literals;
-note, this does not mean that $M_{i,j-1} \cap \{\ell\} = \emptyset$, since can happen 
-that for some $d < j$ $M_{i,d} = M_{l,k} \ext \ell_d$ and $\group(\ell_d) = \group(\ell_j)$.
+note, this does not mean that $M_{i,j-1} \cap \{\ell\} = \emptyset$.
 Instead finding $S_{\ell}$ is not so trivial, we cannot just take $M_{i-w,j-1}$,
 since $M_{i-w,j-1}$ could containt a literal $\ell_d$ such that $d < j$,
 $\group(\ell_d) = \group(\ell_j)$ and in that case 
@@ -488,10 +486,10 @@ and it is enough to take the largest set in the last column, that is, the
 largest set giving as sum a value less or equal to $s$ considering all literals in $L$.
 
 This informal discussion has outlined the reasoning behind the algorithm. 
-The following section will provide a formal proof of the concepts discussed.
+The following section will provide a formal proof of the concepts discussed
 so far.
 
-\subparagraph{Proof Correcntess}
+\subparagraph{Proof Correctness}
 To formally prove that algorithm ~\ref{alg:CMSS} is correct, a lemma 
 has to be proved.
 \begin{lemma}
@@ -507,10 +505,10 @@ has to be proved.
 \begin{proof}
     Let's assume by contradiction that $S$ is not the maximum cardinality set that gives as sum $s$.
     So there exists a set $S' \sqsubseteq D$ such that $|S'| > |S|$.
-    If $\ell \not\in A_{S'}$ then $|S'| > |S_{\overline{\ell}}|$, that is $S_{\overline{\ell}}$ 
+    Given that $|S'| > |S_{\overline{\ell}}|$, if  $\ell \not\in A_{S'}$ then $S_{\overline{\ell}}$ 
     is not the maximum cardinality set 
     with $\ell$ being a \textit{non-active literal} giving as sum $s$, but this is a contradiction.
-    So $\ell \in A_{S'}$ then $|S'| > |S_{\ell}|$, that is $S_{\ell}$ is not the maximum cardinality set 
+    Thus, $\ell \in A_{S'}$. Given that $|S'| > |S_{\ell}|$, then $S_{\ell}$ is not the maximum cardinality set 
     with $\ell$ being a \textit{active literal} giving as sum $s$, but this is a contradiction.
     So $\ell \in A_{S'}$ and $ \ell \not\in A_{S'}$ and this is a contradiction.
 \end{proof}
@@ -518,7 +516,7 @@ has to be proved.
 
 
 To prove that algorithm \textit{CMSS} ~\ref{alg:CMSS} returns the cardinality maximal subset $S$ 
-where  $\inc(S,I,R) \le s$ it is necessary to introduce the
+where  $\mathit{sum}(S) \le s$ it is necessary to introduce the
 relation $C_M \subseteq N_1 \times N_2$, where $N_1 = \{-\mathit{max}_\inc, \hdots, -1, 0, \hdots, s\}$,
 $N_2 = \{0, \hdots, n\}$ and $\mathit{max}_\inc = \max \{ \inc(\ell,I,R) \mid \ell \in L\}$.
 The relation $C_M$ is defined as follows:
@@ -530,7 +528,7 @@ The relation $C_M$ is defined as follows:
 % \mathit{sum}(M_{i,j}) = i \text{ and } M_{i,j} \subseteq L_j
 $C_M$ represents the notion of \textit{`correct'}: $(i,j) \in C_M$ \textit{iff}
 $M_{i,j}$ is actually the maximum set, considering literals in $L_j$,
-giving as sum a value equal to $i$ for all $i \in \{0, \hdots, s\}$
+giving as sum a value equal to $i$, for all $i \in \{0, \hdots, s\}$
 and $j \in \{0, \hdots, n\}$.
 The first block $\{ (i,j) \in N_1 \times N_2 \mid i \in \{-\mathit{max}_\inc, \hdots, -1\}\}$
 has a \textit{`padding'} purpose, i.e., if the sum is less than 0 it cannot be reached ( since function $\inc$
@@ -574,7 +572,7 @@ theorem).
         Algorithm \textit{CMSS} ~\eqref{alg:CMSS} builds 
         $$M_{0,j} = \{ \ell \mid \ell \in L_j \land inc(\ell,I,R) = 0\} \quad \forall j \in \{1, \hdots , |L|\}$$
         Then $M_{0,j} \subseteq L_j$ and
-        $M_{i,j} \text{ is the maximum subset s.t. } \inc(M_{i,j},I,R) = 0$,
+        $M_{i,j} \text{ is the maximum subset s.t. } \mathit{sum}(M_{i,j}) = 0$,
         given that to get the maximum set it is enough to add all literals with increment 0.
         Hence, $(0,j) \in C_M \quad \forall j \in \{0, \hdots, n\}$ 
 
@@ -600,9 +598,9 @@ theorem).
             Let $S_{\overline{\ell_j}} \sqsubseteq L_j$ be the largest set with sum $i$
             and $\ell_j$ is \textbf{non-active}.
             Now the claim to get is that $M_{i,j-1} = S_{\overline{\ell_j}}$.
-            Since $l_j$ has to be not active, $S_{\overline{\ell_j}}$ has to be built considering $L_j \setminus \{\ell_j\}$,
+            Since $\ell_j$ has to be not active, $S_{\overline{\ell_j}}$ has to be built considering $L_j \setminus \{\ell_j\}$,
             i.e., $S_{\overline{\ell_j}} \sqsubseteq L_{j-1}$.
-            All Possible Set to be considered are $PS = \{S \mid S \sqsubseteq L_{j-1} \text{ and } \inc(S,I,R) = i\}$.
+            All Possible Set to be considered are $PS = \{S \mid S \sqsubseteq L_{j-1} \text{ and } \mathit{sum}(S) = i\}$.
             Given that, \textit{by induction hypothesis}, $C_M(i,j-1)$ holds, then $|M_{i,j-1}| \ge |S| \quad \forall S \in PS$.
             So, given that $S_{\overline{\ell_j}}$ is the largest set amoung those in $PS$ then 
             $|M_{i,j-1}| =|S_{\overline{\ell_j}}|$.
@@ -617,11 +615,11 @@ theorem).
             $M_{i,k}$ with $\ell_j$.
             Let's analize what is the value of $\mathit{sum}(E_{\ell_j})$.
             By \textit{definition} $\mathit{sum}(M_{i-w,k}) = i-w$.
-            By \textit{construction}  $\mathit{sum}(M_{i-w,k}) \cap \lits|_{\group(\ell)} = \emptyset$;
+            By \textit{construction}  $M_{i-w,k} \cap \lits|_{\group(\ell)} = \emptyset$;
             as seen in the preliminars it is a sufficient condition to deduce that $\ell_j$ is active 
             in $M_{i,k} \ext \ell_j$, that is, $\ell_j \in A_{E_{\ell_j}}$.
             Thus, since $\mathit{sum}(M_{i-w,k}) = i-w$ and $\ell_j \not\in M_{i,k}$ and $ \ell \in A_{E_{\ell_j}}$ then 
-            $\mathit{sum}(M_{i,k} \ext \ell_j,I,R) = \mathit{sum}(E_{\ell_j}) = \mathit{sum}(M_{i-w,k}) + \inc(\ell_j,I,R) = i - w + w = i$.
+            $\mathit{sum}(M_{i,k} \ext \ell_j) = \mathit{sum}(E_{\ell_j}) = \mathit{sum}(M_{i-w,k}) + \inc(\ell_j,I,R) = i - w + w = i$.
             Now the claim to get is that $E_{\ell_l} = S_{\ell_j}$.
             This claim is reached reasoning by contradition.
             Let's assume that $E_{\ell_l}$ is not the largest set, in other words: 
@@ -634,14 +632,12 @@ theorem).
             $|S' \setminus \blw(\ell_j)| > |E_{\ell_j} \setminus \blw(\ell_j)|$.
             Given that $E_{\ell_j} = M_{i-w,k} \ext \ell_j = M_{i-w,k} \cup blw(\ell_j,j)$ then
             $E_{\ell_j} \setminus blw(\ell_j) = (M_{i-w,k} \cup blw(\ell_j)) \setminus blw(\ell_j) = M_{i-w,k}.$
-            Given that $\ell_j \in A_{S'}$ it means that $S' \cap \group(\ell_j) \setminus \blw(\ell_j) = \emptyset$, i.e.,
+            Given that $\ell_j \in A_{S'}$ it means that $(S' \cap \group(\ell_j)) \setminus \blw(\ell_j) = \emptyset$, i.e.,
             there is no literal $\ell' \in S'$ such that $\wh(\ell') > \ell_j$.
             So, $S'' = S' \setminus \blw(\ell_j) \sqsubseteq L_d$ where $d \in \{0,\hdots,j-1\}$
             such that $L_d \cap \group(\ell_j) = \emptyset$.
             Given that $\ell_j$ is active in $S'$ then $\mathit{sum}(S'') = \mathit{sum}(S') - \inc(\ell_j,I,R) = i - w$.
-            Since $|S'' \sqsubseteq L_d| > |M_{i-w,k}| \sqsubseteq L_k $ it means that
-            $d > k$, since to be greater than $M_{i-w,k}$ then $S''$ 
-            has to consider more literals then $L_k$ (otherwise $M_{i-w,k}$ would not be the largest set considering $L_k$).
+            Since $|S''| > |M_{i-w,k}|$ and $S'' \sqsubseteq L_d$ and $M_{i-w,k} \sqsubseteq L_k$, it follows that $d > k$. This is because for $S''$ to be greater than $M_{i-w,k}$, $S''$ must include more literals than $L_k$. Otherwise, $M_{i-w,k}$ would not be the largest set considering $L_k$.
             So $d > k = \arg \max_{k \in \{0,\hdots,j-1\}} \ell_j \not\in M_{i-w,k}$.
             So $k < d \le j-1$, it means that $L_d$ contains some literal of the group of $\ell_j$,
             and it is a contradiction.
@@ -649,8 +645,8 @@ theorem).
             Hence, we can take $S_{\ell_j} = E_{\ell_j}$.
             By lemma ~\ref{lemma:cmin}, given that $S_{\overline{\ell_j}}$ is the maximum cardinality set giving $i$ as sum with $\ell_j$ 
             being an \textit{non-active} literal
-            and $S_{\ell_j}$ is the maximum cardinality set with $\ell_j$ being an \textit{active literal} giving $i$  as sum.\\
-            Then $S = \arg\max_{X \in \{S_{\ell}, S_{\overline{\ell}}\}} |X|$  is a maximum cardinality set that gives as sum $s$.
+            and $S_{\ell_j}$ is the maximum cardinality set with $\ell_j$ being an \textit{active literal} giving $i$  as sum;
+            then $S = \arg\max_{X \in \{S_{\ell}, S_{\overline{\ell}}\}} |X|$  is a maximum cardinality set that gives as sum $s$.
             Given that $M_{i,j} = S$ then $C_M(i,j)$ holds, and the prove is completed.
     \end{itemize}
    \end{itemize}
@@ -701,6 +697,7 @@ complexity is $O(2s + n + s \cdot n^3) = O(n^3 \cdot s)$.
 Since $s$ is not a constant but part of the input, the algorithm depends on 
 the value of $s$, making it \textit{pseudo-polynomial}.
 
+\todo{review done up to here}
 \subsubsection{NP-Hardness}
 \label{subsubsection:hardness}
 
@@ -708,18 +705,18 @@ To prove that problem to find a \textit{Cardinality Maximum Subset Sum (CMSS)}
 is \textit{NP-Hard} we define a reduction from the well-know NP-Hard problem 
 \textit{0/1 Knapsack Problem} to \textit{CMR}.\\
 \textbf{\textit{Problem Definitions}}\\
-\textit{0/1 Knapsack Problem:}\\
+\textit{0/1 Knapsack Problem (KN):}\\
 Input:
     \begin{itemize}
         \item A set $K=\{(v_1,w_1),\hdots,(v_n,w_n)\}$ of \( n \) of 
         items defined by pairs, each item with weight \( w_i \) and value \( v_i \), for \( i = 1, \ldots, n \).
-        \item A knapsack with a maximum weight capacity \( W \).
+        \item A maximum weight capacity \( W \).
     \end{itemize}
 Output:
     \begin{itemize}
-        \item A subset of items that maximizes the total value while keeping the total weight within \( W \).
+        \item A subset  $Z \subseteq K$ of items that maximizes the total value while keeping the total weight within \( W \).
     \end{itemize}
-\textit{Cardinality Maximum Subset Sum:}\\
+\textit{Cardinality Maximum Subset Sum (CMSS):}\\
 Input:
     \begin{itemize}
         \item A reason $R$ of a literal $z$ under interpretation $I$.
@@ -727,9 +724,112 @@ Input:
     \end{itemize}
 Output:
     \begin{itemize}
-        \item A subset of items that maximizes the total value while keeping the total weight within \( W \).
+        \item A set $S \subseteq R$ such that $S$ is the maximum set having $\mathit{sum}(S) \le s$
     \end{itemize}
 \textbf{\textit{Reduction from 0/1 Knapsack Problem to CMSS}}
 
+To correctly prove that \textit{KN} can be efficiently reduced to \textit{CMSS}, the following steps are required:
+
+\begin{enumerate}
+    \item Define a polynomial function $\rho$ that maps an instance $x$ of \textit{KN} to an instance $\rho(x)$ of \textit{CMSS}.
+    \item Define a polynomial function $\phi$ that maps a solution $y$ of \textit{CMSS} to a solution $\phi(y)$ of \textit{KN}.
+    \item Prove that, given an optimal solution $y$ for \textit{CMSS} with the input $\rho(x)$, the function $\phi(y)$ 
+    produces an optimal solution for \textit{KN} with the original input $x$. 
+\end{enumerate}
 
 
+\subparagraph{Function $\rho$} 
+Let $<K,W>$ be the input of \textit{KN} where $K=\{(v_1,w_1),\hdots,(v_n,w_n)\}$ is the set of items and 
+$W$ the bound of the knapsack.
+$\rho(K,W) = <I,R,s>$
+where: 
+\begin{align*}
+    &s = W \\
+    &I = \{\neg w\} \bigcup_{\forall g \in G} \overline{\lits|_g} \\
+    &R = \{z\} \cup \{w\} \bigcup_{\forall g \in G} \lits|_g\\
+\end{align*}
+and regarding parameters $\group$ and $\inc$:
+\begin{align*}
+    & \group(\ell_i^j) = i \quad \forall i \in \{1, \hdots, n\} \forall j \in \{ 1, \hdots, v_i \} \\
+    & \inc(\ell_i^j, I, R) = w_i \quad \forall i \in \{1, \hdots, n\} \forall j \in \{ 1, \hdots, v_i \} \\    
+\end{align*}
+
+\subparagraph{Function $\phi$} 
+Let $S$ be the output of algorithm \textit{CMSS}, $\phi(S) = Z$ is an output for \textit{KN},
+where:
+\begin{align*}
+    f(S) =  Z  = \{(v_g, w_g) \,:\, \lits|_g \subseteq S\}\\
+\end{align*}
+
+\subparagraph{Proving correcntess of reduction}
+For proving correcntess of the reduction some preliminars are needed.
+Let $\mathit{value}: \mathbb{G} \mapsto \mathbb{N}$ a function 
+mapping each group to its cardinality, that is, $\mathit{value}(g) = |\,\lits|_g\,|$.
+Let $\mathit{value}: \mathbb{N} \times \mathbb{N} \mapsto \mathbb{N}$ a function that maps 
+an item $(v,w)$ to its weight, that is, $\mathit{value}(v,w) = v$.
+Given a set $S \subseteq R$ then a group $g$ is said to be active in $S$
+if $\exists \ell \in \lits|_g$ such that $\ell \in S$.
+Let $\alpha: \mathcal{P}(R) \mapsto \mathcal{P}(\mathbb{G})$ be a function that 
+maps every subset $S \subseteq R$ to its set of active groups, that is, 
+$\alpha(S) = \{g : \lits|_g \subseteq S\}$.
+
+\begin{theorem}
+    Given an optimal solution \( S^* \) for the \textit{CMSS} problem with the input $\rho(K,W)$, 
+    the function \( f(S^*) = Z^* \) produces an optimal solution for the \textit{KN}
+    problem with the original input \( <K,W> \).
+\end{theorem}
+
+\begin{proof}
+    The problem \textit{CMSS} is to find a set that maximize its size while keeping its $\mathit{sum}$
+    under the bound $s$. In a mathematical form:
+    \begin{align}
+        \label{red:max:S:f}
+        \max_{S \in \mathcal{P}(R)} & \ f(S)=|S| \\
+        \label{red:max:S:constraint}
+        \text{subject to} \quad & \sum_{e \in A_S} \inc(e,I,R) \le s 
+    \end{align}
+    By construction each group $g$ has all its literals with the same increment, thus if any literal of 
+    $g$ is active in $S$ then every literal of $g$ is inside $S$; that's because, 
+    let $\ell \in A_S$, then $\blw(\ell) = \lits|_{\group(\ell)}$.
+    So, a set $S$ can be defined only using its \textit{active groups}
+    and objective function ~\ref{red:max:S:f} 
+    can be rewritten in $\sum_{g \in \alpha(S)} |\,\lits|_g\,|$;
+    since $\mathit{value}(g) = |\,\lits_g\,|$ then it can be also written as:
+    $\sum_{g \in \alpha(S)} \mathit{value}(g)$.
+    Abusing of notation let $\inc(g,I,R)$ be the increment of the group $g$ when $\lits|_g \subseteq S$,
+    that is, $\inc(g,I,R) = \max\{\inc(\ell,I,R) \mid \ell \in \lits|_g\}$.
+    Given that $\inc(\ell,I,R) = w_g$ for all $\ell \in \lits|_g$ then $\inc(g,I,R)  = w_g$;
+    using this notation the constraint ~\ref{red:max:S:constraint} can be rewritten as 
+    $\sum_{g \in \alpha(S)} \inc(g,I,R) \le s$.
+    Thus, the maximization problem described above can be rewritten as:
+    \begin{align}
+        \label{red:max:S:f:G}
+        \max_{S \in \mathcal{P}(R)} & \sum_{g \in \alpha(S)} \mathit{value}(g) \\
+        \label{red:max:S:constraint:G}
+        \text{subject to} \quad & \sum_{g \in \alpha(S)} \inc(g,I,R) \le s 
+    \end{align}
+    $S^*$ is the optimal solution, thus,
+    $|S^*| \ge \max_{S \in \mathcal{P}(R)} \sum_{g \in \alpha(S)} \mathit{value}(g)$\\
+    or equivalently 
+    $\sum_{g^* \in \alpha(S^*)} \mathit{value}(g) 
+    \ge \max_{S \in \mathcal{P}(R)} \sum_{g \in \alpha(S)} \mathit{value}(g)$.\\
+    By construction $\mathit{value}(g) = \mathit(v_g, w_g)$ for any weight $w_g$.
+    Moreover, notice that, $\phi(S) = \{(v_g, w_g) \,:\, \lits|_g \subseteq S\}$
+    and $\alpha(S) = \{g \,:\, \lits|_g \subseteq S\}$ are made from the same 
+    groups. Thus, the objective function can be rewritten as:
+    $\sum_{(v_g,w_g) \in \phi(S)} \mathit{value}(v_g,w_g)$.
+    Furthermore, by construction. $\inc(g,I,R) = w_g$ and $s = W$, so, the constraint 
+    ~\ref{red:max:S:constraint:G} can be written as: 
+    $\sum_{(v_g,w_g) \in \phi(S)} w_g \le W$.
+    Hence, the whole formulation can be defined as:
+    \begin{align}
+        \label{red:max:Z:f}
+        \max_{S \in \mathcal{P}(R)} & \sum_{(v_g,w_g) \in \phi(S)} \mathit{value}(v_g,w_g)\\
+        \label{red:max:Z:constraint:G}
+        \text{subject to} \quad & \sum_{(v_g,w_g) \in \phi(S)} w_g \le W
+    \end{align}
+    Finally, $\sum_{(v_g^*,w_g^*) \in \phi(S^*)} \mathit{value}(v_g^*,w_g^*)  \ge \max_{S \in \mathcal{P}(R)}  
+    \sum_{(v_g,w_g) \in \phi(S)} \mathit{value}(v_g,w_g)$\\
+    and $\sum_{(v_g^*,w_g^*) \in \phi(S^*)} w_g^* \le W$.
+    Hence, $\phi(S*)$ is optimal solution of \textit{KN} with input $<K,W>$.
+\end{proof}

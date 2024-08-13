@@ -40,7 +40,7 @@ of \textsc{wasp}~\cite{DBLP:conf/lpnmr/AlvianoDLR15} (version f3e4c56) and the s
 All the tested systems used \textsc{gringo} (included in the binary of \textsc{clingo}) as the grounder.
 
 Experiments were conducted on an Intel Xeon 2.4 GHz server with 16 GB of memory.
-All experiments were conducted in three different modalities:
+There are three distinct modalities through which an experiment can be launched:
 \begin{enumerate}
     \item No minimization of the reason (\textit{default}).
     \item Minimization of the reason (\textit{min}).
@@ -100,6 +100,9 @@ Time and memory were limited to 20 minutes and 15 GB, respectively.
 
 \section{Results}
 
+\textbf{SB} has been tested only with the \textit{default} modality, 
+whereas \textbf{KN} and \textbf{GC} have been tested with all three modalities:
+\textit{default}, \textit{min}, and \textit{cmin}.
 The experimental results for SB are summarized in Figure ~\ref{fig:resultssynthetic}. 
 We can see that when $\mathit{group\_size}$ is 10 or 100, \textsc{clingo} can handle 
 the first three instances in an efficient way, solving them with only a few conflicts. 

@@ -984,6 +984,631 @@
       \verb https://doi.org/10.1016/j.artint.2015.09.008
       \endverb
     \endentry
+    \entry{DBLP:journals/jacm/NieuwenhuisOT06}{article}{}
+      \name{author}{3}{}{%
+        {{hash=72bfdc74b3cc50ed25e7206b90789dbf}{%
+           family={Nieuwenhuis},
+           familyi={N\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+        {{hash=e2ba4d9cf7e8bdf98cb32d08498311d3}{%
+           family={Oliveras},
+           familyi={O\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
+        {{hash=17736d07fc9708df7a9802ea0d682814}{%
+           family={Tinelli},
+           familyi={T\bibinitperiod},
+           given={Cesare},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{5d180953a5a6207620b817119009676e}
+      \strng{fullhash}{5d180953a5a6207620b817119009676e}
+      \strng{bibnamehash}{5d180953a5a6207620b817119009676e}
+      \strng{authorbibnamehash}{5d180953a5a6207620b817119009676e}
+      \strng{authornamehash}{5d180953a5a6207620b817119009676e}
+      \strng{authorfullhash}{5d180953a5a6207620b817119009676e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{J. {ACM}}
+      \field{number}{6}
+      \field{title}{Solving {SAT} and {SAT} Modulo Theories: From an abstract Davis--Putnam--Logemann--Loveland procedure to DPLL(\emph{T})}
+      \field{volume}{53}
+      \field{year}{2006}
+      \field{pages}{937\bibrangedash 977}
+      \range{pages}{41}
+    \endentry
+    \entry{DBLP:journals/eor/BrailsfordPS99}{article}{}
+      \name{author}{3}{}{%
+        {{hash=215aaa3b3e327955064e158573580eca}{%
+           family={Brailsford},
+           familyi={B\bibinitperiod},
+           given={Sally\bibnamedelima C.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=30848b8dfe66cb999eb7b314674c2bbb}{%
+           family={Potts},
+           familyi={P\bibinitperiod},
+           given={Chris\bibnamedelima N.},
+           giveni={C\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=b459a0d10ebd2b75d7c9854554dc2c8e}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Barbara\bibnamedelima M.},
+           giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{b3b61a6ca5cb4d53eba04f7b78c53e26}
+      \strng{fullhash}{b3b61a6ca5cb4d53eba04f7b78c53e26}
+      \strng{bibnamehash}{b3b61a6ca5cb4d53eba04f7b78c53e26}
+      \strng{authorbibnamehash}{b3b61a6ca5cb4d53eba04f7b78c53e26}
+      \strng{authornamehash}{b3b61a6ca5cb4d53eba04f7b78c53e26}
+      \strng{authorfullhash}{b3b61a6ca5cb4d53eba04f7b78c53e26}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Eur. J. Oper. Res.}
+      \field{number}{3}
+      \field{title}{Constraint satisfaction problems: Algorithms and applications}
+      \field{volume}{119}
+      \field{year}{1999}
+      \field{pages}{557\bibrangedash 581}
+      \range{pages}{25}
+    \endentry
+    \entry{DBLP:journals/tplp/GebserKKS19}{article}{}
+      \name{author}{4}{}{%
+        {{hash=a296fbe902a96f2ceebb7398463f3e13}{%
+           family={Gebser},
+           familyi={G\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=75758236531a52ffc97ef10f8b482f05}{%
+           family={Kaminski},
+           familyi={K\bibinitperiod},
+           given={Roland},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3fe0253f0b3212a4109e50143a91fede}{%
+           family={Kaufmann},
+           familyi={K\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=3c55d70c19bd5f5a654a6ad7ae64450c}{%
+           family={Schaub},
+           familyi={S\bibinitperiod},
+           given={Torsten},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{77eef0114e7d390785721504ab46b449}
+      \strng{fullhash}{6ff2ecbb0dace9a796d510f578f069a3}
+      \strng{bibnamehash}{6ff2ecbb0dace9a796d510f578f069a3}
+      \strng{authorbibnamehash}{6ff2ecbb0dace9a796d510f578f069a3}
+      \strng{authornamehash}{77eef0114e7d390785721504ab46b449}
+      \strng{authorfullhash}{6ff2ecbb0dace9a796d510f578f069a3}
+      \field{extraname}{3}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theory Pract. Log. Program.}
+      \field{number}{1}
+      \field{title}{Multi-shot {ASP} solving with clingo}
+      \field{volume}{19}
+      \field{year}{2019}
+      \field{pages}{27\bibrangedash 82}
+      \range{pages}{56}
+    \endentry
+    \entry{Denecker2010DPLLAggAE}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=f86638f13cb0b063c3dcbdc37f91ed41}{%
+           family={Denecker},
+           familyi={D\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c8a34a62ed0526617656f594626fb10d}{%
+           family={{De Cat}},
+           familyi={D\bibinitperiod},
+           given={Broes},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{34f81a36316ca01ff9bc8c834fdbf937}
+      \strng{fullhash}{34f81a36316ca01ff9bc8c834fdbf937}
+      \strng{bibnamehash}{34f81a36316ca01ff9bc8c834fdbf937}
+      \strng{authorbibnamehash}{34f81a36316ca01ff9bc8c834fdbf937}
+      \strng{authornamehash}{34f81a36316ca01ff9bc8c834fdbf937}
+      \strng{authorfullhash}{34f81a36316ca01ff9bc8c834fdbf937}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Logic and Search, Edinburgh, 15 July 2010}
+      \field{title}{DPLL(Agg): An efficient SMT module for aggregates}
+      \field{year}{2010}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:126135475
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:126135475
+      \endverb
+    \endentry
+    \entry{DBLP:journals/ngc/0001JCJBD16}{article}{}
+      \name{author}{6}{}{%
+        {{hash=d95018fac68c1595a5da37132d8188e2}{%
+           family={Bogaerts},
+           familyi={B\bibinitperiod},
+           given={Bart},
+           giveni={B\bibinitperiod}}}%
+        {{hash=707399997179157d6d7c0a9302f44871}{%
+           family={Jansen},
+           familyi={J\bibinitperiod},
+           given={Joachim},
+           giveni={J\bibinitperiod}}}%
+        {{hash=008c44da60a8e595c7c7bd1b0946edf0}{%
+           family={Cat},
+           familyi={C\bibinitperiod},
+           given={Broes\bibnamedelima De},
+           giveni={B\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=d25acbde65ec7504aaee6f0f80759527}{%
+           family={Janssens},
+           familyi={J\bibinitperiod},
+           given={Gerda},
+           giveni={G\bibinitperiod}}}%
+        {{hash=47832e3503347bd8504d64ba5a70f067}{%
+           family={Bruynooghe},
+           familyi={B\bibinitperiod},
+           given={Maurice},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f86638f13cb0b063c3dcbdc37f91ed41}{%
+           family={Denecker},
+           familyi={D\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{7bff05581a3b683461f0bc90a6deeaf8}
+      \strng{fullhash}{1a5e459fded84e1a0a9ca08be1c2035b}
+      \strng{bibnamehash}{1a5e459fded84e1a0a9ca08be1c2035b}
+      \strng{authorbibnamehash}{1a5e459fded84e1a0a9ca08be1c2035b}
+      \strng{authornamehash}{7bff05581a3b683461f0bc90a6deeaf8}
+      \strng{authorfullhash}{1a5e459fded84e1a0a9ca08be1c2035b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{New Gener. Comput.}
+      \field{number}{3}
+      \field{title}{Bootstrapping Inference in the {IDP} Knowledge Base System}
+      \field{volume}{34}
+      \field{year}{2016}
+      \field{pages}{193\bibrangedash 220}
+      \range{pages}{28}
+    \endentry
+    \entry{DBLP:journals/tplp/AlvianoDM18}{article}{}
+      \name{author}{3}{}{%
+        {{hash=4251092d5873b2e2fb3366039c8a5937}{%
+           family={Alviano},
+           familyi={A\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5dab82e1316a61875fa864346d121e08}{%
+           family={Dodaro},
+           familyi={D\bibinitperiod},
+           given={Carmine},
+           giveni={C\bibinitperiod}}}%
+        {{hash=a65827edc12272b7d5310245c1a17588}{%
+           family={Maratea},
+           familyi={M\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{2153451de2a56c0a158fea5dbb0a64bf}
+      \strng{fullhash}{2153451de2a56c0a158fea5dbb0a64bf}
+      \strng{bibnamehash}{2153451de2a56c0a158fea5dbb0a64bf}
+      \strng{authorbibnamehash}{2153451de2a56c0a158fea5dbb0a64bf}
+      \strng{authornamehash}{2153451de2a56c0a158fea5dbb0a64bf}
+      \strng{authorfullhash}{2153451de2a56c0a158fea5dbb0a64bf}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theory Pract. Log. Program.}
+      \field{number}{3-4}
+      \field{title}{Shared aggregate sets in answer set programming}
+      \field{volume}{18}
+      \field{year}{2018}
+      \field{pages}{301\bibrangedash 318}
+      \range{pages}{18}
+    \endentry
+    \entry{DBLP:journals/algorithms/CabalarFSW23}{article}{}
+      \name{author}{4}{}{%
+        {{hash=b59172f317efae10fd52883aad3f170a}{%
+           family={Cabalar},
+           familyi={C\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+        {{hash=ff0cc9e7122367357b3186495ab0f058}{%
+           family={Fandinno},
+           familyi={F\bibinitperiod},
+           given={Jorge},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3c55d70c19bd5f5a654a6ad7ae64450c}{%
+           family={Schaub},
+           familyi={S\bibinitperiod},
+           given={Torsten},
+           giveni={T\bibinitperiod}}}%
+        {{hash=5a28f806bf3518aaa98d2cdef7416984}{%
+           family={Wanko},
+           familyi={W\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{6dac95f8988eae1dad94bd80fa556188}
+      \strng{fullhash}{a6259db3482c49e8b87166f1b5ad7e7f}
+      \strng{bibnamehash}{a6259db3482c49e8b87166f1b5ad7e7f}
+      \strng{authorbibnamehash}{a6259db3482c49e8b87166f1b5ad7e7f}
+      \strng{authornamehash}{6dac95f8988eae1dad94bd80fa556188}
+      \strng{authorfullhash}{a6259db3482c49e8b87166f1b5ad7e7f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Algorithms}
+      \field{number}{4}
+      \field{title}{On the Semantics of Hybrid {ASP} Systems Based on Clingo}
+      \field{volume}{16}
+      \field{year}{2023}
+      \field{pages}{185}
+      \range{pages}{1}
+    \endentry
+    \entry{DBLP:conf/sara/AavaniMT13}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=e97f75b112a986b6069bdad6a5b28bf3}{%
+           family={Aavani},
+           familyi={A\bibinitperiod},
+           given={Amir},
+           giveni={A\bibinitperiod}}}%
+        {{hash=399b510052215e6bdf33aed91871c2dc}{%
+           family={Mitchell},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelima G.},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=5c811516c4869b2efd8862cd03ecab5b}{%
+           family={Ternovska},
+           familyi={T\bibinitperiod},
+           given={Eugenia},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {AAAI}%
+      }
+      \strng{namehash}{abc3dbb1febb3f078632b4c550e0587b}
+      \strng{fullhash}{abc3dbb1febb3f078632b4c550e0587b}
+      \strng{bibnamehash}{abc3dbb1febb3f078632b4c550e0587b}
+      \strng{authorbibnamehash}{abc3dbb1febb3f078632b4c550e0587b}
+      \strng{authornamehash}{abc3dbb1febb3f078632b4c550e0587b}
+      \strng{authorfullhash}{abc3dbb1febb3f078632b4c550e0587b}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{SARA}}
+      \field{title}{New Encoding for Translating Pseudo-Boolean Constraints into {SAT}}
+      \field{year}{2013}
+    \endentry
+    \entry{DBLP:conf/jelia/BomansonGJ14}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=dc36094f0fb0db2971bf418eb5a0e297}{%
+           family={Bomanson},
+           familyi={B\bibinitperiod},
+           given={Jori},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a296fbe902a96f2ceebb7398463f3e13}{%
+           family={Gebser},
+           familyi={G\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ed6a24604d923493e91425fbb35ac736}{%
+           family={Janhunen},
+           familyi={J\bibinitperiod},
+           given={Tomi},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{2c960bfeea1fb3f1134ca042f6f62894}
+      \strng{fullhash}{2c960bfeea1fb3f1134ca042f6f62894}
+      \strng{bibnamehash}{2c960bfeea1fb3f1134ca042f6f62894}
+      \strng{authorbibnamehash}{2c960bfeea1fb3f1134ca042f6f62894}
+      \strng{authornamehash}{2c960bfeea1fb3f1134ca042f6f62894}
+      \strng{authorfullhash}{2c960bfeea1fb3f1134ca042f6f62894}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{JELIA}}
+      \field{series}{LNCS}
+      \field{title}{Improving the Normalization of Weight Rules in Answer Set Programs}
+      \field{volume}{8761}
+      \field{year}{2014}
+      \field{pages}{166\bibrangedash 180}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1007/978-3-319-11558-0\_12
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-319-11558-0\_12
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-319-11558-0%5C_12
+      \endverb
+    \endentry
+    \entry{DBLP:conf/lpnmr/BomansonJ13}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=dc36094f0fb0db2971bf418eb5a0e297}{%
+           family={Bomanson},
+           familyi={B\bibinitperiod},
+           given={Jori},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ed6a24604d923493e91425fbb35ac736}{%
+           family={Janhunen},
+           familyi={J\bibinitperiod},
+           given={Tomi},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{8537e9f6857c27dbef2b5132a42a8c1a}
+      \strng{fullhash}{8537e9f6857c27dbef2b5132a42a8c1a}
+      \strng{bibnamehash}{8537e9f6857c27dbef2b5132a42a8c1a}
+      \strng{authorbibnamehash}{8537e9f6857c27dbef2b5132a42a8c1a}
+      \strng{authornamehash}{8537e9f6857c27dbef2b5132a42a8c1a}
+      \strng{authorfullhash}{8537e9f6857c27dbef2b5132a42a8c1a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{LPNMR}}
+      \field{series}{LNCS}
+      \field{title}{Normalizing Cardinality Rules Using Merging and Sorting Constructions}
+      \field{volume}{8148}
+      \field{year}{2013}
+      \field{pages}{187\bibrangedash 199}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1007/978-3-642-40564-8\_19
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-642-40564-8\_19
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-642-40564-8%5C_19
+      \endverb
+    \endentry
+    \entry{DBLP:conf/lpnmr/LierlerM04}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=cefb1d2df1262315a867c2c05eceb5f0}{%
+           family={Lierler},
+           familyi={L\bibinitperiod},
+           given={Yuliya},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=a65827edc12272b7d5310245c1a17588}{%
+           family={Maratea},
+           familyi={M\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{38a6222e3af183cf117e7b086e6bb110}
+      \strng{fullhash}{38a6222e3af183cf117e7b086e6bb110}
+      \strng{bibnamehash}{38a6222e3af183cf117e7b086e6bb110}
+      \strng{authorbibnamehash}{38a6222e3af183cf117e7b086e6bb110}
+      \strng{authornamehash}{38a6222e3af183cf117e7b086e6bb110}
+      \strng{authorfullhash}{38a6222e3af183cf117e7b086e6bb110}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{LPNMR}}
+      \field{series}{LNCS}
+      \field{title}{Cmodels-2: SAT-based Answer Set Solver Enhanced to Non-tight Programs}
+      \field{volume}{2923}
+      \field{year}{2004}
+      \field{pages}{346\bibrangedash 350}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1007/978-3-540-24609-1\_32
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-540-24609-1\_32
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-540-24609-1%5C_32
+      \endverb
+    \endentry
+    \entry{DBLP:journals/jar/GiunchigliaLM06}{article}{}
+      \name{author}{3}{}{%
+        {{hash=64b1c24315c372925712fa60d40dbdb4}{%
+           family={Giunchiglia},
+           familyi={G\bibinitperiod},
+           given={Enrico},
+           giveni={E\bibinitperiod}}}%
+        {{hash=cefb1d2df1262315a867c2c05eceb5f0}{%
+           family={Lierler},
+           familyi={L\bibinitperiod},
+           given={Yuliya},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=a65827edc12272b7d5310245c1a17588}{%
+           family={Maratea},
+           familyi={M\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{cb245e1e52b2e7e7d058f03c63ccb342}
+      \strng{fullhash}{cb245e1e52b2e7e7d058f03c63ccb342}
+      \strng{bibnamehash}{cb245e1e52b2e7e7d058f03c63ccb342}
+      \strng{authorbibnamehash}{cb245e1e52b2e7e7d058f03c63ccb342}
+      \strng{authornamehash}{cb245e1e52b2e7e7d058f03c63ccb342}
+      \strng{authorfullhash}{cb245e1e52b2e7e7d058f03c63ccb342}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{J. Autom. Reason.}
+      \field{number}{4}
+      \field{title}{Answer Set Programming Based on Propositional Satisfiability}
+      \field{volume}{36}
+      \field{year}{2006}
+      \field{pages}{345\bibrangedash 377}
+      \range{pages}{33}
+      \verb{doi}
+      \verb 10.1007/S10817-006-9033-2
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s10817-006-9033-2
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s10817-006-9033-2
+      \endverb
+    \endentry
+    \entry{DBLP:journals/amai/GiunchigliaLM08}{article}{}
+      \name{author}{3}{}{%
+        {{hash=64b1c24315c372925712fa60d40dbdb4}{%
+           family={Giunchiglia},
+           familyi={G\bibinitperiod},
+           given={Enrico},
+           giveni={E\bibinitperiod}}}%
+        {{hash=77e491ad5f8cdd4f2edef120a74f5a17}{%
+           family={Leone},
+           familyi={L\bibinitperiod},
+           given={Nicola},
+           giveni={N\bibinitperiod}}}%
+        {{hash=a65827edc12272b7d5310245c1a17588}{%
+           family={Maratea},
+           familyi={M\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{b2c34094bffe4d8e6b24e5a9365e8a7d}
+      \strng{fullhash}{b2c34094bffe4d8e6b24e5a9365e8a7d}
+      \strng{bibnamehash}{b2c34094bffe4d8e6b24e5a9365e8a7d}
+      \strng{authorbibnamehash}{b2c34094bffe4d8e6b24e5a9365e8a7d}
+      \strng{authornamehash}{b2c34094bffe4d8e6b24e5a9365e8a7d}
+      \strng{authorfullhash}{b2c34094bffe4d8e6b24e5a9365e8a7d}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Ann. Math. Artif. Intell.}
+      \field{number}{1-4}
+      \field{title}{On the relation among answer set solvers}
+      \field{volume}{53}
+      \field{year}{2008}
+      \field{pages}{169\bibrangedash 204}
+      \range{pages}{36}
+      \verb{doi}
+      \verb 10.1007/S10472-009-9113-1
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s10472-009-9113-1
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s10472-009-9113-1
+      \endverb
+    \endentry
+    \entry{DBLP:journals/tplp/FerrarisL05}{article}{}
+      \name{author}{2}{}{%
+        {{hash=b4fdbd544113be5bee98fa5db61cf3cb}{%
+           family={Ferraris},
+           familyi={F\bibinitperiod},
+           given={Paolo},
+           giveni={P\bibinitperiod}}}%
+        {{hash=3f9f7c9937297077325233d345cf9c91}{%
+           family={Lifschitz},
+           familyi={L\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{f16b279a2f47dc94a35e74db18c4dd84}
+      \strng{fullhash}{f16b279a2f47dc94a35e74db18c4dd84}
+      \strng{bibnamehash}{f16b279a2f47dc94a35e74db18c4dd84}
+      \strng{authorbibnamehash}{f16b279a2f47dc94a35e74db18c4dd84}
+      \strng{authornamehash}{f16b279a2f47dc94a35e74db18c4dd84}
+      \strng{authorfullhash}{f16b279a2f47dc94a35e74db18c4dd84}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theory Pract. Log. Program.}
+      \field{number}{1-2}
+      \field{title}{Weight constraints as nested expressions}
+      \field{volume}{5}
+      \field{year}{2005}
+      \field{pages}{45\bibrangedash 74}
+      \range{pages}{30}
+      \verb{doi}
+      \verb 10.1017/S1471068403001923
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1017/S1471068403001923
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1017/S1471068403001923
+      \endverb
+    \endentry
+    \entry{DBLP:conf/sma2/NguyenNKB20}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=26bed4075d980e5a5f2a54f12af8cad8}{%
+           family={Nguyen},
+           familyi={N\bibinitperiod},
+           given={Van{-}Hau},
+           giveni={V\bibinitperiod}}}%
+        {{hash=08af372c3005e1e5fb0a574575d1fd15}{%
+           family={Nguyen},
+           familyi={N\bibinitperiod},
+           given={Van{-}Quyet},
+           giveni={V\bibinitperiod}}}%
+        {{hash=373a54c2cc9da681f96b2ab0b5bbd028}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Kyungbaek},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d36974fea24449e506bc3fbac939ad7c}{%
+           family={Barahona},
+           familyi={B\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACM}%
+      }
+      \strng{namehash}{0d0e21c39a3b422b5fa728e60f44f182}
+      \strng{fullhash}{debda33c10d005e951ab4e559b1011b1}
+      \strng{bibnamehash}{debda33c10d005e951ab4e559b1011b1}
+      \strng{authorbibnamehash}{debda33c10d005e951ab4e559b1011b1}
+      \strng{authornamehash}{0d0e21c39a3b422b5fa728e60f44f182}
+      \strng{authorfullhash}{debda33c10d005e951ab4e559b1011b1}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{{SMA}}
+      \field{title}{Empirical Study on SAT-Encodings of the At-Most-One Constraint}
+      \field{year}{2020}
+      \field{pages}{470\bibrangedash 475}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1145/3426020.3426170
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/3426020.3426170
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/3426020.3426170
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

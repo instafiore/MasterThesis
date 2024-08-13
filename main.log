@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.11)  6 AUG 2024 19:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.5.11)  13 AUG 2024 12:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1300,53 +1300,49 @@ Overfull \hbox (2.06923pt too wide) in paragraph at lines 66--84
  []
 
 [26] [27] [28] [29]
-Overfull \hbox (0.94325pt too wide) detected at line 269
-[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 I; z\OT1/cmr/m/n/12 ) + [] [](\OML/cmm/m/it/12 e; I; \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 R[] \OMS/cmsy/m/n/12 n \OML/cmm/m/it/12 S\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 [ f\OML/cmm/m/it/12 e\OMS/cmsy/m/n/12 g\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^T []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 I; z\OT1/cmr/m/n/12 ) + [] \OMS/cmsy/m/n/12 ^^@ []\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 I; z\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 1 = [] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 1
- []
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [30] [31]
-LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 378.
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 377.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 378.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 377.
  [32] [33] [34] [35] [36]
-Overfull \hbox (83.63359pt too wide) in paragraph at lines 572--575
+Overfull \hbox (83.63359pt too wide) in paragraph at lines 570--573
 []\OT1/cmr/m/it/12 By con-struc-tion\OT1/cmr/m/n/12 , $(0\OML/cmm/m/it/12 ; j\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 C[]$ \OT1/cmr/m/it/12 iff $\OML/cmm/m/it/12 M[][]L[][]\OT1/cmr/m/n/12 0$.
  []
 
 
-Overfull \hbox (14.61055pt too wide) in paragraph at lines 575--580
-\OT1/cmr/m/n/12 Then $\OML/cmm/m/it/12 M[] \OMS/cmsy/m/n/12 ^^R \OML/cmm/m/it/12 L[]$ \OT1/cmr/m/n/12 and $\OML/cmm/m/it/12 M[][][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 M[]; I; R\OT1/cmr/m/n/12 ) =
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 598--610
+Underfull \hbox (badness 10000) in paragraph at lines 596--608
 
  []
 
 [37] [38] [39]
-Overfull \hbox (5.53403pt too wide) in paragraph at lines 707--713
+Overfull \hbox (5.53403pt too wide) in paragraph at lines 704--710
 []\OT1/cmr/m/n/12 To prove that prob-lem to find a \OT1/cmr/m/it/12 Car-di-nal-ity Max-i-mum Sub-set Sum (CMSS)
  []
 
-[40]) (./chapters/implementation_experiments.tex [41]
-Chapter 5.
-[42
+[40]
+Overfull \hbox (51.3949pt too wide) in paragraph at lines 742--746
+ []\OT1/cmr/bx/n/12 Function $\OML/cmm/m/it/12 ^^Z$[] \OT1/cmr/m/n/12 Let $\OML/cmm/m/it/12 < K; W >$ \OT1/cmr/m/n/12 be the in-put of \OT1/cmr/m/it/12 KN \OT1/cmr/m/n/12 where $\OML/cmm/m/it/12 K \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 v[]; w[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ; [] ; \OT1/cmr/m/n/12 (\OML/cmm/m/it/12 v[]; w[]\OT1/cmr/m/n/12 )\OMS/cmsy/m/n/12 g$
+ []
 
-] [43] [44]
-Package pgfplots info on input line 145: Overriding colorspace to rgb due to xcolor configuration.
-Package pgfplots info on input line 145: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
-Package pgfplots info on input line 181: Overriding colorspace to rgb due to xcolor configuration.
-Package pgfplots info on input line 181: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
-Package pgfplots info on input line 214: Overriding colorspace to rgb due to xcolor configuration.
-Package pgfplots info on input line 214: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
- [45]
-Package pgfplots info on input line 259: Overriding colorspace to rgb due to xcolor configuration.
+[41] [42] [43]) (./chapters/implementation_experiments.tex [44]
+Chapter 5.
+[45
+
+] [46] [47]
+Package pgfplots info on input line 148: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 148: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
+Package pgfplots info on input line 184: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 184: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
+Package pgfplots info on input line 217: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 217: Using 'lua backend=false' for axis: ymode=log unsupported (yet).
+ [48]
+Package pgfplots info on input line 262: Overriding colorspace to rgb due to xcolor configuration.
 PGFPlots: reading {./graphcoloringcactus.csv}
 
 NOTE: coordinate (54,) has been dropped because of a coordinate filter. 
@@ -1424,7 +1420,7 @@ NOTE: coordinate (70,) has been dropped because of a coordinate filter.
 NOTE: coordinate (71,) has been dropped because of a coordinate filter. 
 NOTE: coordinate (72,) has been dropped because of a coordinate filter. 
 PGFPlots: reading {./graphcoloringcactus.csv}
-Package pgfplots info on input line 287: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 290: Overriding colorspace to rgb due to xcolor configuration.
 PGFPlots: reading {./knapsackcactus.csv}
 NOTE: coordinate (49,) has been dropped because of a coordinate filter. 
 NOTE: coordinate (50,) has been dropped because of a coordinate filter. 
@@ -1521,62 +1517,62 @@ NOTE: coordinate (75,) has been dropped because of a coordinate filter.
 NOTE: coordinate (76,) has been dropped because of a coordinate filter. 
 PGFPlots: reading {./knapsackcactus.csv}
 
-Overfull \hbox (19.56061pt too wide) in paragraph at lines 269--301
+Overfull \hbox (19.56061pt too wide) in paragraph at lines 272--304
 [][] [] 
  []
 
-Package pgfplots info on input line 326: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 329: Overriding colorspace to rgb due to xcolor configuration.
 PGFPlots: reading {graphcoloringscatter15.csv}
 PGFPlots: reading {graphcoloringscatter45.csv}
 PGFPlots: reading {graphcoloringscatter75.csv}
-Package pgfplots info on input line 358: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 361: Overriding colorspace to rgb due to xcolor configuration.
 PGFPlots: reading {graphcoloringscatter15.csv}
 PGFPlots: reading {graphcoloringscatter45.csv}
 PGFPlots: reading {graphcoloringscatter75.csv}
-Package pgfplots info on input line 392: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 395: Overriding colorspace to rgb due to xcolor configuration.
 PGFPlots: reading {knapsackscatter-type1.csv}
 PGFPlots: reading {knapsackscatter-type2.csv}
 PGFPlots: reading {knapsackscatter-type3.csv}
 PGFPlots: reading {knapsackscatter-type4.csv}
-Package pgfplots info on input line 427: Overriding colorspace to rgb due to xcolor configuration.
+Package pgfplots info on input line 430: Overriding colorspace to rgb due to xcolor configuration.
 PGFPlots: reading {knapsackscatter-type1.csv}
 PGFPlots: reading {knapsackscatter-type2.csv}
 PGFPlots: reading {knapsackscatter-type3.csv}
 PGFPlots: reading {knapsackscatter-type4.csv}
-) (./chapters/related_works.tex [46] [47]
+) (./chapters/related_works.tex [49] [50]
 Chapter 6.
-) (./chapters/conclusion.tex [48
+) (./chapters/conclusion.tex [51
 
-]
+] [52]
 Chapter 7.
-) [49
+) [53
 
 ]
 Overfull \hbox (29.52362pt too wide) in paragraph at lines 192--192
 \OT1/cmr/m/it/12 In-tel-li-gence\OT1/cmr/m/n/12 , vol. 25, no. 3,4, pp. 241{273, 1999. \OT1/cmr/m/sc/12 doi\OT1/cmr/m/n/12 : []$10 . 1023 / A : 1018930122475$[]. 
  []
 
-[50
+[54
 
-] [51] [52] [53] (./main.aux)
+] [55] [56] [57] [58] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 97751D0F8819323CB68849EADC5C980B;2011.
+(rerunfilecheck)             Checksum: 1A6EE160382F62DBAE1A593D4E41D54E;2011.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 50233 strings out of 478287
- 1086576 string characters out of 5849289
- 1931824 words of memory out of 5000000
- 67359 multiletter control sequences out of 15000+600000
+ 50317 strings out of 478287
+ 1090210 string characters out of 5849289
+ 1933536 words of memory out of 5000000
+ 67410 multiletter control sequences out of 15000+600000
  481962 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  100i,30n,133p,1090b,3711s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (55 pages, 623563 bytes).
+Output written on main.pdf (60 pages, 656332 bytes).
 PDF statistics:
- 946 PDF objects out of 1000 (max. 8388607)
- 280 named destinations out of 1000 (max. 500000)
+ 1046 PDF objects out of 1200 (max. 8388607)
+ 313 named destinations out of 1000 (max. 500000)
  278 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,3 +1,36 @@
 \chapter{Related Work}
 \label{sec:rw}
+In this work, AMOSUM constraints have been incorporated into the (propositional) language of ASP. 
+However, AMOSUMs can be integrated into any logic-based formalism that extends propositional logic, 
+such as SMT \cite{DBLP:journals/jacm/NieuwenhuisOT06} and CSP \cite{DBLP:journals/eor/BrailsfordPS99}. 
+From a computational perspective, there are two primary methods to enhance the capabilities of logic-based languages: 
+the \textit{propagator-based} approach and the \textit{translation-based} approach, as discussed below.
 
+Solvers that utilize the \emph{propagator-based} approach implement specialized algorithms 
+to extend assignments with literals that must be true (Section ~\ref{sec:bg-SM}). 
+The method used to handle AMOSUM constraints in this work (Section ~\ref{sec:amo:syntax_semantics}) falls within this category. 
+In the existing literature, the state-of-the-art system \textsc{clingo} \cite{DBLP:journals/tplp/GebserKKS19} employs a 
+hybrid approach for managing programs with aggregates \cite{DBLP:conf/iclp/GebserKKS09}. Aggregates containing a limited 
+number of literals are transformed into regular rules using a translation-based approach, with the threshold for the number 
+of literals being adjustable via the command-line interface. Other aggregates, including those representing AMO constraints, 
+are handled by the propagator described in Section ~\ref{sec:amo:propagator}.
+A similar approach is also implemented in \textsc{idp} \cite{Denecker2010DPLLAggAE,DBLP:journals/ngc/0001JCJBD16} 
+and \textsc{wasp} \cite{DBLP:journals/tplp/AlvianoDM18}. 
+Additionally, both \textsc{clingo} and \textsc{wasp} 
+provide external Python-based interfaces for defining custom 
+propagators ~\cite{DBLP:journals/algorithms/CabalarFSW23,DBLP:journals/tplp/DodaroR20}. 
+The propagator described in Section~\ref{sec:amo:propagator} is implemented using the Python interface of \textsc{wasp}.
+
+Translation-based approaches involve compiling aggregates into alternative constructs. 
+In the context of ASP, the similarities between aggregates and pseudo-Boolean constraints have 
+led to the adoption of certain pseudo-Boolean constraint compilations into clauses \cite{DBLP:conf/sara/AavaniMT13}. 
+In the context of ASP solvers, many of these translation techniques are integrated into tools like \textsc{lp2sat} and 
+\textsc{lp2normal} \cite{DBLP:conf/jelia/BomansonGJ14,DBLP:conf/lpnmr/BomansonJ13}. The former generates CNF formulas, 
+while the latter produces normal rules. Another translation-based method is employed by 
+\textsc{cmodels} \cite{DBLP:conf/lpnmr/LierlerM04,DBLP:journals/jar/GiunchigliaLM06,DBLP:journals/amai/GiunchigliaLM08}, 
+which translates aggregates into nested logic programs \cite{DBLP:journals/tplp/FerrarisL05}.
+Finally, for AMO constraints, translation-based approaches provide several encoding options, 
+including pairwise (binomial), binary (bitwise), commander, product, sequential counter, 
+and bimander encodings. A recent comparison of these encodings can be found in \cite{DBLP:conf/sma2/NguyenNKB20}. 
+It is worth noting that the AMOSUM propagator introduced in this article can be integrated with AMO constraint 
+compilers by substituting the first inference rule specified in Section~\ref{sec:amo:inference_rules} with the compiled clauses.
