@@ -762,16 +762,18 @@ where:
 \end{align*}
 
 \subparagraph{Proving correcntess of reduction}
-For proving correcntess of the reduction some preliminars are needed.
-Let $\mathit{value}: \mathbb{G} \mapsto \mathbb{N}$ a function 
-mapping each group to its cardinality, that is, $\mathit{value}(g) = |\,\lits|_g\,|$.
-Let $\mathit{value}: \mathbb{N} \times \mathbb{N} \mapsto \mathbb{N}$ a function that maps 
-an item $(v,w)$ to its weight, that is, $\mathit{value}(v,w) = v$.
-Given a set $S \subseteq R$ then a group $g$ is said to be active in $S$
-if $\exists \ell \in \lits|_g$ such that $\ell \in S$.
-Let $\alpha: \mathcal{P}(R) \mapsto \mathcal{P}(\mathbb{G})$ be a function that 
-maps every subset $S \subseteq R$ to its set of active groups, that is, 
-$\alpha(S) = \{g : \lits|_g \subseteq S\}$.
+
+To prove the correctness of the reduction, some preliminary definitions are required.
+Let $\mathit{value}: \mathbb{G} \to \mathbb{N}$ be a function that maps each group to 
+its cardinality, i.e., $\mathit{value}(g) = |\lits|_g|$.
+Let $\mathit{value}: \mathbb{N} \times \mathbb{N} \to \mathbb{N}$ be a function that 
+maps an item $(v, w)$ to its value, i.e., $\mathit{value}(v, w) = v$.
+Given a set $S \subseteq R$, a group $g$ is said to be active in $S$ if there exists 
+an element $\ell \in \lits|_g$ such that $\ell \in S$.
+Let $\alpha: \mathcal{P}(R) \to \mathcal{P}(\mathbb{G})$ be a function that maps 
+each subset $S \subseteq R$ to the set of its active groups, i.e., 
+$\alpha(S) = \{ g : \lits|_g \subseteq S \}$.
+
 
 \begin{theorem}
     Given an optimal solution \( S^* \) for the \textit{CMSS} problem with the input $\rho(K,W)$, 
@@ -780,28 +782,29 @@ $\alpha(S) = \{g : \lits|_g \subseteq S\}$.
 \end{theorem}
 
 \begin{proof}
-    The problem \textit{CMSS} is to find a set that maximize its size while keeping its $\mathit{sum}$
-    under the bound $s$. In a mathematical form:
+    The problem \textit{CMSS} is to find a set that maximizes 
+    its size while keeping its $\mathit{sum}$
+    under the bound $s$. Formally, this can be expressed as:
     \begin{align}
         \label{red:max:S:f}
         \max_{S \in \mathcal{P}(R)} & \ f(S)=|S| \\
         \label{red:max:S:constraint}
         \text{subject to} \quad & \sum_{e \in A_S} \inc(e,I,R) \le s 
     \end{align}
-    By construction each group $g$ has all its literals with the same increment, thus if any literal of 
-    $g$ is active in $S$ then every literal of $g$ is inside $S$; that's because, 
-    let $\ell \in A_S$, then $\blw(\ell) = \lits|_{\group(\ell)}$.
-    So, a set $S$ can be defined only using its \textit{active groups}
-    and objective function ~\ref{red:max:S:f} 
-    can be rewritten in $\sum_{g \in \alpha(S)} |\,\lits|_g\,|$;
-    since $\mathit{value}(g) = |\,\lits_g\,|$ then it can be also written as:
-    $\sum_{g \in \alpha(S)} \mathit{value}(g)$.
-    Abusing of notation let $\inc(g,I,R)$ be the increment of the group $g$ when $\lits|_g \subseteq S$,
-    that is, $\inc(g,I,R) = \max\{\inc(\ell,I,R) \mid \ell \in \lits|_g\}$.
-    Given that $\inc(\ell,I,R) = w_g$ for all $\ell \in \lits|_g$ then $\inc(g,I,R)  = w_g$;
-    using this notation the constraint ~\ref{red:max:S:constraint} can be rewritten as 
-    $\sum_{g \in \alpha(S)} \inc(g,I,R) \le s$.
-    Thus, the maximization problem described above can be rewritten as:
+    By construction, each group $g$ has all its literals with the same increment. 
+    Thus, if any literal of $g$ is active in $S$, then every literal of $g$ is 
+    inside $S$. This is because, for any $\ell \in A_S$, we have $\blw(\ell) = \lits|_{\group(\ell)}$.
+    Therefore, a set $S$ can be defined solely by its \textit{active groups}, 
+    and the objective function in ~\ref{red:max:S:f} can be rewritten 
+    as $\sum_{g \in \alpha(S)} |\,\lits|_g\,|$. Since $\mathit{value}(g) = |\,\lits|_g\,|$, 
+    it can also be expressed as $\sum_{g \in \alpha(S)} \mathit{value}(g)$.
+    Abusing notation, let $\inc(g, I, R)$ denote the increment of group $g$ when 
+    $\lits|_g \subseteq S$, 
+    i.e., $\inc(g, I, R) = \max\{\inc(\ell, I, R) \mid \ell \in \lits|_g\}$.
+    Since $\inc(\ell, I, R) = w_g$ for all $\ell \in \lits|_g$, it follows that $\inc(g, I, R) = w_g$.
+    Using this notation, the constraint in ~\ref{red:max:S:constraint} can be rewritten as 
+    $\sum_{g \in \alpha(S)} \inc(g, I, R) \leq s$.
+    Thus, the maximization problem described above can be reformulated as:
     \begin{align}
         \label{red:max:S:f:G}
         \max_{S \in \mathcal{P}(R)} & \sum_{g \in \alpha(S)} \mathit{value}(g) \\
@@ -811,7 +814,7 @@ $\alpha(S) = \{g : \lits|_g \subseteq S\}$.
     $S^*$ is the optimal solution, thus,
     $|S^*| \ge \max_{S \in \mathcal{P}(R)} \sum_{g \in \alpha(S)} \mathit{value}(g)$\\
     or equivalently 
-    $\sum_{g^* \in \alpha(S^*)} \mathit{value}(g) 
+    $\sum_{g^* \in \alpha(S^*)} \mathit{value}(g^*) 
     \ge \max_{S \in \mathcal{P}(R)} \sum_{g \in \alpha(S)} \mathit{value}(g)$.\\
     By construction $\mathit{value}(g) = \mathit(v_g, w_g)$ for any weight $w_g$.
     Moreover, notice that, $\phi(S) = \{(v_g, w_g) \,:\, \lits|_g \subseteq S\}$
@@ -831,5 +834,5 @@ $\alpha(S) = \{g : \lits|_g \subseteq S\}$.
     Finally, $\sum_{(v_g^*,w_g^*) \in \phi(S^*)} \mathit{value}(v_g^*,w_g^*)  \ge \max_{S \in \mathcal{P}(R)}  
     \sum_{(v_g,w_g) \in \phi(S)} \mathit{value}(v_g,w_g)$\\
     and $\sum_{(v_g^*,w_g^*) \in \phi(S^*)} w_g^* \le W$.
-    Hence, $\phi(S*)$ is optimal solution of \textit{KN} with input $<K,W>$.
+    Hence, $\phi(S^*)$ is optimal solution of \textit{KN} with input $<K,W>$.
 \end{proof}
